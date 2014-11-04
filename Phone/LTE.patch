@@ -1,17 +1,17 @@
-From 8333205d68dc36bbef938731ed22305e289335f3 Mon Sep 17 00:00:00 2001
-From: wonitor <wonitor@qq.com>
-Date: Wed, 9 Jul 2014 21:42:17 +0800
-Subject: [PATCH 2/2] 2
+From b4c2519af461005846f8f32cd1dd881e53fe814e Mon Sep 17 00:00:00 2001
+From: X-s <xsmumu@gmail.com>
+Date: Sat, 1 Nov 2014 01:05:39 +0800
+Subject: [PATCH] LTE
 
 ---
- Phone/smali/com/android/phone/MiuiPhoneGlobals.smali               |    2 +-
- .../com/android/phone/MiuiPreferredNetworkTypeListPreference.smali |    4 ++--
- Phone/smali/com/android/phone/MiuiTelephonyCapabilities.smali      |    2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ Phone/smali/com/android/phone/MiuiPhoneGlobals.smali       | 14 +++++++++++++-
+ .../phone/MiuiPreferredNetworkTypeListPreference.smali     |  4 ++--
+ .../com/android/phone/MiuiTelephonyCapabilities.smali      |  2 +-
+ 3 files changed, 16 insertions(+), 4 deletions(-)
 
 --- a/Phone/smali/com/android/phone/MiuiPhoneGlobals.smali
 +++ b/Phone/smali/com/android/phone/MiuiPhoneGlobals.smali
-@@ -199,7 +199,7 @@
+@@ -199,13 +199,25 @@
      .local v0, needReset:Z
      sget-boolean v3, Lmiui/os/Build;->IS_MIFOUR_LTE:Z
  
@@ -20,9 +20,27 @@ Subject: [PATCH 2/2] 2
  
      const/4 v3, 0x7
  
+     if-eq p1, v3, :cond_1
+ 
+     if-eq p1, v1, :cond_1
++
++    const/4 v3, 0x1
++
++    if-eq p1, v3, :cond_1
++
++    const/4 v3, 0x2
++
++    if-eq p1, v3, :cond_1
++
++    const/16 v3, 0x9
++
++    if-eq p1, v3, :cond_1
+ 
+     const/16 v3, 0x10
+ 
 --- a/Phone/smali/com/android/phone/MiuiPreferredNetworkTypeListPreference.smali
 +++ b/Phone/smali/com/android/phone/MiuiPreferredNetworkTypeListPreference.smali
-@@ -582,9 +582,9 @@
+@@ -583,9 +583,9 @@
  
      sget-boolean v4, Lmiui/os/Build;->IS_MIFOUR_LTE:Z
  
@@ -46,6 +64,5 @@ Subject: [PATCH 2/2] 2
      :cond_0
      const/4 v0, 0x1
 -- 
-1.7.10.4
-
+1.9.1
 
