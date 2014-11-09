@@ -1,0 +1,79 @@
+    * device/oneplus/bacon
+0ffab0c bacon: Update NFC configuration
+779e112 bacon: Overlay regulatory information dialog title text.
+c98b60c Add Regulatory Info String
+51a36fd fstab: Run fsck on /persist too.
+
+    * device/oppo/msm8974-common
+f1feae0 Revert "msm8974: Update WCNSS configuration"
+ec34452 msm8974: Update IPC router security configuration
+48a6888 msm8974: Update WCNSS configuration
+
+    * external/chromium_org
+6ad93c0 Add client-side support for TLS_FALLBACK_SCSV
+
+    * external/chromium_org/third_party/openssl
+6dbd255 Add client-side support for TLS_FALLBACK_SCSV.
+
+    * external/libnfc-nci
+0cfffca Adding API for NXP specific NCI command
+
+    * external/okhttp
+686a7ae SCSV support
+
+    * external/openssl
+e9921c2 Add support for TLS_FALLBACK_SCSV
+
+    * frameworks/base
+e8cf23a radio: Treat REGULAR_DEACTIVATION events as transient errors on AT&T
+
+    * kernel/oneplus/msm8974
+d8c0761 Revert "prima: Reapply fixes after upgrade to 3.2.2.2"
+b000f9d synaptics_dsx: Fix manual fw updates
+f6f808a input: touchscreen: Update TP firmware to 14001221
+c4c143c input: touchscreen: Update TP firmware to 14001220
+16b322b bacon: Use old naming for LG panel
+e378177 camera_oppo: Upstream update svn9954
+5077fbf misc: Update from Oppo release svn9954
+85c11f9 msm8974: Stop breaking the whole system
+7bed599 Headset: Ability to hang-up a call from a wired audio headset
+6416884 prima: Reapply fixes after upgrade to 3.2.2.2
+9405a71 prima: Update to 3.2.2.1_rb1 release
+
+    * libcore
+54339e5 Add support for TLS_FALLBACK_SCSV
+
+    * packages/apps/Dialer
+4a57479 Dialer: Fix NPE in CallStats
+
+    * packages/apps/Nfc
+d3de35b Adding MiFARE DESFire format support
+
+    * packages/apps/Settings
+f99ce10 Settings: Allow Regulator Information Dialog Title to be overlaid.
+ab28fcc Change Regulatory Info Activity to prefer string over image
+c6f7122 Development: Root for apps is unavailable if the su daemon isn't running
+
+    * system/core
+e917a23 core: Correct the sensors UID
+3536ad5 system: core: Add Sensors group
+
+    * packages/apps/CMKeyguard
+45c19d4 CMKeyguard: don't crash when telephony is not yet available
+89e6b44 CMKeyguard: do not ever crash while blurring images
+
+    * packages/apps/CameraNext
+54d6f37 CameraNext: bump version
+549573a CameraNext: Temporarily require com.cyngn.updater feature
+1141fee CameraNext: Bump version
+3b27f04 CameraNext: Set uses-feature to specific deployment
+1f78091 CameraNext: make sure raw mode is turned off for video and panorama
+
+    * packages/apps/FOTA
+96d50a5 permission: Add a permission required by the app
+
+    * packages/apps/ThemeStore
+bc99f59 Bump version to 1.10
+d7e0201 ThemeShowcase: Change Base Url for showcase.
+ceeeb14 ThemeShowcase: Change Base Url for showcase.
+
