@@ -5046,7 +5046,7 @@
 
     array-length v4, v11
 
-    invoke-static {v11, v2, v4}, Lcom/android/internal/telephony/uicc/IccUtils;->bcdToString([BII)Ljava/lang/String;
+    invoke-static {v11, v2, v4}, Lcom/android/internal/telephony/uicc/IccUtils;->parseIccIdToString([BII)Ljava/lang/String;
 
     move-result-object v2
 

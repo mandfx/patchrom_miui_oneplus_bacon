@@ -1224,6 +1224,24 @@
 
 
 # virtual methods
+.method getAppIcon()Landroid/widget/ImageView;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/app/SearchDialog;->mAppIcon:Landroid/widget/ImageView;
+
+    return-object v0
+.end method
+
+.method getCloseSearch()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/app/SearchDialog;->mCloseSearch:Landroid/view/View;
+
+    return-object v0
+.end method
+
 .method public hide()V
     .locals 3
 

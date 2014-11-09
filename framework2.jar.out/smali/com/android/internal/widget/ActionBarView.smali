@@ -68,6 +68,8 @@
 
 .field private mMenuPrepared:Z
 
+.field mMenuPresenterCallback:Lcom/android/internal/view/menu/MenuPresenter$Callback;
+
 .field private final mNavItemSelectedListener:Landroid/widget/AdapterView$OnItemSelectedListener;
 
 .field private mNavigationMode:I
@@ -96,9 +98,11 @@
 
 .field private mTitle:Ljava/lang/CharSequence;
 
-.field private mTitleLayout:Landroid/widget/LinearLayout;
+.field private mTitleLayout:Landroid/view/ViewGroup;
 
 .field private mTitleStyleRes:I
+
+.field private mTitleUpView:Landroid/view/View;
 
 .field private mTitleView:Landroid/widget/TextView;
 
@@ -651,13 +655,12 @@
     return-object v0
 .end method
 
-.method static synthetic access$1000(Lcom/android/internal/widget/ActionBarView;)Landroid/widget/LinearLayout;
+.method static synthetic access$1000(Lcom/android/internal/widget/ActionBarView;)Landroid/view/ViewGroup;
     .locals 1
     .parameter "x0"
 
     .prologue
-    .line 66
-    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/widget/LinearLayout;
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
 
     return-object v0
 .end method
@@ -1014,12 +1017,35 @@
     .prologue
     const/4 v4, 0x0
 
-    .line 824
-    iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/widget/LinearLayout;
+    invoke-virtual {p0}, Lcom/android/internal/widget/ActionBarView;->miuiInitTitle()Z
 
-    if-nez v1, :cond_3
+    move-result v1
 
-    .line 825
+    if-eqz v1, :cond_miui
+
+    iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mUpGoerFive:Landroid/view/ViewGroup;
+
+    iget-object v2, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
+
+    invoke-virtual {v1, v2}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
+
+    const v2, 0x60b00af
+
+    invoke-virtual {v1, v2}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mTitleUpView:Landroid/view/View;
+
+    return-void
+
+    :cond_miui
+    iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
+
+    if-nez v1, :cond_4
+
     invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
 
     move-result-object v1
@@ -1108,37 +1134,31 @@
 
     invoke-virtual {v1, v2, v3}, Landroid/widget/TextView;->setTextAppearance(Landroid/content/Context;I)V
 
-    .line 841
     :cond_2
     iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mSubtitle:Ljava/lang/CharSequence;
 
     if-eqz v1, :cond_3
 
-    .line 842
     iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mSubtitleView:Landroid/widget/TextView;
 
     iget-object v2, p0, Lcom/android/internal/widget/ActionBarView;->mSubtitle:Ljava/lang/CharSequence;
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 843
     iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mSubtitleView:Landroid/widget/TextView;
 
     invoke-virtual {v1, v4}, Landroid/view/View;->setVisibility(I)V
 
-    .line 847
     .end local v0           #inflater:Landroid/view/LayoutInflater;
     :cond_3
     invoke-static {p0}, Lcom/android/internal/transition/ActionBarTransition;->beginDelayedTransition(Landroid/view/ViewGroup;)V
 
-    .line 848
     iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mUpGoerFive:Landroid/view/ViewGroup;
 
-    iget-object v2, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/widget/LinearLayout;
+    iget-object v2, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
 
     invoke-virtual {v1, v2}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
 
-    .line 849
     iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mExpandedActionView:Landroid/view/View;
 
     if-nez v1, :cond_4
@@ -1495,6 +1515,15 @@
     return v0
 .end method
 
+.method public getExpandedActionView()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mExpandedActionView:Landroid/view/View;
+
+    return-object v0
+.end method
+
 .method public getNavigationMode()I
     .locals 1
 
@@ -1515,12 +1544,75 @@
     return-object v0
 .end method
 
+.method public getSubtitleStyleRes()I
+    .locals 1
+
+    .prologue
+    iget v0, p0, Lcom/android/internal/widget/ActionBarView;->mSubtitleStyleRes:I
+
+    return v0
+.end method
+
+.method public getSubtitleView()Landroid/widget/TextView;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mSubtitleView:Landroid/widget/TextView;
+
+    return-object v0
+.end method
+
+.method public getTabScrollView()Lcom/android/internal/widget/ScrollingTabContainerView;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mTabScrollView:Lcom/android/internal/widget/ScrollingTabContainerView;
+
+    return-object v0
+.end method
+
 .method public getTitle()Ljava/lang/CharSequence;
     .locals 1
 
     .prologue
     .line 490
     iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mTitle:Ljava/lang/CharSequence;
+
+    return-object v0
+.end method
+
+.method public getTitleLayout()Landroid/view/ViewGroup;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
+
+    return-object v0
+.end method
+
+.method public getTitleStyleRes()I
+    .locals 1
+
+    .prologue
+    iget v0, p0, Lcom/android/internal/widget/ActionBarView;->mTitleStyleRes:I
+
+    return v0
+.end method
+
+.method public getTitleView()Landroid/widget/TextView;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mTitleView:Landroid/widget/TextView;
+
+    return-object v0
+.end method
+
+.method public getUpClickListener()Landroid/view/View$OnClickListener;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mUpClickListener:Landroid/view/View$OnClickListener;
 
     return-object v0
 .end method
@@ -1772,6 +1864,19 @@
     goto :goto_1
 .end method
 
+.method protected miuiInitTitle()Z
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lmiui/util/UiUtils;->isV5Ui(Landroid/content/Context;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
 .method protected onConfigurationChanged(Landroid/content/res/Configuration;)V
     .locals 4
     .parameter "newConfig"
@@ -1803,39 +1908,32 @@
 
     if-ne v1, v2, :cond_0
 
-    .line 255
     iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mUpGoerFive:Landroid/view/ViewGroup;
 
-    iget-object v2, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/widget/LinearLayout;
+    iget-object v2, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
 
     invoke-virtual {v1, v2}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    .line 257
     :cond_0
-    iput-object v3, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/widget/LinearLayout;
+    iput-object v3, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
 
-    .line 258
     iget v1, p0, Lcom/android/internal/widget/ActionBarView;->mDisplayOptions:I
 
     and-int/lit8 v1, v1, 0x8
 
     if-eqz v1, :cond_1
 
-    .line 259
     invoke-direct {p0}, Lcom/android/internal/widget/ActionBarView;->initTitle()V
 
-    .line 262
     :cond_1
     iget v1, p0, Lcom/android/internal/widget/ActionBarView;->mHomeDescriptionRes:I
 
     if-eqz v1, :cond_2
 
-    .line 263
     iget v1, p0, Lcom/android/internal/widget/ActionBarView;->mHomeDescriptionRes:I
 
     invoke-virtual {p0, v1}, Lcom/android/internal/widget/ActionBarView;->setHomeActionContentDescription(I)V
 
-    .line 266
     :cond_2
     iget-object v1, p0, Lcom/android/internal/widget/ActionBarView;->mTabScrollView:Lcom/android/internal/widget/ScrollingTabContainerView;
 
@@ -3023,6 +3121,14 @@
 
     move/from16 v45, v0
 
+    move-object/from16 v0, p0
+
+    move/from16 v1, v45
+
+    invoke-static {v0, v1}, Lcom/android/internal/widget/Injector$ActionBarViewHook;->isCollapsable(Lcom/android/internal/widget/ActionBarView;Z)Z
+
+    move-result v45
+
     if-eqz v45, :cond_6
 
     .line 896
@@ -3412,7 +3518,7 @@
     .local v36, rightOfCenter:I
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/widget/LinearLayout;
+    iget-object v0, v0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
 
     move-object/from16 v45, v0
 
@@ -4034,7 +4140,7 @@
     .line 1085
     move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/widget/LinearLayout;
+    iget-object v0, v0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
 
     move-object/from16 v45, v0
 
@@ -4744,6 +4850,46 @@
     return-object v0
 .end method
 
+.method public onWindowHide()V
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mSplitView:Lcom/android/internal/widget/ActionBarContainer;
+
+    instance-of v0, v0, Lcom/miui/internal/v5/widget/ActionBarContainer;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mSplitView:Lcom/android/internal/widget/ActionBarContainer;
+
+    check-cast v0, Lcom/miui/internal/v5/widget/ActionBarContainer;
+
+    invoke-virtual {v0}, Lcom/miui/internal/v5/widget/ActionBarContainer;->onWindowHide()V
+
+    :cond_0
+    return-void
+.end method
+
+.method public onWindowShow()V
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mSplitView:Lcom/android/internal/widget/ActionBarContainer;
+
+    instance-of v0, v0, Lcom/miui/internal/v5/widget/ActionBarContainer;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/internal/widget/ActionBarView;->mSplitView:Lcom/android/internal/widget/ActionBarContainer;
+
+    check-cast v0, Lcom/miui/internal/v5/widget/ActionBarContainer;
+
+    invoke-virtual {v0}, Lcom/miui/internal/v5/widget/ActionBarContainer;->onWindowShow()V
+
+    :cond_0
+    return-void
+.end method
+
 .method public setCallback(Landroid/app/ActionBar$OnNavigationListener;)V
     .locals 0
     .parameter "callback"
@@ -5019,7 +5165,13 @@
     .line 667
     :cond_4
     :goto_9
-    iget-object v9, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/widget/LinearLayout;
+    iget-object v9, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
+
+    iget-object v10, p0, Lcom/android/internal/widget/ActionBarView;->mTitleView:Landroid/widget/TextView;
+
+    invoke-static {v9, v10}, Lcom/android/internal/widget/Injector$ActionBarViewHook;->checkTitleLayout(Landroid/view/View;Landroid/view/View;)Z
+
+    move-result v9
 
     if-eqz v9, :cond_5
 
@@ -5100,7 +5252,7 @@
     :cond_a
     iget-object v9, p0, Lcom/android/internal/widget/ActionBarView;->mUpGoerFive:Landroid/view/ViewGroup;
 
-    iget-object v10, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/widget/LinearLayout;
+    iget-object v10, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
 
     invoke-virtual {v9, v10}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
@@ -6302,6 +6454,16 @@
     goto :goto_2
 .end method
 
+.method public setSubtitleView(Landroid/widget/TextView;)V
+    .locals 0
+    .parameter "subTitleView"
+
+    .prologue
+    iput-object p1, p0, Lcom/android/internal/widget/ActionBarView;->mSubtitleView:Landroid/widget/TextView;
+
+    return-void
+.end method
+
 .method public setTitle(Ljava/lang/CharSequence;)V
     .locals 1
     .parameter "title"
@@ -6316,6 +6478,26 @@
     invoke-direct {p0, p1}, Lcom/android/internal/widget/ActionBarView;->setTitleImpl(Ljava/lang/CharSequence;)V
 
     .line 502
+    return-void
+.end method
+
+.method public setTitleLayout(Landroid/view/ViewGroup;)V
+    .locals 0
+    .parameter "titleLayout"
+
+    .prologue
+    iput-object p1, p0, Lcom/android/internal/widget/ActionBarView;->mTitleLayout:Landroid/view/ViewGroup;
+
+    return-void
+.end method
+
+.method public setTitleView(Landroid/widget/TextView;)V
+    .locals 0
+    .parameter "titleView"
+
+    .prologue
+    iput-object p1, p0, Lcom/android/internal/widget/ActionBarView;->mTitleView:Landroid/widget/TextView;
+
     return-void
 .end method
 
