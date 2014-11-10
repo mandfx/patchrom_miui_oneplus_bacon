@@ -8,16 +8,13 @@ CellBroadcastReceiver \
 CertInstaller \
 ConfigPanel \
 DocumentsUI \
-Galaxy4 \
 HoloSpiralWallpaper \
 HTMLViewer \
 KeyChain \
-LatinIME \
 LiveWallpapers \
 MagicSmokeWallpapers \
 NfcNci \
 PacProcessor \
-PhaseBeam \
 PhotoPhase \
 PhotoTable \
 PrintSpooler \
