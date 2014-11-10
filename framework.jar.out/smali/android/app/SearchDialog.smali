@@ -872,7 +872,15 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 434
+    invoke-static {p0}, Landroid/app/Injector$SearchDialogHook;->before_updateSearchAppIcon(Landroid/app/SearchDialog;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_0
+
+    return-void
+
+    :cond_0
     invoke-virtual {p0}, Landroid/app/Dialog;->getContext()Landroid/content/Context;
 
     move-result-object v4

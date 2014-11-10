@@ -8300,20 +8300,6 @@
     goto :goto_0
 .end method
 
-.method onTapUpEvent()V
-    .locals 1
-
-    .prologue
-    iget-boolean v0, p0, Landroid/widget/Editor;->mDiscardNextActionUp:Z
-
-    if-nez v0, :cond_0
-
-    invoke-virtual {p0}, Landroid/widget/Editor;->stopTextSelectionMode()V
-
-    :cond_0
-    return-void
-.end method
-
 .method removePositionListenerSubscriber(Landroid/widget/Editor$TextViewPositionListener;)V
     .locals 1
     .parameter "listener"
