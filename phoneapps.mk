@@ -32,7 +32,6 @@ DefaultContainerService \
 DownloadProvider \
 ExternalStorageProvider \
 InputDevices \
-MediaProvider \
 ProxyHandler \
 SettingsProvider \
 SharedStorageBackup \
