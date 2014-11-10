@@ -16,7 +16,7 @@ local-modified-priv-apps :=
 local-modified-jars :=
 
 # All apks from MIUI
-local-miui-removed-apps :=
+local-miui-removed-apps := O2O
 
 local-miui-modified-apps :=
 
@@ -26,6 +26,8 @@ local-density := XXHDPI
 
 # All apps need to be removed from original ZIP file
 #local-remove-apps   := 
+
+include phoneapps.mk
 
 PORT_PRODUCT := bacon_xs
 
