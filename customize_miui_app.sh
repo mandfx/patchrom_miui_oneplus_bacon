@@ -49,3 +49,8 @@ if [ $1 = "Phone" ];then
 	$XMLMERGYTOOL $1/res/values $2/res/values
 	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
 fi
+
+if [ $1 = "Settings" ];then
+	applyPatch $1 $2
+	$XMLMERGYTOOL $1/res/values $2/res/values
+fi
