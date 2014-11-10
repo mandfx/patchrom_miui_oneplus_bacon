@@ -101,7 +101,7 @@
 
 .field protected mRuimCard:Lcom/android/internal/telephony/uicc/UiccCard;
 
-.field protected mRuimPhoneBookInterfaceManager:Lcom/android/internal/telephony/cdma/RuimPhoneBookInterfaceManager;
+.field protected mRuimPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
 .field protected mSST:Lcom/android/internal/telephony/cdma/CdmaServiceStateTracker;
 
@@ -4858,7 +4858,7 @@
 
     .line 1197
     :cond_0
-    iget-object v0, p0, Lcom/android/internal/telephony/cdma/CDMAPhone;->mRuimPhoneBookInterfaceManager:Lcom/android/internal/telephony/cdma/RuimPhoneBookInterfaceManager;
+    iget-object v0, p0, Lcom/android/internal/telephony/cdma/CDMAPhone;->mRuimPhoneBookInterfaceManager:Lcom/android/internal/telephony/IccPhoneBookInterfaceManager;
 
     iget-object v1, p0, Lcom/android/internal/telephony/PhoneBase;->mUiccController:Lcom/android/internal/telephony/uicc/UiccController;
 
