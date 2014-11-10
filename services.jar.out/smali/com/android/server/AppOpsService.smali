@@ -691,11 +691,26 @@
 
     invoke-direct {v1, v2, v3, p2, v0}, Lcom/android/server/AppOpsService$Op;-><init>(ILjava/lang/String;II)V
 
-    .line 872
     .restart local v1       #op:Lcom/android/server/AppOpsService$Op;
-    invoke-virtual {p1, p2, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
+    const/16 v2, 0x18
 
-    .line 874
+    if-ne p2, v2, :cond_miui_0
+
+    iget v2, p1, Lcom/android/server/AppOpsService$Ops;->uid:I
+
+    invoke-static {v2}, Lcom/android/server/Injector$AppOpsServiceHook;->isFloatingWindowAllowed(I)Z
+
+    move-result v2
+
+    if-nez v2, :cond_miui_0
+
+    const/4 v2, 0x1
+
+    iput v2, v1, Lcom/android/server/AppOpsService$Op;->mode:I
+
+    :cond_miui_0
+    invoke-virtual {p1, p2, v1}, Lcom/android/server/AppOpsService$Ops;->put(ILjava/lang/Object;)V
+
     .end local v0           #mode:I
     :cond_1
     if-eqz p3, :cond_2

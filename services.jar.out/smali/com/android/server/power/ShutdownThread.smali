@@ -339,8 +339,7 @@
     invoke-virtual {v2, v3}, Landroid/view/Window;->setType(I)V
 
     .line 337
-    invoke-virtual {v1}, Landroid/app/Dialog;->show()V
-
+    invoke-static {p0}, Lcom/android/server/power/Injector$ShutdownThreadHook;->createShutDownDialog(Landroid/content/Context;)V
     .line 339
     sget-object v2, Lcom/android/server/power/ShutdownThread;->sInstance:Lcom/android/server/power/ShutdownThread;
 
@@ -853,6 +852,10 @@
     .line 164
     .local v6, resourceId:I
     :goto_1
+    invoke-static {v6}, Lcom/android/server/power/Injector$ShutdownThreadHook;->getResourceId(I)I
+
+    move-result v6
+
     if-eqz p1, :cond_a
 
     .line 165
@@ -1043,6 +1046,10 @@
 
     .line 249
     :cond_3
+    sget-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
+
+    invoke-static {v8}, Lcom/android/server/power/Injector$ShutdownThreadHook;->setupShutdownConfirmDialog(Landroid/app/AlertDialog;)V
+
     sget-object v8, Lcom/android/server/power/ShutdownThread;->sConfirmDialog:Landroid/app/AlertDialog;
 
     iput-object v8, v1, Lcom/android/server/power/ShutdownThread$CloseDialogReceiver;->dialog:Landroid/app/Dialog;

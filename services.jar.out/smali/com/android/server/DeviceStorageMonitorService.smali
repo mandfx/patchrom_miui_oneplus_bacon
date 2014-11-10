@@ -810,35 +810,10 @@
     .locals 1
 
     .prologue
-    .line 504
-    iget-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mUiContext:Landroid/content/Context;
 
-    if-nez v0, :cond_0
-
-    .line 505
     iget-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mContext:Landroid/content/Context;
 
-    invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createUiContext(Landroid/content/Context;)Landroid/content/Context;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mUiContext:Landroid/content/Context;
-
-    .line 508
-    :cond_0
-    iget-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mUiContext:Landroid/content/Context;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mUiContext:Landroid/content/Context;
-
-    :goto_0
     return-object v0
-
-    :cond_1
-    iget-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mContext:Landroid/content/Context;
-
-    goto :goto_0
 .end method
 
 .method private postCheckMemoryMsg(ZJ)V
@@ -1358,11 +1333,24 @@
 
     .line 386
     .local v9, notification:Landroid/app/Notification;
-    const v0, 0x10805af
+    const v0, 0x6020361
 
     iput v0, v9, Landroid/app/Notification;->icon:I
 
-    .line 387
+    iget-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    const v1, 0x6020360
+
+    invoke-static {v0, v1}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    iput-object v0, v9, Landroid/app/Notification;->largeIcon:Landroid/graphics/Bitmap;
+
     iput-object v10, v9, Landroid/app/Notification;->tickerText:Ljava/lang/CharSequence;
 
     .line 388

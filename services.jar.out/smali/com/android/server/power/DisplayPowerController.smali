@@ -3290,7 +3290,7 @@
 
     invoke-virtual {v0}, Lcom/android/server/power/Notifier;->onScreenOn()V
 
-    .line 894
+    invoke-static {p1}, Lcom/android/server/power/PowerManagerService$Injector;->setScreenOn(Z)V
     :cond_0
     :goto_0
     return-void
