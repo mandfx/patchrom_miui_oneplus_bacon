@@ -309,7 +309,7 @@
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService$2;->this$0:Lcom/android/server/am/ActivityManagerService;
 
-    move-object/from16 v0, v30
+    move-object/from16 v0, v38
 
     invoke-static {v4, v0}, Lcom/android/server/am/Injector$ActivityManagerServiceHook;->showAppCrashDialog(Lcom/android/server/am/ActivityManagerService;Ljava/util/HashMap;)Z
 
@@ -2700,21 +2700,41 @@
     :pswitch_1e
     move-object/from16 v0, p0
 
+    iget-object v5, v0, Lcom/android/server/am/ActivityManagerService$2;->this$0:Lcom/android/server/am/ActivityManagerService;
+
+    monitor-enter v5
+
+    .line 1691
+    :try_start_22
+    move-object/from16 v0, p0
+
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService$2;->this$0:Lcom/android/server/am/ActivityManagerService;
 
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
-    move-result-wide v5
+    move-result-wide v13
 
-    const/4 v9, 0x1
+    const/4 v6, 0x1
 
-    const/4 v13, 0x0
+    const/4 v9, 0x0
 
-    invoke-virtual {v4, v5, v6, v9, v13}, Lcom/android/server/am/ActivityManagerService;->requestPssAllProcsLocked(JZZ)V
+    invoke-virtual {v4, v13, v14, v6, v9}, Lcom/android/server/am/ActivityManagerService;->requestPssAllProcsLocked(JZZ)V
+
+    .line 1692
+    monitor-exit v5
 
     goto/16 :goto_0
 
-    .line 1684
+    :catchall_d
+    move-exception v4
+
+    monitor-exit v5
+    :try_end_22
+    .catchall {:try_start_22 .. :try_end_22} :catchall_d
+
+    throw v4
+
+    .line 1696
     :pswitch_1f
     invoke-static {}, Landroid/app/NotificationManager;->getService()Landroid/app/INotificationManager;
 
@@ -2746,7 +2766,7 @@
     if-eqz v52, :cond_0
 
     .line 1696
-    :try_start_22
+    :try_start_23
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/am/ActivityManagerService$2;->this$0:Lcom/android/server/am/ActivityManagerService;
@@ -2936,13 +2956,13 @@
     move-object/from16 v2, v59
 
     invoke-virtual {v0, v4, v1, v2, v5}, Landroid/app/Notification;->setLatestEventInfo(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
-    :try_end_22
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_22 .. :try_end_22} :catch_7
+    :try_end_23
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_23 .. :try_end_23} :catch_7
 
     .line 1719
     const/4 v4, 0x1
 
-    :try_start_23
+    :try_start_24
     new-array v0, v4, [I
 
     move-object/from16 v25, v0
@@ -2966,10 +2986,10 @@
     move-object/from16 v32, v25
 
     invoke-interface/range {v26 .. v33}, Landroid/app/INotificationManager;->enqueueNotificationWithTag(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/app/Notification;[II)V
-    :try_end_23
-    .catch Ljava/lang/RuntimeException; {:try_start_23 .. :try_end_23} :catch_6
-    .catch Landroid/os/RemoteException; {:try_start_23 .. :try_end_23} :catch_a
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_23 .. :try_end_23} :catch_7
+    :try_end_24
+    .catch Ljava/lang/RuntimeException; {:try_start_24 .. :try_end_24} :catch_6
+    .catch Landroid/os/RemoteException; {:try_start_24 .. :try_end_24} :catch_a
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_24 .. :try_end_24} :catch_7
 
     goto/16 :goto_0
 
@@ -2980,7 +3000,7 @@
 
     .line 1724
     .restart local v39       #e:Ljava/lang/RuntimeException;
-    :try_start_24
+    :try_start_25
     const-string v4, "ActivityManager"
 
     const-string v5, "Error showing notification for privacy guard"
@@ -2988,8 +3008,8 @@
     move-object/from16 v0, v39
 
     invoke-static {v4, v5, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :try_end_24
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_24 .. :try_end_24} :catch_7
+    :try_end_25
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_25 .. :try_end_25} :catch_7
 
     goto/16 :goto_0
 
@@ -3030,7 +3050,7 @@
     if-eqz v26, :cond_0
 
     .line 1738
-    :try_start_25
+    :try_start_26
     const-string v4, "android"
 
     const/4 v5, 0x0
@@ -3044,9 +3064,9 @@
     move-object/from16 v0, v26
 
     invoke-interface {v0, v4, v5, v6, v9}, Landroid/app/INotificationManager;->cancelNotificationWithTag(Ljava/lang/String;Ljava/lang/String;II)V
-    :try_end_25
-    .catch Ljava/lang/RuntimeException; {:try_start_25 .. :try_end_25} :catch_8
-    .catch Landroid/os/RemoteException; {:try_start_25 .. :try_end_25} :catch_9
+    :try_end_26
+    .catch Ljava/lang/RuntimeException; {:try_start_26 .. :try_end_26} :catch_8
+    .catch Landroid/os/RemoteException; {:try_start_26 .. :try_end_26} :catch_9
 
     goto/16 :goto_0
 
@@ -3113,6 +3133,8 @@
     goto/16 :goto_0
 
     .line 1096
+    nop
+    
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_1

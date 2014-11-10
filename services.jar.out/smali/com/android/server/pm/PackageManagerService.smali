@@ -1969,7 +1969,11 @@
 
     invoke-virtual {v9, v3}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
 
-    .line 1337
+    move-object/from16 v0, p0
+
+    invoke-static {v0, v9}, Lcom/android/server/pm/Injector$PackageManagerServiceHook;->ignoreMiuiFrameworkRes(Lcom/android/server/pm/PackageManagerService;Ljava/util/HashSet;)V
+
+    .line 1341
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
@@ -5439,16 +5443,12 @@
 
     if-ne v1, v2, :cond_0
 
-    .line 2475
+    .line 2481
     return-object v0
 
-    .line 2477
+    .line 2483
     :cond_0
     new-instance v1, Ljava/lang/SecurityException;
-
-    move-object/from16 v0, p0
-
-    invoke-static {v0, v8}, Lcom/android/server/pm/Injector$PackageManagerServiceHook;->ignoreMiuiFrameworkRes(Lcom/android/server/pm/PackageManagerService;Ljava/util/HashSet;)V
 
     new-instance v2, Ljava/lang/StringBuilder;
 

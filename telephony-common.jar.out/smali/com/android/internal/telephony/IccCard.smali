@@ -10,6 +10,18 @@
 .method public abstract changeIccLockPassword(Ljava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
 .end method
 
+.method public abstract closeLogicalChannel(ILandroid/os/Message;)V
+.end method
+
+.method public abstract exchangeApdu(IIIIIILjava/lang/String;Landroid/os/Message;)V
+.end method
+
+.method public abstract exchangeIccIo(IIIIILjava/lang/String;Landroid/os/Message;)V
+.end method
+
+.method public abstract getAtr(Landroid/os/Message;)V
+.end method
+
 .method public abstract getIccFdnAvailable()Z
 .end method
 
@@ -49,10 +61,16 @@
 .method public abstract isApplicationOnIcc(Lcom/android/internal/telephony/uicc/IccCardApplicationStatus$AppType;)Z
 .end method
 
+.method public abstract openLogicalChannel(Ljava/lang/String;Landroid/os/Message;)V
+.end method
+
 .method public abstract registerForAbsent(Landroid/os/Handler;ILjava/lang/Object;)V
 .end method
 
 .method public abstract registerForLocked(Landroid/os/Handler;ILjava/lang/Object;)V
+.end method
+
+.method public abstract registerForNetworkLocked(Landroid/os/Handler;ILjava/lang/Object;)V
 .end method
 
 .method public abstract registerForPersoLocked(Landroid/os/Handler;ILjava/lang/Object;)V
@@ -65,6 +83,9 @@
 .end method
 
 .method public abstract supplyDepersonalization(Ljava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
+.end method
+
+.method public abstract supplyNetworkDepersonalization(Ljava/lang/String;Landroid/os/Message;)V
 .end method
 
 .method public abstract supplyPin(Ljava/lang/String;Landroid/os/Message;)V
@@ -83,6 +104,9 @@
 .end method
 
 .method public abstract unregisterForLocked(Landroid/os/Handler;)V
+.end method
+
+.method public abstract unregisterForNetworkLocked(Landroid/os/Handler;)V
 .end method
 
 .method public abstract unregisterForPersoLocked(Landroid/os/Handler;)V

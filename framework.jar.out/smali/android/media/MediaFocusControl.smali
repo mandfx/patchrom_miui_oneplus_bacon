@@ -8788,6 +8788,77 @@
     .catchall {:try_start_7 .. :try_end_7} :catchall_0
 .end method
 
+.method protected restoreMediaButtonReceiver()V
+    .locals 8
+
+    .prologue
+    const/4 v7, 0x0
+
+    .line 1461
+    iget-object v4, p0, Landroid/media/MediaFocusControl;->mContentResolver:Landroid/content/ContentResolver;
+
+    const-string/jumbo v5, "media_button_receiver"
+
+    const/4 v6, -0x2
+
+    invoke-static {v4, v5, v6}, Landroid/provider/Settings$System;->getStringForUser(Landroid/content/ContentResolver;Ljava/lang/String;I)Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 1463
+    .local v3, receiverName:Ljava/lang/String;
+    if-eqz v3, :cond_0
+
+    invoke-virtual {v3}, Ljava/lang/String;->isEmpty()Z
+
+    move-result v4
+
+    if-nez v4, :cond_0
+
+    .line 1464
+    invoke-static {v3}, Landroid/content/ComponentName;->unflattenFromString(Ljava/lang/String;)Landroid/content/ComponentName;
+
+    move-result-object v0
+
+    .line 1465
+    .local v0, eventReceiver:Landroid/content/ComponentName;
+    if-nez v0, :cond_1
+
+    .line 1478
+    .end local v0           #eventReceiver:Landroid/content/ComponentName;
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 1471
+    .restart local v0       #eventReceiver:Landroid/content/ComponentName;
+    :cond_1
+    new-instance v1, Landroid/content/Intent;
+
+    const-string v4, "android.intent.action.MEDIA_BUTTON"
+
+    invoke-direct {v1, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 1473
+    .local v1, mediaButtonIntent:Landroid/content/Intent;
+    invoke-virtual {v1, v0}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
+
+    .line 1474
+    iget-object v4, p0, Landroid/media/MediaFocusControl;->mContext:Landroid/content/Context;
+
+    invoke-static {v4, v7, v1, v7}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v2
+
+    .line 1476
+    .local v2, pi:Landroid/app/PendingIntent;
+    const/4 v4, 0x0
+
+    invoke-virtual {p0, v2, v0, v4}, Landroid/media/MediaFocusControl;->registerMediaButtonIntent(Landroid/app/PendingIntent;Landroid/content/ComponentName;Landroid/os/IBinder;)V
+
+    goto :goto_0
+.end method
+
 .method protected setPlaybackInfoForRcc(III)V
     .locals 7
     .parameter "rccId"

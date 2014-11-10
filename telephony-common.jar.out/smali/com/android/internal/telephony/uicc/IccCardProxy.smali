@@ -2572,6 +2572,18 @@
     throw v1
 .end method
 
+.method public registerForNetworkLocked(Landroid/os/Handler;ILjava/lang/Object;)V
+    .locals 0
+    .parameter "h"
+    .parameter "what"
+    .parameter "obj"
+
+    .prologue
+    invoke-virtual {p0, p1, p2, p3}, Lcom/android/internal/telephony/uicc/IccCardProxy;->registerForPersoLocked(Landroid/os/Handler;ILjava/lang/Object;)V
+
+    return-void
+.end method
+
 .method public registerForPersoLocked(Landroid/os/Handler;ILjava/lang/Object;)V
     .locals 6
     .parameter "h"
@@ -3417,6 +3429,16 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
+.end method
+
+.method public unregisterForNetworkLocked(Landroid/os/Handler;)V
+    .locals 0
+    .parameter "h"
+
+    .prologue
+    invoke-virtual {p0, p1}, Lcom/android/internal/telephony/uicc/IccCardProxy;->unregisterForPersoLocked(Landroid/os/Handler;)V
+
+    return-void
 .end method
 
 .method public unregisterForPersoLocked(Landroid/os/Handler;)V
