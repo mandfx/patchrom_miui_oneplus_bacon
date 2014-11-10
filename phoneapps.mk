@@ -21,7 +21,6 @@ PrintSpooler \
 qcrilmsgtunnel \
 QuickBoot \
 shutdownlistener \
-Stk \
 TimeService \
 UserDictionaryProvider \
 VisualizationWallpapers \
