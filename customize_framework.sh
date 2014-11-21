@@ -75,11 +75,8 @@ then
 	        echo "rm file: $file"
 	        rm -rf "$file"
 	done
-
-	cp overlay/framework2/camera_icon.patch $BUILD_OUT
-	cd $BUILD_OUT
-	$GIT_APPLY camera_icon.patch
-	cd ..
+	
+	applyPatch "overlay/framework2"
 fi
 
 if [ $2 = "$BUILD_OUT/telephony-common" ]
