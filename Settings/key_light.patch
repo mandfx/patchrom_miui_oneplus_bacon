@@ -1,0 +1,32 @@
+From b34dfac0ac53eb99b81e3dd9e64f1362e6aa2b01 Mon Sep 17 00:00:00 2001
+From: wangtongli <276792882@qq.com>
+Date: Mon, 6 Oct 2014 23:54:11 +0800
+Subject: [PATCH] fix button_backlight_timeout
+
+---
+ .../smali/com/android/settings/KeySettings.smali   |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/Settings/smali/com/android/settings/KeySettings.smali
++++ b/Settings/smali/com/android/settings/KeySettings.smali
+@@ -178,7 +178,7 @@
+ 
+     move-result-object v3
+ 
+-    const-string v6, "screen_buttons_timeout"
++    const-string v6, "button_backlight_timeout"
+ 
+     const/16 v7, 0x1388
+ 
+@@ -1360,7 +1360,7 @@
+ 
+     move-result-object v2
+ 
+-    const-string v3, "screen_buttons_timeout"
++    const-string v3, "button_backlight_timeout"
+ 
+     invoke-static {v1}, Ljava/lang/Integer;->valueOf(Ljava/lang/String;)Ljava/lang/Integer;
+ 
+-- 
+1.7.9.5
+

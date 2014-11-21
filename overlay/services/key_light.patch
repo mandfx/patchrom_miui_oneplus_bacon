@@ -1,0 +1,32 @@
+From 1e3ebbc8a700a65372303ec09b8464c54d4304c6 Mon Sep 17 00:00:00 2001
+From: wangtongli <276792882@qq.com>
+Date: Mon, 6 Oct 2014 23:46:41 +0800
+Subject: [PATCH] fix button_backlight_timeout
+
+---
+ .../power/PowerManagerService$Injector.smali       |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/services/smali/com/android/server/power/PowerManagerService$Injector.smali
++++ b/services/smali/com/android/server/power/PowerManagerService$Injector.smali
+@@ -92,7 +92,7 @@
+ 
+     move-result-object v1
+ 
+-    const-string v2, "screen_buttons_timeout"
++    const-string v2, "button_backlight_timeout"
+ 
+     invoke-static {v2}, Landroid/provider/Settings$System;->getUriFor(Ljava/lang/String;)Landroid/net/Uri;
+ 
+@@ -252,7 +252,7 @@
+ 
+     move-result-object v1
+ 
+-    const-string v2, "screen_buttons_timeout"
++    const-string v2, "button_backlight_timeout"
+ 
+     const/16 v3, 0x1388
+ 
+-- 
+1.7.9.5
+
