@@ -497,7 +497,7 @@
     :try_start_0
     invoke-static {}, Lcom/android/internal/os/SamplingProfilerIntegration;->start()V
 
-    #invoke-static {}, Lmiui/security/SecurityManager;->init()V
+    invoke-static {}, Lmiui/security/SecurityManager;->init()V
 
     invoke-static {}, Lcom/android/internal/os/ZygoteInit;->registerZygoteSocket()V
 
@@ -815,8 +815,6 @@
     const-string v11, "Preloading classes..."
 
     invoke-static {v10, v11}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    #invoke-static {}, Lcom/android/internal/os/ZygoteInit;->preloadMiuiResources()V
 
     .line 268
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
@@ -1445,6 +1443,8 @@
     .line 365
     sget-object v2, Lcom/android/internal/os/ZygoteInit;->mResources:Landroid/content/res/Resources;
 
+    invoke-static {}, Lcom/android/internal/os/ZygoteInit;->preloadMiuiResources()V
+    
     invoke-virtual {v2}, Landroid/content/res/Resources;->finishPreloading()V
     :try_end_0
     .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
