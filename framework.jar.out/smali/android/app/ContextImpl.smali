@@ -1977,9 +1977,9 @@
     .prologue
     const-string v0, "security"
 
-    new-instance v1, Landroid/app/ContextImpl$50;
+    new-instance v1, Landroid/app/ContextImpl$SecurityServiceFetcher;
 
-    invoke-direct {v1}, Landroid/app/ContextImpl$50;-><init>()V
+    invoke-direct {v1}, Landroid/app/ContextImpl$SecurityServiceFetcher;-><init>()V
 
     invoke-static {v0, v1}, Landroid/app/ContextImpl;->registerService(Ljava/lang/String;Landroid/app/ContextImpl$ServiceFetcher;)V
 
