@@ -1,4 +1,3 @@
-Segmentation fault
 system 0 0 755
 system/addon.d 0 0 755
 system/addon.d/50-cm.sh 0 0 755
