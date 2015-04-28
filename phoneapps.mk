@@ -36,6 +36,7 @@ private-phone-priv-apps := BackupRestoreConfirmation \
 		InputDevices \
 		ExternalStorageProvider \
 		MediaProvider \
+		FusedLocation \
 		PicoTts \
 		ProxyHandler \
 		SettingsProvider \
