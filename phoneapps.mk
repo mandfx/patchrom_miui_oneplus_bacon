@@ -6,7 +6,6 @@ private-phone-apps := BasicDreams \
 		BluetoothExt \
 		CellBroadcastReceiver \
 		CertInstaller \
-		ConfigPanel \
 		DocumentsUI \
 		Galaxy4 \
 		HoloSpiralWallpaper \
