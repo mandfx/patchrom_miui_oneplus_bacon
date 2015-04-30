@@ -10,6 +10,7 @@ private-phone-apps := BasicDreams \
 		HoloSpiralWallpaper \
 		HTMLViewer \
 		KeyChain \
+		LatinIME \
 		LiveWallpapers \
 		MagicSmokeWallpapers \
 		NfcNci \
