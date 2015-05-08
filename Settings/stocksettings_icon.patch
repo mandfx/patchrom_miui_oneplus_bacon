@@ -4,28 +4,10 @@ Date: Wed, 29 Apr 2015 10:43:00 +0800
 Subject: [PATCH] 2
 
 ---
- Settings/res/values-zh-rCN/strings.xml       | 1 +
- Settings/res/values/strings.xml              | 1 +
  Settings/res/xml/other_personal_settings.xml | 5 ++++-
  Settings/res/xml/settings_headers.xml        | 5 +----
- 4 files changed, 7 insertions(+), 5 deletions(-)
-
---- a/Settings/res/values-zh-rCN/strings.xml
-+++ b/Settings/res/values-zh-rCN/strings.xml
-@@ -2922,4 +2922,5 @@
-     <string name="music_dirac_mode_piston">小米活塞</string>
-     <string name="sim_pin_enabled">PIN1 已锁定!</string>
-     <string name="sim_pin_disabled">已取消 PIN1 锁定!</string>
-+    <string name="stocksettings">附加设置</string>
- </resources>
---- a/Settings/res/values/strings.xml
-+++ b/Settings/res/values/strings.xml
-@@ -3027,4 +3027,5 @@
-     <string name="wifi_notify_cmcc_connected_summary">Show notification when connected to CMCC network</string>
-     <string name="wifi_datanetwork_switch_not_remind">"Don't show again"</string>
-     <string name="skip_lock_screen_confirm_msg">Notifications, music player controls, Camera, and Mi Home will be disabled on lockscreen.</string>
-+    <string name="stocksettings">StockSettings</string>
- </resources>
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+ 
 --- a/Settings/res/xml/other_personal_settings.xml
 +++ b/Settings/res/xml/other_personal_settings.xml
 @@ -21,7 +21,10 @@
