@@ -44,15 +44,15 @@ local-after-zip:= local-put-to-phone
 include $(PORT_BUILD)/porting.mk
 
 local-pre-zip-misc:
-		@echo boot.img
+		@echo "[XS CUST] boot.img"
 		cp other/boot.img $(ZIP_DIR)/boot.img
-		@echo system
+		@echo "[XS CUST] system"
 		cp -a -rf other/system/* $(ZIP_DIR)/system/
-		@echo data
+		@echo "[XS CUST] data"
 		cp -a -rf other/data/* $(ZIP_DIR)/data/
-		@echo replace libsurfaceflinger.so with dpi
+		@echo "[XS CUST] replace libsurfaceflinger.so with dpi"
 		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
-		@echo goodbye! miui prebuilt binaries!
+		@echo "[XS CUST] goodbye! miui prebuilt binaries!"
 		cp -rf stockrom/system/bin/app_process $(ZIP_DIR)/system/bin/app_process
 		rm -rf $(ZIP_DIR)/system/bin/debuggerd_vendor
 		cp -rf stockrom/system/bin/debuggerd $(ZIP_DIR)/system/bin/debuggerd
