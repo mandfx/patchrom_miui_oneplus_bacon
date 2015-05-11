@@ -38,7 +38,6 @@ ro.cm.device=bacon
 #
 # system.prop for one+
 #
-
 ro.sf.lcd_density=480
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
 persist.radio.add_power_save=1
@@ -137,3 +136,4 @@ persist.sys.dalvik.vm.lib=libdvm.so
 dalvik.vm.lockprof.threshold=500
 net.bt.name=Android
 dalvik.vm.stack-trace-file=/data/anr/traces.txt
+persist.xsdensity=480
