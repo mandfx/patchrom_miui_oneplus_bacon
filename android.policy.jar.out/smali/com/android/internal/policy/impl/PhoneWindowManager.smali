@@ -15469,7 +15469,7 @@
 
     invoke-direct/range {v36 .. v36}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v37, "Dropping shortcut key combination because the activity to which it is registered was not found: SEARCH"
+    const-string v37, "Dropping shortcut key combination because the activity to which it is registered was not found: SEARCH+"
 
     invoke-virtual/range {v36 .. v37}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -15504,7 +15504,7 @@
 
     invoke-direct/range {v36 .. v36}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v37, "Dropping unregistered shortcut key combination: SEARCH"
+    const-string v37, "Dropping unregistered shortcut key combination: SEARCH+"
 
     invoke-virtual/range {v36 .. v37}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -15629,7 +15629,7 @@
 
     invoke-direct/range {v36 .. v36}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v37, "Dropping shortcut key combination because the activity to which it is registered was not found: META"
+    const-string v37, "Dropping shortcut key combination because the activity to which it is registered was not found: META+"
 
     invoke-virtual/range {v36 .. v37}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
