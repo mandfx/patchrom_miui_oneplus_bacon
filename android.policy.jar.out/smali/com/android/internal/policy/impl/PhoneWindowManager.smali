@@ -15469,7 +15469,7 @@
 
     invoke-direct/range {v36 .. v36}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v37, "Dropping shortcut key combination because the activity to which it is registered was not found: SEARCH+"
+    const-string v37, "Dropping shortcut key combination because the activity to which it is registered was not found: SEARCH"
 
     invoke-virtual/range {v36 .. v37}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -15504,7 +15504,7 @@
 
     invoke-direct/range {v36 .. v36}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v37, "Dropping unregistered shortcut key combination: SEARCH+"
+    const-string v37, "Dropping unregistered shortcut key combination: SEARCH"
 
     invoke-virtual/range {v36 .. v37}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -15629,7 +15629,7 @@
 
     invoke-direct/range {v36 .. v36}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v37, "Dropping shortcut key combination because the activity to which it is registered was not found: META+"
+    const-string v37, "Dropping shortcut key combination because the activity to which it is registered was not found: META"
 
     invoke-virtual/range {v36 .. v37}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -24786,4 +24786,78 @@
         :pswitch_b
         :pswitch_0
     .end packed-switch
+.end method
+
+.method public setMyhomeKeyAction()Z
+    .locals 6
+
+    .prologue
+    const/4 v4, 0x0
+
+    const/4 v5, 0x1
+
+    iget v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDoubleTapOnHomeBehavior:I
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHandler:Landroid/os/Handler;
+
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomeDoubleTapTimeoutRunnable:Ljava/lang/Runnable;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomeDoubleTapPending:Z
+
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHandler:Landroid/os/Handler;
+
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomeDoubleTapTimeoutRunnable:Ljava/lang/Runnable;
+
+    invoke-static {}, Landroid/view/ViewConfiguration;->getDoubleTapTimeout()I
+
+    move-result v2
+
+    int-to-long v2, v2
+
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    move v4, v5
+
+    :cond_0
+    return v4
+.end method
+
+.method public resetMyhomeKeyAction()V
+    .locals 2
+
+    .prologue
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomePressed:Z
+
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomeDoubleTapPending:Z
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomeDoubleTapPending:Z
+
+    iget-object v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHandler:Landroid/os/Handler;
+
+    iget-object v1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomeDoubleTapTimeoutRunnable:Ljava/lang/Runnable;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    iget v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mDoubleTapOnHomeBehavior:I
+
+    invoke-direct {p0, v0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->performKeyAction(I)V
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mHomeConsumed:Z
+
+    :cond_0
+    return-void
 .end method

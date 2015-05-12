@@ -60,7 +60,7 @@ then
     applyPatch "overlay/services"
 fi
 
-#if [ $2 = "$BUILD_OUT/android.policy" ]
-#then
-#fi
-
+if [ $2 = "$BUILD_OUT/android.policy" ]
+then
+    applyPatch "overlay/android.policy"
+fi
