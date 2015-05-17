@@ -513,7 +513,7 @@
 
     invoke-virtual {p2, v6}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    #invoke-virtual {p0}, Lcom/android/internal/app/IAppOpsService$Stub;->resetCounters()V
+    invoke-virtual {p0}, Lcom/android/internal/app/IAppOpsService$Stub;->resetCounters()V
 
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
 
@@ -534,11 +534,9 @@
     move-result-object v1
 
     .local v1, "_arg1":Ljava/lang/String;
-    #invoke-virtual {p0, v0, v1}, Lcom/android/internal/app/IAppOpsService$Stub;->getPrivacyGuardSettingForPackage(ILjava/lang/String;)Z
+    invoke-virtual {p0, v0, v1}, Lcom/android/internal/app/IAppOpsService$Stub;->getPrivacyGuardSettingForPackage(ILjava/lang/String;)Z
 
-    #move-result v4
-    
-    const/4 v4, 0x1
+    move-result v4
 
     .local v4, "_result":Z
     invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
@@ -643,6 +641,9 @@
     invoke-virtual {p3, v4}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_0
+    
+    :sswitch_miui_2
+    goto/16 :goto_0
 
     .end local v2    # "_arg2":Z
     :cond_1
@@ -671,6 +672,7 @@
         0xf -> :sswitch_f
         0x10 -> :sswitch_miui_0
         0x11 -> :sswitch_miui_1
+        0x12 -> :sswitch_miui_2
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method
