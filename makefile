@@ -52,6 +52,9 @@ local-pre-zip-misc:
 		cp -a -rf other/data/* $(ZIP_DIR)/data/
 		@echo "[XS CUST] replace libsurfaceflinger.so with dpi"
 		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
+		@echo "[XS CUST] edit build.prop"
+		sed -i 's/ro.product.manufacturer=OnePlus/ro.product.manufacturer=ONEPLUS/g' $(ZIP_DIR)/system/build.prop
+		sed -i '/ro.sf.lcd_density=480/apersist.xsdensity=480' $(ZIP_DIR)/system/build.prop
 		@echo "[XS CUST] goodbye! miui prebuilt binaries!"
 		cp -rf stockrom/system/bin/app_process $(ZIP_DIR)/system/bin/app_process
 		rm -rf $(ZIP_DIR)/system/bin/debuggerd_vendor
