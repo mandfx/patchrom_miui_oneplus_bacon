@@ -1,31 +1,25 @@
-From aa7a57a92131d2e3aa512da1ef029b31b516238d Mon Sep 17 00:00:00 2001
+From 6c8c70f392cc8f4faa904ba21de9ede9f291f5ff Mon Sep 17 00:00:00 2001
 From: X-s <xsmumu@gmail.com>
-Date: Wed, 29 Apr 2015 10:43:00 +0800
+Date: Thu, 21 May 2015 00:33:21 +0800
 Subject: [PATCH] 2
 
 ---
- Settings/res/xml/other_personal_settings.xml | 5 ++++-
- Settings/res/xml/settings_headers.xml        | 5 +----
- 2 files changed, 5 insertions(+), 5 deletions(-)
- 
---- a/Settings/res/xml/other_personal_settings.xml
-+++ b/Settings/res/xml/other_personal_settings.xml
-@@ -21,7 +21,10 @@
-     <Preference android:title="@string/print_settings" android:key="print_settings" android:fragment="com.android.settings.print.PrintSettingsFragment" />
-     <PreferenceCategory />
-     <Preference android:title="@string/accessibility_settings" android:key="accessibility_settings" android:fragment="com.android.settings.accessibility.AccessibilitySettings" />
-+    <Preference android:title="@string/stocksettings" android:id="@id/manufacturer_settings">
-+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
-+    </Preference>
-     <Preference android:title="@string/development_settings_title" android:key="development_settings" android:fragment="com.android.settings.DevelopmentSettings" />
-     <PreferenceCategory />
-     <Preference android:title="@string/privacy_settings" android:key="privacy_settings" android:fragment="com.android.settings.PrivacySettings" />
--</PreferenceScreen>
-\ 文件尾没有 newline 字符
-+</PreferenceScreen>
+ Settings/res/xml/settings_headers.xml | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
 --- a/Settings/res/xml/settings_headers.xml
 +++ b/Settings/res/xml/settings_headers.xml
-@@ -49,9 +49,6 @@
+@@ -33,6 +33,9 @@
+         <intent android:targetPackage="com.android.settings" android:action="android.intent.action.MAIN" android:targetClass="com.android.settings.OldmanModeSettings" />
+     </header>
+     <header android:icon="@drawable/ic_other_advanced_settings" android:id="@id/other_advanced_settings" android:title="@string/other_advanced_settings" android:fragment="com.android.settings.OtherPersonalSettings" />
++    <header android:id="@id/manufacturer_settings" android:icon="@drawable/ic_launcher_settings" android:title="@string/stocksettings">
++        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
++    </header>
+     <header android:icon="@drawable/ic_location_settings" android:id="@id/location_settings" android:title="@string/location_settings_title" android:fragment="com.android.settings.location.MiuiLocationSettings" />
+     <header android:id="@id/account_settings" android:title="@string/header_category_accounts" />
+     <header android:id="@id/micloud_settings" android:title="@string/xiaomi_account">
+@@ -49,9 +52,6 @@
      <header android:icon="@drawable/ic_key_settings" android:id="@id/key_settings" android:title="@string/key_settings_title" android:fragment="com.android.settings.KeySettings" />
      <header android:icon="@drawable/ic_led_settings" android:id="@id/led_settings" android:title="@string/led_settings" android:fragment="com.android.settings.LedSettings" />
      <header android:icon="@drawable/music_ic_headset_settings" android:id="@id/headset_settings" android:title="@string/music_headset_settings" android:fragment="com.android.settings.HeadsetSettings" />
@@ -35,7 +29,7 @@ Subject: [PATCH] 2
      <header android:id="@id/system_section" android:title="@string/system_app_settings" />
      <header android:icon="@drawable/ic_date_time_settings" android:id="@id/date_time_settings" android:title="@string/date_and_time_settings_title" android:fragment="com.android.settings.DateTimeSettings" />
      <header android:icon="@drawable/ic_language_settings" android:id="@id/language_settings" android:title="@string/language_settings" android:fragment="com.android.settings.inputmethod.InputMethodAndLanguageSettings" />
-@@ -64,4 +61,4 @@
+@@ -64,4 +64,4 @@
      <header android:icon="@drawable/ic_development_settings" android:id="@id/development_settings" android:title="@string/development_settings_title" android:fragment="com.android.settings.DevelopmentSettings" />
      <header android:icon="@drawable/ic_updater_settings" android:id="@id/updater" android:title="@string/system_update_settings_list_item_title" android:fragment="com.android.updater.ApplyUpdateFragment" />
      <header android:icon="@drawable/ic_about_settings" android:id="@id/about_settings" android:title="@string/about_settings" android:fragment="com.android.settings.MiuiDeviceInfoSettings" />
