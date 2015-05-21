@@ -641,9 +641,6 @@
     invoke-virtual {p3, v4}, Landroid/os/Parcel;->writeInt(I)V
 
     goto/16 :goto_0
-    
-    :sswitch_miui_2
-    goto/16 :goto_0
 
     .end local v2    # "_arg2":Z
     :cond_1
@@ -672,7 +669,6 @@
         0xf -> :sswitch_f
         0x10 -> :sswitch_miui_0
         0x11 -> :sswitch_miui_1
-        0x12 -> :sswitch_miui_2
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

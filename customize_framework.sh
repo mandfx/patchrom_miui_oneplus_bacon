@@ -58,6 +58,7 @@ fi
 if [ $2 = "$BUILD_OUT/services" ]
 then
     applyPatch "overlay/services"
+    sed -i "s/iput-object p1, p0, Lcom\/android\/server\/AppOpsService;->mCallbackBinder:Lcom\/android\/internal\/app\/IOpsCallback;/#iput-object p1, p0, Lcom\/android\/server\/AppOpsService;->mCallbackBinder:Lcom\/android\/internal\/app\/IOpsCallback;/" out/services/smali/com/android/server/AppOpsService.smali
 fi
 
 if [ $2 = "$BUILD_OUT/android.policy" ]
