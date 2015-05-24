@@ -43,4 +43,5 @@ private-phone-priv-apps := BackupRestoreConfirmation \
 		Shell \
 		Tag \
 		ThemesProvider \
+		VpnDialogs \
 		WallpaperCropper \
