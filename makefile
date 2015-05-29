@@ -19,7 +19,7 @@ local-modified-jars :=
 # All apks from MIUI
 local-miui-removed-apps := 
 
-local-miui-modified-apps := MiuiFramework MiuiHome TeleService Settings SecurityCenter MiuiSystemUI DeskClock
+local-miui-modified-apps := MiuiFramework MiuiHome TeleService Settings SecurityCenter MiuiSystemUI DeskClock Music
 
 local-phone-apps := 
 
@@ -59,6 +59,9 @@ local-pre-zip-misc:
 		mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 		@echo "[XS CUST] change selinux"
 		sed -i '4asetenforce 0' $(ZIP_DIR)/system/bin/sysinit
+		@echo "[XS CUST] fix music ablum"
+		sed -i '5atouch \/data\/data\/com.miui.player\/files\/ablum.jpg' $(ZIP_DIR)/system/bin/sysinit
+		sed -i '6achmod 0644 \/data\/data\/com.miui.player\/files\/ablum.jpg' $(ZIP_DIR)/system/bin/sysinit
 		@echo "[XS CUST] goodbye! miui prebuilt binaries!"
 		cp -rf stockrom/system/bin/app_process $(ZIP_DIR)/system/bin/app_process
 		rm -rf $(ZIP_DIR)/system/bin/debuggerd_vendor
