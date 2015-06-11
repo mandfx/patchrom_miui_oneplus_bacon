@@ -2,7 +2,7 @@ name="FixMusicAblum.apk" certificate="build/target/product/security/platform.x50
 name="CyanogenModCamera.apk" certificate="PRESIGNED" private_key=""
 name="ColorCameraMod.apk" certificate="PRESIGNED" private_key=""
 name="Camera.apk" certificate="PRESIGNED" private_key=""
-name="MiuiCamera.apk" certificate="PRESIGNED" private_key=""
+name="MiuiCamera.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
 name="StockSettings.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
 name="Settings_ex.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
 name="ota-miui-XiaomiBaiduInput.apk" certificate="PRESIGNED" private_key=""
