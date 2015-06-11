@@ -34,4 +34,10 @@
     <item type="id" name="transfer_menu_open">false</item>
     <item type="id" name="transfer_menu_clear_all">false</item>
     <item type="id" name="transfer_menu_clear">false</item>
+    <item type="id" name="layout_content">false</item>
+    <item type="id" name="device_picker_fragment">false</item>
+    <item type="id" name="title">false</item>
+    <item type="id" name="ok_button">false</item>
+    <item type="id" name="group_title">false</item>
+    <item type="id" name="progress">false</item>
 </resources>

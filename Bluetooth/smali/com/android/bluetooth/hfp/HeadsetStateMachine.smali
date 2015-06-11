@@ -10,7 +10,8 @@
         Lcom/android/bluetooth/hfp/HeadsetStateMachine$AudioOn;,
         Lcom/android/bluetooth/hfp/HeadsetStateMachine$Connected;,
         Lcom/android/bluetooth/hfp/HeadsetStateMachine$Pending;,
-        Lcom/android/bluetooth/hfp/HeadsetStateMachine$Disconnected;
+        Lcom/android/bluetooth/hfp/HeadsetStateMachine$Disconnected;,
+        Lcom/android/bluetooth/hfp/HeadsetStateMachine$Injector;
     }
 .end annotation
 
@@ -5649,6 +5650,46 @@
 
     .line 2067
     :cond_3
+    const-string v2, "+XAPL"
+
+    invoke-virtual {v0, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_4
+
+    .line 1843
+    invoke-virtual {v0, v4}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {p0, v2}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->processAtXapl(Ljava/lang/String;)V
+
+    goto :goto_0
+
+    .line 1844
+    :cond_4
+    const-string v2, "+IPHONEACCEV"
+
+    invoke-virtual {v0, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_5
+
+    .line 1845
+    const/16 v2, 0xc
+
+    invoke-virtual {v0, v2}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {p0, v2}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->processAtIPhoneAccev(Ljava/lang/String;)V
+
+    goto :goto_0
+
+    .line 1847
+    :cond_5
     invoke-direct {p0, v0}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->processVendorSpecificAt(Ljava/lang/String;)Z
 
     move-result v2
@@ -7285,6 +7326,217 @@
     const/4 v2, 0x1
 
     goto :goto_0
+.end method
+
+.method processAtIPhoneAccev(Ljava/lang/String;)V
+    .locals 7
+    .param p1, "atString"    # Ljava/lang/String;
+
+    .prologue
+    const/4 v6, 0x0
+
+    const/4 v5, 0x1
+
+    .line 124
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "processAtIPhoneAccev - atString = "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {p0, v3}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->log(Ljava/lang/String;)V
+
+    .line 125
+    const-string v3, "="
+
+    invoke-virtual {p1, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_1
+
+    const-string v3, "=?"
+
+    invoke-virtual {p1, v3}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_1
+
+    .line 126
+    invoke-virtual {p1, v5}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v3}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->generateArgs(Ljava/lang/String;)[Ljava/lang/Object;
+
+    move-result-object v0
+
+    .line 127
+    .local v0, "args":[Ljava/lang/Object;
+    aget-object v3, v0, v6
+
+    check-cast v3, Ljava/lang/Integer;
+
+    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
+
+    move-result v1
+
+    .line 128
+    .local v1, "count":I
+    const/4 v2, 0x0
+
+    .local v2, "i":I
+    :goto_0
+    if-ge v2, v1, :cond_0
+
+    .line 129
+    mul-int/lit8 v3, v2, 0x2
+
+    add-int/lit8 v3, v3, 0x1
+
+    aget-object v3, v0, v3
+
+    check-cast v3, Ljava/lang/Integer;
+
+    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
+
+    move-result v3
+
+    if-ne v3, v5, :cond_2
+
+    .line 130
+    iget-object v4, p0, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->mService:Lcom/android/bluetooth/hfp/HeadsetService;
+
+    mul-int/lit8 v3, v2, 0x2
+
+    add-int/lit8 v3, v3, 0x2
+
+    aget-object v3, v0, v3
+
+    check-cast v3, Ljava/lang/Integer;
+
+    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
+
+    move-result v3
+
+    invoke-static {v4, v3}, Lcom/android/bluetooth/hfp/HeadsetStateMachine$Injector;->notifyBluetoothBattery(Landroid/content/Context;I)V
+
+    .line 134
+    :cond_0
+    invoke-virtual {p0, v5, v6}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->atResponseCodeNative(II)Z
+
+    .line 136
+    .end local v0    # "args":[Ljava/lang/Object;
+    .end local v1    # "count":I
+    .end local v2    # "i":I
+    :cond_1
+    return-void
+
+    .line 128
+    .restart local v0    # "args":[Ljava/lang/Object;
+    .restart local v1    # "count":I
+    .restart local v2    # "i":I
+    :cond_2
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+.end method
+
+.method processAtXapl(Ljava/lang/String;)V
+    .locals 4
+    .param p1, "atString"    # Ljava/lang/String;
+
+    .prologue
+    const/4 v3, 0x1
+
+    .line 112
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "processAtXapl - atString = "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p0, v1}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->log(Ljava/lang/String;)V
+
+    .line 113
+    const-string v1, "="
+
+    invoke-virtual {p1, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    const-string v1, "=?"
+
+    invoke-virtual {p1, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    .line 114
+    invoke-virtual {p1, v3}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v1}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->generateArgs(Ljava/lang/String;)[Ljava/lang/Object;
+
+    move-result-object v0
+
+    .line 115
+    .local v0, "args":[Ljava/lang/Object;
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "+XAPL=iPhone,"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    aget-object v2, v0, v3
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p0, v1}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->atResponseStringNative(Ljava/lang/String;)Z
+
+    .line 117
+    .end local v0    # "args":[Ljava/lang/Object;
+    :cond_0
+    return-void
 .end method
 
 .method setVirtualCallInProgress(Z)V

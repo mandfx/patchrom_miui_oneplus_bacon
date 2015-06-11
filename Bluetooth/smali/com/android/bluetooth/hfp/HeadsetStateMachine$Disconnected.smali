@@ -520,6 +520,15 @@
     invoke-static {v0, v3}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->access$802(Lcom/android/bluetooth/hfp/HeadsetStateMachine;Z)Z
 
     .line 339
+    iget-object v0, p0, Lcom/android/bluetooth/hfp/HeadsetStateMachine$Disconnected;->this$0:Lcom/android/bluetooth/hfp/HeadsetStateMachine;
+
+    # getter for: Lcom/android/bluetooth/hfp/HeadsetStateMachine;->mService:Lcom/android/bluetooth/hfp/HeadsetService;
+    invoke-static {v0}, Lcom/android/bluetooth/hfp/HeadsetStateMachine;->access$2400(Lcom/android/bluetooth/hfp/HeadsetStateMachine;)Lcom/android/bluetooth/hfp/HeadsetService;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/android/bluetooth/hfp/HeadsetStateMachine$Injector;->cancelBluetoothBattery(Landroid/content/Context;)V
+
     return-void
 .end method
 

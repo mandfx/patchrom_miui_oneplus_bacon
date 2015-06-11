@@ -1,5 +1,5 @@
 .class public Lcom/android/bluetooth/btservice/AdapterApp;
-.super Landroid/app/Application;
+.super Lmiui/external/Application;
 .source "AdapterApp.java"
 
 
@@ -35,7 +35,7 @@
 
     .prologue
     .line 38
-    invoke-direct {p0}, Landroid/app/Application;-><init>()V
+    invoke-direct {p0}, Lmiui/external/Application;-><init>()V
 
     .line 45
     return-void
@@ -51,16 +51,16 @@
     return-void
 .end method
 
-.method public onCreate()V
-    .locals 0
+.method public onCreateApplicationDelegate()Lmiui/external/ApplicationDelegate;
+    .locals 1
 
     .prologue
     .line 49
-    invoke-super {p0}, Landroid/app/Application;->onCreate()V
+    new-instance v0, Lcom/android/bluetooth/btservice/AdapterApp$1;
 
     .line 51
-    invoke-static {p0}, Lcom/android/bluetooth/btservice/Config;->init(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lcom/android/bluetooth/btservice/AdapterApp$1;-><init>(Lcom/android/bluetooth/btservice/AdapterApp;)V
 
     .line 52
-    return-void
+    return-object v0
 .end method

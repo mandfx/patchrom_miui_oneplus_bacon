@@ -496,162 +496,238 @@
 .end method
 
 .method private doSend()V
-    .locals 6
+    .locals 10
 
     .prologue
-    const/16 v5, 0xc8
+    const/16 v9, 0xc8
 
-    .line 328
-    const/16 v2, 0xc8
+    .line 267
+    const/16 v4, 0xc8
 
-    .line 331
-    .local v2, "status":I
+    .line 270
+    .local v4, "status":I
     :goto_0
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mFileInfo:Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mFileInfo:Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;
 
-    if-nez v3, :cond_0
+    if-nez v5, :cond_0
 
-    .line 333
-    const-wide/16 v3, 0x32
+    .line 272
+    const-wide/16 v5, 0x32
 
     :try_start_0
-    invoke-static {v3, v4}, Ljava/lang/Thread;->sleep(J)V
+    invoke-static {v5, v6}, Ljava/lang/Thread;->sleep(J)V
     :try_end_0
     .catch Ljava/lang/InterruptedException; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
 
-    .line 334
+    .line 273
     :catch_0
     move-exception v0
 
-    .line 335
+    .line 274
     .local v0, "e":Ljava/lang/InterruptedException;
-    const/16 v2, 0x1ea
+    const/16 v4, 0x1ea
 
-    .line 336
+    .line 275
     goto :goto_0
 
-    .line 338
+    .line 277
     .end local v0    # "e":Ljava/lang/InterruptedException;
     :cond_0
-    iget-boolean v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mConnected:Z
+    iget-boolean v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mConnected:Z
 
-    if-nez v3, :cond_1
+    if-nez v5, :cond_1
 
-    .line 340
-    const/16 v2, 0x1f1
+    .line 279
+    const/16 v4, 0x1f1
 
-    .line 342
+    .line 281
     :cond_1
-    if-ne v2, v5, :cond_3
+    if-ne v4, v9, :cond_3
 
-    .line 344
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mFileInfo:Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;
+    .line 283
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mFileInfo:Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;
 
-    iget-object v3, v3, Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;->mFileName:Ljava/lang/String;
+    iget-object v5, v5, Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;->mFileName:Ljava/lang/String;
 
-    if-eqz v3, :cond_2
+    if-eqz v5, :cond_2
 
-    .line 345
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mFileInfo:Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;
+    .line 287
+    new-instance v3, Landroid/content/Intent;
 
-    invoke-direct {p0, v3}, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->sendFile(Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;)I
+    const-string v5, "com.android.bluetooth.opp.BLUETOOTH_OPP_OUTBOUND_START"
 
-    move-result v2
+    invoke-direct {v3, v5}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 350
+    .line 288
+    .local v3, "start":Landroid/content/Intent;
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->this$0:Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;
+
+    # getter for: Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->mContext:Landroid/content/Context;
+    invoke-static {v5}, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->access$300(Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;)Landroid/content/Context;
+
+    move-result-object v5
+
+    invoke-virtual {v5, v3}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+
+    .line 290
+    invoke-static {}, Lmiui/analytics/Analytics;->getInstance()Lmiui/analytics/Analytics;
+
+    move-result-object v5
+
+    iget-object v6, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mContext1:Landroid/content/Context;
+
+    invoke-virtual {v5, v6}, Lmiui/analytics/Analytics;->startSession(Landroid/content/Context;)V
+
+    .line 291
+    invoke-static {}, Lmiui/analytics/Analytics;->getInstance()Lmiui/analytics/Analytics;
+
+    move-result-object v5
+
+    const-string v6, "MiuiBluetoothOppSendingFile"
+
+    invoke-virtual {v5, v6}, Lmiui/analytics/Analytics;->trackEvent(Ljava/lang/String;)V
+
+    .line 292
+    invoke-static {}, Lmiui/analytics/Analytics;->getInstance()Lmiui/analytics/Analytics;
+
+    move-result-object v5
+
+    const-string v6, "MiuiBluetoothOppSendingFileLength"
+
+    iget-object v7, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mFileInfo:Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;
+
+    iget-wide v7, v7, Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;->mLength:J
+
+    invoke-virtual {v5, v6, v7, v8}, Lmiui/analytics/Analytics;->trackEvent(Ljava/lang/String;J)V
+
+    .line 293
+    invoke-static {}, Lmiui/analytics/Analytics;->getInstance()Lmiui/analytics/Analytics;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Lmiui/analytics/Analytics;->endSession()V
+
+    .line 295
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mFileInfo:Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;
+
+    invoke-direct {p0, v5}, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->sendFile(Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;)I
+
+    move-result v4
+
+    .line 299
+    new-instance v1, Landroid/content/Intent;
+
+    const-string v5, "com.android.bluetooth.opp.BLUETOOTH_OPP_OUTBOUND_END"
+
+    invoke-direct {v1, v5}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 300
+    .local v1, "end":Landroid/content/Intent;
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->this$0:Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;
+
+    # getter for: Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->mContext:Landroid/content/Context;
+    invoke-static {v5}, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->access$300(Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;)Landroid/content/Context;
+
+    move-result-object v5
+
+    invoke-virtual {v5, v1}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+
+    .line 306
+    .end local v1    # "end":Landroid/content/Intent;
+    .end local v3    # "start":Landroid/content/Intent;
     :goto_1
-    const/4 v3, 0x1
+    const/4 v5, 0x1
 
-    iput-boolean v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->waitingForShare:Z
+    iput-boolean v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->waitingForShare:Z
 
-    .line 355
+    .line 311
     :goto_2
-    if-ne v2, v5, :cond_4
+    if-ne v4, v9, :cond_4
 
-    .line 356
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->this$0:Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;
+    .line 312
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->this$0:Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;
 
     # getter for: Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->mCallback:Landroid/os/Handler;
-    invoke-static {v3}, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->access$200(Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;)Landroid/os/Handler;
+    invoke-static {v5}, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->access$200(Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;)Landroid/os/Handler;
 
-    move-result-object v3
+    move-result-object v5
 
-    invoke-static {v3}, Landroid/os/Message;->obtain(Landroid/os/Handler;)Landroid/os/Message;
+    invoke-static {v5}, Landroid/os/Message;->obtain(Landroid/os/Handler;)Landroid/os/Message;
 
-    move-result-object v1
+    move-result-object v2
 
-    .line 357
-    .local v1, "msg":Landroid/os/Message;
-    const/4 v3, 0x0
+    .line 313
+    .local v2, "msg":Landroid/os/Message;
+    const/4 v5, 0x0
 
-    iput v3, v1, Landroid/os/Message;->what:I
+    iput v5, v2, Landroid/os/Message;->what:I
 
-    .line 358
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mInfo:Lcom/android/bluetooth/opp/BluetoothOppShareInfo;
+    .line 314
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mInfo:Lcom/android/bluetooth/opp/BluetoothOppShareInfo;
 
-    iput-object v3, v1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    iput-object v5, v2, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 359
-    invoke-virtual {v1}, Landroid/os/Message;->sendToTarget()V
+    .line 315
+    invoke-virtual {v2}, Landroid/os/Message;->sendToTarget()V
 
-    .line 367
+    .line 323
     :goto_3
     return-void
 
-    .line 348
-    .end local v1    # "msg":Landroid/os/Message;
+    .line 304
+    .end local v2    # "msg":Landroid/os/Message;
     :cond_2
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mFileInfo:Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mFileInfo:Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;
 
-    iget v2, v3, Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;->mStatus:I
+    iget v4, v5, Lcom/android/bluetooth/opp/BluetoothOppSendFileInfo;->mStatus:I
 
     goto :goto_1
 
-    .line 352
+    .line 308
     :cond_3
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mContext1:Landroid/content/Context;
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mContext1:Landroid/content/Context;
 
-    iget-object v4, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mInfo:Lcom/android/bluetooth/opp/BluetoothOppShareInfo;
+    iget-object v6, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mInfo:Lcom/android/bluetooth/opp/BluetoothOppShareInfo;
 
-    iget v4, v4, Lcom/android/bluetooth/opp/BluetoothOppShareInfo;->mId:I
+    iget v6, v6, Lcom/android/bluetooth/opp/BluetoothOppShareInfo;->mId:I
 
-    invoke-static {v3, v4, v2}, Lcom/android/bluetooth/opp/Constants;->updateShareStatus(Landroid/content/Context;II)V
+    invoke-static {v5, v6, v4}, Lcom/android/bluetooth/opp/Constants;->updateShareStatus(Landroid/content/Context;II)V
 
     goto :goto_2
 
-    .line 361
+    .line 317
     :cond_4
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->this$0:Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->this$0:Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;
 
     # getter for: Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->mCallback:Landroid/os/Handler;
-    invoke-static {v3}, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->access$200(Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;)Landroid/os/Handler;
+    invoke-static {v5}, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->access$200(Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;)Landroid/os/Handler;
 
-    move-result-object v3
+    move-result-object v5
 
-    invoke-static {v3}, Landroid/os/Message;->obtain(Landroid/os/Handler;)Landroid/os/Message;
+    invoke-static {v5}, Landroid/os/Message;->obtain(Landroid/os/Handler;)Landroid/os/Message;
 
-    move-result-object v1
+    move-result-object v2
 
-    .line 362
-    .restart local v1    # "msg":Landroid/os/Message;
-    const/4 v3, 0x2
+    .line 318
+    .restart local v2    # "msg":Landroid/os/Message;
+    const/4 v5, 0x2
 
-    iput v3, v1, Landroid/os/Message;->what:I
+    iput v5, v2, Landroid/os/Message;->what:I
 
-    .line 363
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mInfo:Lcom/android/bluetooth/opp/BluetoothOppShareInfo;
+    .line 319
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mInfo:Lcom/android/bluetooth/opp/BluetoothOppShareInfo;
 
-    iput v2, v3, Lcom/android/bluetooth/opp/BluetoothOppShareInfo;->mStatus:I
+    iput v4, v5, Lcom/android/bluetooth/opp/BluetoothOppShareInfo;->mStatus:I
 
-    .line 364
-    iget-object v3, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mInfo:Lcom/android/bluetooth/opp/BluetoothOppShareInfo;
+    .line 320
+    iget-object v5, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession$ClientThread;->mInfo:Lcom/android/bluetooth/opp/BluetoothOppShareInfo;
 
-    iput-object v3, v1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    iput-object v5, v2, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 365
-    invoke-virtual {v1}, Landroid/os/Message;->sendToTarget()V
+    .line 321
+    invoke-virtual {v2}, Landroid/os/Message;->sendToTarget()V
 
     goto :goto_3
 .end method

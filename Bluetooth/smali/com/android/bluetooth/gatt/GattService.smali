@@ -1577,7 +1577,7 @@
 .end method
 
 .method private parseUuids([B)Ljava/util/List;
-    .locals 11
+    .locals 13
     .param p1, "adv_data"    # [B
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -1590,143 +1590,158 @@
     .end annotation
 
     .prologue
-    const/4 v10, 0x1
+    const/4 v12, 0x2
 
-    .line 1958
-    new-instance v5, Ljava/util/ArrayList;
+    .line 1928
+    new-instance v7, Ljava/util/ArrayList;
 
-    invoke-direct {v5}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
 
-    .line 1960
-    .local v5, "uuids":Ljava/util/List;, "Ljava/util/List<Ljava/util/UUID;>;"
-    const/4 v1, 0x0
+    .line 1930
+    .local v7, "uuids":Ljava/util/List;, "Ljava/util/List<Ljava/util/UUID;>;"
+    invoke-static {p1}, Ljava/nio/ByteBuffer;->wrap([B)Ljava/nio/ByteBuffer;
 
-    .line 1961
-    .local v1, "offset":I
+    move-result-object v8
+
+    sget-object v9, Ljava/nio/ByteOrder;->LITTLE_ENDIAN:Ljava/nio/ByteOrder;
+
+    invoke-virtual {v8, v9}, Ljava/nio/ByteBuffer;->order(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+
+    move-result-object v0
+
+    .line 1931
+    .local v0, "buffer":Ljava/nio/ByteBuffer;
+    :cond_0
     :goto_0
-    array-length v6, p1
+    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->remaining()I
 
-    add-int/lit8 v6, v6, -0x2
+    move-result v8
 
-    if-ge v1, v6, :cond_0
+    if-le v8, v12, :cond_1
 
-    .line 1962
-    add-int/lit8 v2, v1, 0x1
+    .line 1932
+    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->get()B
 
-    .end local v1    # "offset":I
-    .local v2, "offset":I
-    aget-byte v0, p1, v1
+    move-result v1
+
+    .line 1933
+    .local v1, "length":B
+    if-nez v1, :cond_2
 
     .line 1963
-    .local v0, "len":I
-    if-nez v0, :cond_1
-
-    move v1, v2
-
-    .line 1984
-    .end local v0    # "len":I
-    .end local v2    # "offset":I
-    .restart local v1    # "offset":I
-    :cond_0
-    return-object v5
-
-    .line 1965
-    .end local v1    # "offset":I
-    .restart local v0    # "len":I
-    .restart local v2    # "offset":I
+    .end local v1    # "length":B
     :cond_1
-    add-int/lit8 v1, v2, 0x1
+    return-object v7
 
-    .end local v2    # "offset":I
-    .restart local v1    # "offset":I
-    aget-byte v3, p1, v2
-
-    .line 1966
-    .local v3, "type":I
-    packed-switch v3, :pswitch_data_0
-
-    .line 1979
-    add-int/lit8 v6, v0, -0x1
-
-    add-int/2addr v1, v6
-
-    goto :goto_0
-
-    .line 1969
-    .end local v1    # "offset":I
-    .restart local v2    # "offset":I
-    :goto_1
-    if-le v0, v10, :cond_2
-
-    .line 1970
-    add-int/lit8 v1, v2, 0x1
-
-    .end local v2    # "offset":I
-    .restart local v1    # "offset":I
-    aget-byte v4, p1, v2
-
-    .line 1971
-    .local v4, "uuid16":I
-    add-int/lit8 v2, v1, 0x1
-
-    .end local v1    # "offset":I
-    .restart local v2    # "offset":I
-    aget-byte v6, p1, v1
-
-    shl-int/lit8 v6, v6, 0x8
-
-    add-int/2addr v4, v6
-
-    .line 1972
-    add-int/lit8 v0, v0, -0x2
-
-    .line 1973
-    const-string v6, "%08x-0000-1000-8000-00805f9b34fb"
-
-    new-array v7, v10, [Ljava/lang/Object;
-
-    const/4 v8, 0x0
-
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v9
-
-    aput-object v9, v7, v8
-
-    invoke-static {v6, v7}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v6
-
-    invoke-static {v6}, Ljava/util/UUID;->fromString(Ljava/lang/String;)Ljava/util/UUID;
-
-    move-result-object v6
-
-    invoke-interface {v5, v6}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    goto :goto_1
-
-    .end local v4    # "uuid16":I
+    .line 1936
+    .restart local v1    # "length":B
     :cond_2
-    move v1, v2
+    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->get()B
 
-    .end local v2    # "offset":I
-    .restart local v1    # "offset":I
+    move-result v6
+
+    .line 1937
+    .local v6, "type":B
+    packed-switch v6, :pswitch_data_0
+
+    .line 1958
+    :pswitch_0
+    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->position()I
+
+    move-result v8
+
+    add-int/2addr v8, v1
+
+    add-int/lit8 v8, v8, -0x1
+
+    invoke-virtual {v0, v8}, Ljava/nio/ByteBuffer;->position(I)Ljava/nio/Buffer;
+
     goto :goto_0
 
-    :pswitch_0
-    move v2, v1
+    .line 1940
+    :goto_1
+    :pswitch_1
+    if-lt v1, v12, :cond_0
 
-    .end local v1    # "offset":I
-    .restart local v2    # "offset":I
+    .line 1941
+    const-string v8, "%08x-0000-1000-8000-00805f9b34fb"
+
+    const/4 v9, 0x1
+
+    new-array v9, v9, [Ljava/lang/Object;
+
+    const/4 v10, 0x0
+
+    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->getShort()S
+
+    move-result v11
+
+    invoke-static {v11}, Ljava/lang/Short;->valueOf(S)Ljava/lang/Short;
+
+    move-result-object v11
+
+    aput-object v11, v9, v10
+
+    invoke-static {v8, v9}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v8
+
+    invoke-static {v8}, Ljava/util/UUID;->fromString(Ljava/lang/String;)Ljava/util/UUID;
+
+    move-result-object v8
+
+    invoke-interface {v7, v8}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 1943
+    add-int/lit8 v8, v1, -0x2
+
+    int-to-byte v1, v8
+
     goto :goto_1
 
-    .line 1966
-    nop
+    .line 1949
+    :goto_2
+    :pswitch_2
+    const/16 v8, 0x10
 
+    if-lt v1, v8, :cond_0
+
+    .line 1950
+    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->getLong()J
+
+    move-result-wide v2
+
+    .line 1951
+    .local v2, "lsb":J
+    invoke-virtual {v0}, Ljava/nio/ByteBuffer;->getLong()J
+
+    move-result-wide v4
+
+    .line 1952
+    .local v4, "msb":J
+    new-instance v8, Ljava/util/UUID;
+
+    invoke-direct {v8, v4, v5, v2, v3}, Ljava/util/UUID;-><init>(JJ)V
+
+    invoke-interface {v7, v8}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 1953
+    add-int/lit8 v8, v1, -0x10
+
+    int-to-byte v1, v8
+
+    .line 1954
+    goto :goto_2
+
+    .line 1937
     :pswitch_data_0
     .packed-switch 0x2
+        :pswitch_1
+        :pswitch_1
         :pswitch_0
         :pswitch_0
+        :pswitch_2
+        :pswitch_2
     .end packed-switch
 .end method
 

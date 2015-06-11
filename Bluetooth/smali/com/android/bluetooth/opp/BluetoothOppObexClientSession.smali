@@ -147,6 +147,17 @@
     return v0
 .end method
 
+.method static synthetic access$300(Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;)Landroid/content/Context;
+    .locals 1
+    .param p0, "x0"    # Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;
+
+    .prologue
+    .line 64
+    iget-object v0, p0, Lcom/android/bluetooth/opp/BluetoothOppObexClientSession;->mContext:Landroid/content/Context;
+
+    return-object v0
+.end method
+
 .method public static applyRemoteDeviceQuirks(Ljavax/obex/HeaderSet;Ljava/lang/String;Ljava/lang/String;)V
     .locals 8
     .param p0, "request"    # Ljavax/obex/HeaderSet;
