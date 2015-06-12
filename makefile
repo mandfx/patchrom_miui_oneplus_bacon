@@ -62,6 +62,9 @@ local-pre-zip-misc:
 		mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 		@echo "[XS CUST] change selinux"
 		sed -i '4asetenforce 0' $(ZIP_DIR)/system/bin/sysinit
+		@echo "[XS CUST] remove cm log and add miui log"
+		rm -rf $(ZIP_DIR)/system/etc/CHANGELOG-CM.txt
+		cp CHANGELOG-MIUI.txt $(ZIP_DIR)/system/etc/CHANGELOG-MIUI.txt
 		@echo "[XS CUST] goodbye! miui prebuilt binaries!"
 		cp -rf stockrom/system/bin/app_process $(ZIP_DIR)/system/bin/app_process
 		rm -rf $(ZIP_DIR)/system/bin/debuggerd_vendor
