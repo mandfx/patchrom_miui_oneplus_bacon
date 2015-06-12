@@ -54,7 +54,10 @@ local-pre-zip-misc:
 		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
 		@echo "[XS CUST] edit build.prop"
 		sed -i 's/ro.product.manufacturer=OnePlus/ro.product.manufacturer=ONEPLUS/g' $(ZIP_DIR)/system/build.prop
-		sed -i '/ro.sf.lcd_density=480/apersist.xsdensity=480' $(ZIP_DIR)/system/build.prop
+		echo "#XS ADD" >> $(ZIP_DIR)/system/build.prop
+		echo "persist.xsdensity=480" >> $(ZIP_DIR)/system/build.prop
+		echo "persist.audio.fluence.voicerec=false" >> $(ZIP_DIR)/system/build.prop
+		echo "persist.audio.fluence.speaker=false" >> $(ZIP_DIR)/system/build.prop
 		@echo "[XS CUST] Fix: Transparent on search panel"
 		mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 		@echo "[XS CUST] change selinux"
