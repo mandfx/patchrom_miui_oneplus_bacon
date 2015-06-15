@@ -22,20 +22,6 @@ function applyPatch () {
     done
 }
 
-function applyPart () {
-    for part in `find $1 -name *.part`
-    do
-        cd out
-        $GIT_APPLY ../$part
-        cd ..
-        for rej in `find $2 -name *.rej`
-        do
-            echo "Part $patch fail"
-            exit 1
-        done
-    done
-}
-
 if [ $1 = "MiuiFramework" ];then
 	applyPatch $1 $2
 	cp $1/A0001.xml $2/assets/device_features/
@@ -65,5 +51,9 @@ if [ $1 = "DeskClock" ];then
 fi
 
 if [ $1 = "Music" ];then
+	applyPatch $1 $2
+fi
+
+if [ $1 = "Updater" ];then
 	applyPatch $1 $2
 fi

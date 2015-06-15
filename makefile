@@ -19,7 +19,7 @@ local-modified-jars :=
 # All apks from MIUI
 local-miui-removed-apps := 
 
-local-miui-modified-apps := MiuiFramework MiuiHome TeleService Settings SecurityCenter MiuiSystemUI DeskClock Music
+local-miui-modified-apps := MiuiFramework MiuiHome TeleService Settings SecurityCenter MiuiSystemUI DeskClock Music Updater
 
 local-phone-apps := 
 
@@ -58,6 +58,7 @@ local-pre-zip-misc:
 		echo "persist.xsdensity=480" >> $(ZIP_DIR)/system/build.prop
 		echo "persist.audio.fluence.voicerec=false" >> $(ZIP_DIR)/system/build.prop
 		echo "persist.audio.fluence.speaker=false" >> $(ZIP_DIR)/system/build.prop
+		echo "mijl.changelog.ftpPath=http://www.heavenke.com/miui/xs/bacon/" >> $(ZIP_DIR)/system/build.prop
 		@echo "[XS CUST] Fix: Transparent on search panel"
 		mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 		@echo "[XS CUST] change selinux"
