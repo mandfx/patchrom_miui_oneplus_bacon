@@ -27,11 +27,6 @@ if [ $1 = "miuisystem" ];then
 	cp $1/A0001.xml $2/assets/device_features/
 fi
 
-if [ $1 = "TeleService" ];then
-	applyPatch $1 $2
-	$XMLMERGYTOOL $1/res/values $2/res/values
-fi
-
 if [ $1 = "Settings" ];then
 	applyPatch $1 $2
 	$XMLMERGYTOOL $1/res/values $2/res/values
