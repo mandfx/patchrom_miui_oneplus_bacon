@@ -44,26 +44,26 @@ local-after-zip:= local-put-to-phone
 include $(PORT_BUILD)/porting.mk
 
 local-pre-zip-misc:
-		@echo "[XS CUST] boot.img"
+		#copy files
 		cp other/boot.img $(ZIP_DIR)/boot.img
-		@echo "[XS CUST] system"
 		cp -a -rf other/system/* $(ZIP_DIR)/system/
-		@echo "[XS CUST] data"
 		cp -a -rf other/data/* $(ZIP_DIR)/data/
-		@echo "[XS CUST] replace libsurfaceflinger.so with dpi"
-		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
-		@echo "[XS CUST] edit build.prop"
+		#edit build.prop
 		sed -i 's/ro.product.manufacturer=OnePlus/ro.product.manufacturer=ONEPLUS/g' $(ZIP_DIR)/system/build.prop
 		echo "#XS ADD" >> $(ZIP_DIR)/system/build.prop
+		#density
+		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
 		echo "persist.xsdensity=480" >> $(ZIP_DIR)/system/build.prop
+		#call audio
 		echo "persist.audio.fluence.voicerec=false" >> $(ZIP_DIR)/system/build.prop
 		echo "persist.audio.fluence.speaker=false" >> $(ZIP_DIR)/system/build.prop
+		#change log
 		echo "mijl.changelog.ftpPath=http://www.heavenke.com/miui/xs/bacon/" >> $(ZIP_DIR)/system/build.prop
-		@echo "[XS CUST] Fix: Transparent on search panel"
+		#fix QuickSearchBox
 		mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
-		@echo "[XS CUST] change selinux"
+		#fix selinux
 		sed -i '4asetenforce 0' $(ZIP_DIR)/system/bin/sysinit
-		@echo "[XS CUST] goodbye! miui prebuilt binaries!"
+		#bye bye miui bin , use stockrom
 		cp -rf stockrom/system/bin/app_process $(ZIP_DIR)/system/bin/app_process
 		rm -rf $(ZIP_DIR)/system/bin/debuggerd_vendor
 		cp -rf stockrom/system/bin/debuggerd $(ZIP_DIR)/system/bin/debuggerd
