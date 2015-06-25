@@ -8,24 +8,6 @@ BUILD_OUT=out
 
 SEP_FRAME="framework2.jar.out"
 
-function appendSmaliPart() {
-    for file in `find $1/smali -name *.part`
-    do
-        filepath=`dirname $file`
-        filename=`basename $file .part`
-        dstfile="out/$filepath/$filename"
-        cat $file >> $dstfile
-    done
-}
-
-function overlaySmali() {
-    for file in `find $1/smali -name *.smali`
-    do
-        filepath=`dirname $file`
-        cp -f $file out/$filepath
-    done
-}
-
 function applyPatch() {
 	for file in $1/*.patch
 	do
@@ -45,19 +27,26 @@ function applyPatch() {
 if [ $2 = "$BUILD_OUT/framework" ]
 then
     cp -rf ../android/Editor/* $BUILD_OUT/framework/smali/android/widget/
+    rm -rf $BUILD_OUT/framework/smali/android/telephony/*
+    cp -rf overlay/framework/* $BUILD_OUT/framework/
 fi
 
-#if [ $2 = "$BUILD_OUT/framework2" ]
-#then
-#fi
+if [ $2 = "$BUILD_OUT/framework2" ]
+then
+    rm -rf $BUILD_OUT/framework2/smali/com/android/internal/telephony/*
+    cp -rf overlay/framework2/* $BUILD_OUT/framework2/
+fi
 
-#if [ $2 = "$BUILD_OUT/telephony-common" ]
-#then
-#fi
+if [ $2 = "$BUILD_OUT/telephony-common" ]
+then
+    rm -rf $BUILD_OUT/telephony-common/smali
+    cp -rf overlay/telephony-common/* $BUILD_OUT/telephony-common/
+fi
 
 if [ $2 = "$BUILD_OUT/services" ]
 then
     applyPatch "overlay/services"
+    cp -rf overlay/services/* $BUILD_OUT/services/
 fi
 
 if [ $2 = "$BUILD_OUT/android.policy" ]
