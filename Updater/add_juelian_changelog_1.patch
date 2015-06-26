@@ -149,9 +149,9 @@ Subject: [PATCH] add juelian changelog
      move-object/from16 v1, p0
  
 +    # add by juelian, show right now version log url file path
-+    iget-object v0, v1, Lcom/android/updater/RomInfo;->version:Ljava/lang/String;
++    #iget-object v0, v1, Lcom/android/updater/RomInfo;->version:Ljava/lang/String;
 +
-+    invoke-static {v0}, Lcom/android/updater/JuelianUtils;->getOldVersionUrl(Ljava/lang/String;)Ljava/lang/String;
++    invoke-static {}, Lcom/android/updater/JuelianUtils;->getOldVersionUrl()Ljava/lang/String;
 +
 +    move-result-object v0
 +    # end add by juelian
