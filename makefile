@@ -9,7 +9,7 @@ local-zip-file     := stockrom.zip
 local-out-zip-file := MIUI_bacon.zip
 
 # the location for local-ota to save target-file
-local-previous-target-dir := 
+local-previous-target-dir :=
 
 # All apps from original ZIP, but has smali files chanded
 local-modified-apps := Bluetooth
@@ -17,13 +17,13 @@ local-modified-apps := Bluetooth
 local-modified-jars :=
 
 # All apks from MIUI
-local-miui-removed-apps := 
+local-miui-removed-apps :=
 
 local-miui-modified-apps := miuisystem MiuiHome Settings SecurityCenter MiuiSystemUI DeskClock Music Updater
 
-local-phone-apps := 
+local-phone-apps :=
 
-local-phone-priv-apps := 
+local-phone-priv-apps :=
 
 local-density := XXHDPI
 
@@ -31,14 +31,14 @@ include phoneapps.mk
 
 PORT_PRODUCT := bacon_xs
 
-# To include the local targets before and after zip the final ZIP file, 
+# To include the local targets before and after zip the final ZIP file,
 # and the local-targets should:
 # (1) be defined after including porting.mk if using any global variable(see porting.mk)
 # (2) the name should be leaded with local- to prevent any conflict with global targets
 local-pre-zip := local-pre-zip-misc
 local-after-zip:= local-put-to-phone
 
-# The local targets after the zip file is generated, could include 'zip2sd' to 
+# The local targets after the zip file is generated, could include 'zip2sd' to
 # deliver the zip file to phone, or to customize other actions
 
 include $(PORT_BUILD)/porting.mk
@@ -59,6 +59,8 @@ local-pre-zip-misc:
 		echo "persist.audio.fluence.speaker=false" >> $(ZIP_DIR)/system/build.prop
 		#change log
 		echo "mijl.changelog.ftpPath=http://www.heavenke.com/miui/xs/bacon/" >> $(ZIP_DIR)/system/build.prop
+		#use auto brightadj
+		echo "persist.power.useautobrightadj=true"
 		#fix QuickSearchBox
 		mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 		#fix selinux
