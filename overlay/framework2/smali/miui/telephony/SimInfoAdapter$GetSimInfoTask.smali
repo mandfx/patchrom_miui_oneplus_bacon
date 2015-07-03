@@ -34,7 +34,7 @@
     .locals 0
 
     .prologue
-    .line 216
+    .line 224
     iput-object p1, p0, Lmiui/telephony/SimInfoAdapter$GetSimInfoTask;->this$0:Lmiui/telephony/SimInfoAdapter;
 
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
@@ -48,7 +48,7 @@
     .param p2, "x1"    # Lmiui/telephony/SimInfoAdapter$1;
 
     .prologue
-    .line 216
+    .line 224
     invoke-direct {p0, p1}, Lmiui/telephony/SimInfoAdapter$GetSimInfoTask;-><init>(Lmiui/telephony/SimInfoAdapter;)V
 
     return-void
@@ -61,7 +61,7 @@
     .param p1, "x0"    # [Ljava/lang/Object;
 
     .prologue
-    .line 216
+    .line 224
     check-cast p1, [Ljava/lang/Void;
 
     .end local p1    # "x0":[Ljava/lang/Object;
@@ -77,7 +77,7 @@
     .param p1, "params"    # [Ljava/lang/Void;
 
     .prologue
-    .line 220
+    .line 228
     iget-object v0, p0, Lmiui/telephony/SimInfoAdapter$GetSimInfoTask;->this$0:Lmiui/telephony/SimInfoAdapter;
 
     iget-object v1, p0, Lmiui/telephony/SimInfoAdapter$GetSimInfoTask;->this$0:Lmiui/telephony/SimInfoAdapter;
@@ -97,7 +97,7 @@
     # setter for: Lmiui/telephony/SimInfoAdapter;->mInsertedSimInfoList:Ljava/util/List;
     invoke-static {v0, v1}, Lmiui/telephony/SimInfoAdapter;->access$102(Lmiui/telephony/SimInfoAdapter;Ljava/util/List;)Ljava/util/List;
 
-    .line 221
+    .line 229
     iget-object v0, p0, Lmiui/telephony/SimInfoAdapter$GetSimInfoTask;->this$0:Lmiui/telephony/SimInfoAdapter;
 
     iget-object v1, p0, Lmiui/telephony/SimInfoAdapter$GetSimInfoTask;->this$0:Lmiui/telephony/SimInfoAdapter;
@@ -117,7 +117,7 @@
     # setter for: Lmiui/telephony/SimInfoAdapter;->mAllSimInfoList:Ljava/util/List;
     invoke-static {v0, v1}, Lmiui/telephony/SimInfoAdapter;->access$402(Lmiui/telephony/SimInfoAdapter;Ljava/util/List;)Ljava/util/List;
 
-    .line 222
+    .line 230
     const/4 v0, 0x0
 
     return-object v0
@@ -128,7 +128,7 @@
     .param p1, "x0"    # Ljava/lang/Object;
 
     .prologue
-    .line 216
+    .line 224
     check-cast p1, Ljava/lang/Void;
 
     .end local p1    # "x0":Ljava/lang/Object;
@@ -142,12 +142,12 @@
     .param p1, "result"    # Ljava/lang/Void;
 
     .prologue
-    .line 227
+    .line 235
     sget-object v3, Lmiui/telephony/SimInfoAdapter;->sLock:Ljava/lang/Object;
 
     monitor-enter v3
 
-    .line 228
+    .line 236
     :try_start_0
     iget-object v2, p0, Lmiui/telephony/SimInfoAdapter$GetSimInfoTask;->this$0:Lmiui/telephony/SimInfoAdapter;
 
@@ -174,13 +174,13 @@
 
     check-cast v1, Lmiui/telephony/SimInfoManager$ISimInfoChangeListener;
 
-    .line 229
+    .line 237
     .local v1, "listener":Lmiui/telephony/SimInfoManager$ISimInfoChangeListener;
     invoke-interface {v1}, Lmiui/telephony/SimInfoManager$ISimInfoChangeListener;->onChange()V
 
     goto :goto_0
 
-    .line 231
+    .line 239
     .end local v0    # "i$":Ljava/util/Iterator;
     .end local v1    # "listener":Lmiui/telephony/SimInfoManager$ISimInfoChangeListener;
     :catchall_0
@@ -199,6 +199,6 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 232
+    .line 240
     return-void
 .end method

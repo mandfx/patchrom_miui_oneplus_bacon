@@ -24,13 +24,13 @@
     .param p2, "looper"    # Landroid/os/Looper;
 
     .prologue
-    .line 71
+    .line 72
     iput-object p1, p0, Lcom/android/internal/telephony/uicc/Subscription$SubscriptionHandler;->this$0:Lcom/android/internal/telephony/uicc/Subscription;
 
-    .line 72
+    .line 73
     invoke-direct {p0, p2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
-    .line 73
+    .line 74
     return-void
 .end method
 
@@ -41,17 +41,17 @@
     .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 77
+    .line 78
     iget v0, p1, Landroid/os/Message;->what:I
 
     packed-switch v0, :pswitch_data_0
 
-    .line 89
+    .line 90
     :goto_0
     :pswitch_0
     return-void
 
-    .line 79
+    .line 80
     :pswitch_1
     iget-object v0, p0, Lcom/android/internal/telephony/uicc/Subscription$SubscriptionHandler;->this$0:Lcom/android/internal/telephony/uicc/Subscription;
 
@@ -60,7 +60,7 @@
     # invokes: Lcom/android/internal/telephony/uicc/Subscription;->log(Ljava/lang/String;)V
     invoke-static {v0, v1}, Lcom/android/internal/telephony/uicc/Subscription;->access$000(Lcom/android/internal/telephony/uicc/Subscription;Ljava/lang/String;)V
 
-    .line 80
+    .line 81
     iget-object v0, p0, Lcom/android/internal/telephony/uicc/Subscription$SubscriptionHandler;->this$0:Lcom/android/internal/telephony/uicc/Subscription;
 
     # invokes: Lcom/android/internal/telephony/uicc/Subscription;->handleIccChanged()V
@@ -68,7 +68,7 @@
 
     goto :goto_0
 
-    .line 83
+    .line 84
     :pswitch_2
     iget-object v0, p0, Lcom/android/internal/telephony/uicc/Subscription$SubscriptionHandler;->this$0:Lcom/android/internal/telephony/uicc/Subscription;
 
@@ -77,7 +77,7 @@
     # invokes: Lcom/android/internal/telephony/uicc/Subscription;->log(Ljava/lang/String;)V
     invoke-static {v0, v1}, Lcom/android/internal/telephony/uicc/Subscription;->access$000(Lcom/android/internal/telephony/uicc/Subscription;Ljava/lang/String;)V
 
-    .line 84
+    .line 85
     iget-object v1, p0, Lcom/android/internal/telephony/uicc/Subscription$SubscriptionHandler;->this$0:Lcom/android/internal/telephony/uicc/Subscription;
 
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
@@ -89,7 +89,7 @@
 
     goto :goto_0
 
-    .line 77
+    .line 78
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_1

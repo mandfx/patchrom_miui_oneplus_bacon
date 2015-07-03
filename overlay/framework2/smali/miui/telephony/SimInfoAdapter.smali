@@ -518,12 +518,12 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 242
+    .line 250
     new-instance v0, Lmiui/telephony/SimInfoManager$SimInfoRecord;
 
     invoke-direct {v0}, Lmiui/telephony/SimInfoManager$SimInfoRecord;-><init>()V
 
-    .line 243
+    .line 251
     .local v0, "info":Lmiui/telephony/SimInfoManager$SimInfoRecord;
     const-string v2, "_id"
 
@@ -537,7 +537,7 @@
 
     iput-wide v2, v0, Lmiui/telephony/SimInfoManager$SimInfoRecord;->mSimInfoId:J
 
-    .line 244
+    .line 252
     const-string v2, "icc_id"
 
     invoke-interface {p0, v2}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
@@ -550,7 +550,7 @@
 
     iput-object v2, v0, Lmiui/telephony/SimInfoManager$SimInfoRecord;->mIccId:Ljava/lang/String;
 
-    .line 245
+    .line 253
     const-string v2, "display_name"
 
     invoke-interface {p0, v2}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
@@ -563,7 +563,7 @@
 
     iput-object v2, v0, Lmiui/telephony/SimInfoManager$SimInfoRecord;->mDisplayName:Ljava/lang/String;
 
-    .line 246
+    .line 254
     const-string v2, "number"
 
     invoke-interface {p0, v2}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
@@ -576,7 +576,7 @@
 
     iput-object v2, v0, Lmiui/telephony/SimInfoManager$SimInfoRecord;->mNumber:Ljava/lang/String;
 
-    .line 247
+    .line 255
     const-string v2, "slot"
 
     invoke-interface {p0, v2}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
@@ -589,7 +589,7 @@
 
     iput v2, v0, Lmiui/telephony/SimInfoManager$SimInfoRecord;->mSlotId:I
 
-    .line 248
+    .line 256
     const-string v2, "active_state"
 
     invoke-interface {p0, v2}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
@@ -605,7 +605,7 @@
     :goto_0
     iput-boolean v1, v0, Lmiui/telephony/SimInfoManager$SimInfoRecord;->mIsActivte:Z
 
-    .line 250
+    .line 258
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -664,10 +664,10 @@
 
     invoke-static {v1}, Lmiui/telephony/SimInfoAdapter;->logd(Ljava/lang/String;)V
 
-    .line 252
+    .line 260
     return-object v0
 
-    .line 248
+    .line 256
     :cond_0
     const/4 v1, 0x0
 
@@ -692,17 +692,17 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 181
+    .line 189
     const-string v0, "[getAllSimInfoList]+"
 
     invoke-static {v0}, Lmiui/telephony/SimInfoAdapter;->logd(Ljava/lang/String;)V
 
-    .line 182
+    .line 190
     new-instance v7, Ljava/util/ArrayList;
 
     invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
 
-    .line 183
+    .line 191
     .local v7, "simList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lmiui/telephony/SimInfoManager$SimInfoRecord;>;"
     invoke-virtual {p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -720,11 +720,11 @@
 
     move-result-object v6
 
-    .line 185
+    .line 193
     .local v6, "cursor":Landroid/database/Cursor;
     if-eqz v6, :cond_1
 
-    .line 187
+    .line 195
     :goto_0
     :try_start_0
     invoke-interface {v6}, Landroid/database/Cursor;->moveToNext()Z
@@ -733,7 +733,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 188
+    .line 196
     invoke-static {v6}, Lmiui/telephony/SimInfoAdapter;->fromCursor(Landroid/database/Cursor;)Lmiui/telephony/SimInfoManager$SimInfoRecord;
 
     move-result-object v0
@@ -744,7 +744,7 @@
 
     goto :goto_0
 
-    .line 191
+    .line 199
     :catchall_0
     move-exception v0
 
@@ -755,7 +755,7 @@
     :cond_0
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
-    .line 194
+    .line 202
     :cond_1
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -787,7 +787,7 @@
 
     invoke-static {v0}, Lmiui/telephony/SimInfoAdapter;->logd(Ljava/lang/String;)V
 
-    .line 195
+    .line 203
     return-object v7
 .end method
 
@@ -809,17 +809,17 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 199
+    .line 207
     const-string v0, "[getInsertedSimInfoList]+"
 
     invoke-static {v0}, Lmiui/telephony/SimInfoAdapter;->logd(Ljava/lang/String;)V
 
-    .line 200
+    .line 208
     new-instance v7, Ljava/util/ArrayList;
 
     invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
 
-    .line 201
+    .line 209
     .local v7, "simList":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lmiui/telephony/SimInfoManager$SimInfoRecord;>;"
     invoke-virtual {p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -837,11 +837,11 @@
 
     move-result-object v6
 
-    .line 203
+    .line 211
     .local v6, "cursor":Landroid/database/Cursor;
     if-eqz v6, :cond_1
 
-    .line 205
+    .line 213
     :goto_0
     :try_start_0
     invoke-interface {v6}, Landroid/database/Cursor;->moveToNext()Z
@@ -850,7 +850,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 206
+    .line 214
     invoke-static {v6}, Lmiui/telephony/SimInfoAdapter;->fromCursor(Landroid/database/Cursor;)Lmiui/telephony/SimInfoManager$SimInfoRecord;
 
     move-result-object v0
@@ -861,7 +861,7 @@
 
     goto :goto_0
 
-    .line 209
+    .line 217
     :catchall_0
     move-exception v0
 
@@ -872,7 +872,7 @@
     :cond_0
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
-    .line 212
+    .line 220
     :cond_1
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -904,7 +904,7 @@
 
     invoke-static {v0}, Lmiui/telephony/SimInfoAdapter;->logd(Ljava/lang/String;)V
 
-    .line 213
+    .line 221
     return-object v7
 .end method
 
@@ -913,17 +913,17 @@
     .param p0, "msg"    # Ljava/lang/String;
 
     .prologue
-    .line 256
+    .line 264
     sget-boolean v0, Lmiui/telephony/SimInfoAdapter;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    .line 257
+    .line 265
     const-string v0, "SimInfoAdapter"
 
     invoke-static {v0, p0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 259
+    .line 267
     :cond_0
     return-void
 .end method
@@ -933,18 +933,93 @@
     .param p0, "msg"    # Ljava/lang/String;
 
     .prologue
-    .line 262
+    .line 270
     sget-boolean v0, Lmiui/telephony/SimInfoAdapter;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    .line 263
+    .line 271
     const-string v0, "SimInfoAdapter"
 
     invoke-static {v0, p0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 265
+    .line 273
     :cond_0
+    return-void
+.end method
+
+.method public static resetNumber(Landroid/content/Context;I)V
+    .locals 6
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "slot"    # I
+
+    .prologue
+    const/4 v2, 0x0
+
+    .line 108
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "[resetNumber] + slot:"
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v1}, Lmiui/telephony/SimInfoAdapter;->logd(Ljava/lang/String;)V
+
+    .line 109
+    new-instance v0, Landroid/content/ContentValues;
+
+    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
+
+    .line 110
+    .local v0, "values":Landroid/content/ContentValues;
+    const-string v3, "number"
+
+    move-object v1, v2
+
+    check-cast v1, Ljava/lang/String;
+
+    invoke-virtual {v0, v3, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 111
+    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v1
+
+    sget-object v3, Lmiui/telephony/SimInfo;->CONTENT_URI:Landroid/net/Uri;
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v5, "slot="
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v1, v3, v0, v4, v2}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+
+    .line 113
     return-void
 .end method
 
@@ -1013,7 +1088,7 @@
     .prologue
     const/4 v4, 0x1
 
-    .line 115
+    .line 123
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -1044,7 +1119,7 @@
 
     invoke-static {v1}, Lmiui/telephony/SimInfoAdapter;->logd(Ljava/lang/String;)V
 
-    .line 116
+    .line 124
     invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v1
@@ -1057,7 +1132,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 117
+    .line 125
     :cond_0
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -1079,26 +1154,26 @@
 
     invoke-static {v1}, Lmiui/telephony/SimInfoAdapter;->loge(Ljava/lang/String;)V
 
-    .line 118
+    .line 126
     const/4 v1, -0x1
 
-    .line 123
+    .line 131
     :goto_0
     return v1
 
-    .line 121
+    .line 129
     :cond_1
     new-instance v0, Landroid/content/ContentValues;
 
     invoke-direct {v0, v4}, Landroid/content/ContentValues;-><init>(I)V
 
-    .line 122
+    .line 130
     .local v0, "value":Landroid/content/ContentValues;
     const-string v1, "number"
 
     invoke-virtual {v0, v1, p1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 123
+    .line 131
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
@@ -1131,12 +1206,12 @@
 
     const/4 v3, 0x0
 
-    .line 108
+    .line 116
     new-instance v0, Landroid/content/ContentValues;
 
     invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
 
-    .line 109
+    .line 117
     .local v0, "values":Landroid/content/ContentValues;
     const-string v4, "active_state"
 
@@ -1151,7 +1226,7 @@
 
     invoke-virtual {v0, v4, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    .line 110
+    .line 118
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
@@ -1196,13 +1271,13 @@
     :cond_0
     move v1, v3
 
-    .line 109
+    .line 117
     goto :goto_0
 
     :cond_1
     move v2, v3
 
-    .line 110
+    .line 118
     goto :goto_1
 .end method
 
@@ -1221,7 +1296,7 @@
     .end annotation
 
     .prologue
-    .line 136
+    .line 144
     iget-object v0, p0, Lmiui/telephony/SimInfoAdapter;->mAllSimInfoList:Ljava/util/List;
 
     return-object v0
@@ -1240,7 +1315,7 @@
     .end annotation
 
     .prologue
-    .line 131
+    .line 139
     iget-object v0, p0, Lmiui/telephony/SimInfoAdapter;->mInsertedSimInfoList:Ljava/util/List;
 
     return-object v0
@@ -1251,24 +1326,24 @@
     .param p1, "listener"    # Lmiui/telephony/SimInfoManager$ISimInfoChangeListener;
 
     .prologue
-    .line 168
+    .line 176
     sget-object v1, Lmiui/telephony/SimInfoAdapter;->sLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 169
+    .line 177
     :try_start_0
     iget-object v0, p0, Lmiui/telephony/SimInfoAdapter;->mChangeListeners:Ljava/util/HashSet;
 
     invoke-virtual {v0, p1}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
 
-    .line 170
+    .line 178
     monitor-exit v1
 
-    .line 171
+    .line 179
     return-void
 
-    .line 170
+    .line 178
     :catchall_0
     move-exception v0
 
@@ -1287,7 +1362,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 141
+    .line 149
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -1318,7 +1393,7 @@
 
     invoke-static {v1}, Lmiui/telephony/SimInfoAdapter;->logd(Ljava/lang/String;)V
 
-    .line 142
+    .line 150
     invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v1
@@ -1331,7 +1406,7 @@
 
     if-gtz v1, :cond_1
 
-    .line 143
+    .line 151
     :cond_0
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -1353,14 +1428,14 @@
 
     invoke-static {v1}, Lmiui/telephony/SimInfoAdapter;->loge(Ljava/lang/String;)V
 
-    .line 144
+    .line 152
     const/4 v1, -0x1
 
-    .line 148
+    .line 156
     :goto_0
     return v1
 
-    .line 146
+    .line 154
     :cond_1
     new-instance v0, Landroid/content/ContentValues;
 
@@ -1368,13 +1443,13 @@
 
     invoke-direct {v0, v1}, Landroid/content/ContentValues;-><init>(I)V
 
-    .line 147
+    .line 155
     .local v0, "value":Landroid/content/ContentValues;
     const-string v1, "display_name"
 
     invoke-virtual {v0, v1, p1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 148
+    .line 156
     iget-object v1, p0, Lmiui/telephony/SimInfoAdapter;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -1402,7 +1477,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 154
+    .line 162
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -1433,7 +1508,7 @@
 
     invoke-static {v1}, Lmiui/telephony/SimInfoAdapter;->logd(Ljava/lang/String;)V
 
-    .line 155
+    .line 163
     if-eqz p1, :cond_0
 
     const-wide/16 v1, 0x0
@@ -1442,7 +1517,7 @@
 
     if-gtz v1, :cond_1
 
-    .line 156
+    .line 164
     :cond_0
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -1464,14 +1539,14 @@
 
     invoke-static {v1}, Lmiui/telephony/SimInfoAdapter;->loge(Ljava/lang/String;)V
 
-    .line 157
+    .line 165
     const/4 v1, -0x1
 
-    .line 162
+    .line 170
     :goto_0
     return v1
 
-    .line 160
+    .line 168
     :cond_1
     new-instance v0, Landroid/content/ContentValues;
 
@@ -1479,13 +1554,13 @@
 
     invoke-direct {v0, v1}, Landroid/content/ContentValues;-><init>(I)V
 
-    .line 161
+    .line 169
     .local v0, "value":Landroid/content/ContentValues;
     const-string v1, "number"
 
     invoke-virtual {v0, v1, p1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 162
+    .line 170
     iget-object v1, p0, Lmiui/telephony/SimInfoAdapter;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -1510,24 +1585,24 @@
     .param p1, "listener"    # Lmiui/telephony/SimInfoManager$ISimInfoChangeListener;
 
     .prologue
-    .line 175
+    .line 183
     sget-object v1, Lmiui/telephony/SimInfoAdapter;->sLock:Ljava/lang/Object;
 
     monitor-enter v1
 
-    .line 176
+    .line 184
     :try_start_0
     iget-object v0, p0, Lmiui/telephony/SimInfoAdapter;->mChangeListeners:Ljava/util/HashSet;
 
     invoke-virtual {v0, p1}, Ljava/util/HashSet;->remove(Ljava/lang/Object;)Z
 
-    .line 177
+    .line 185
     monitor-exit v1
 
-    .line 178
+    .line 186
     return-void
 
-    .line 177
+    .line 185
     :catchall_0
     move-exception v0
 
