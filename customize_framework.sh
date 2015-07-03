@@ -27,26 +27,19 @@ function applyPatch() {
 if [ $2 = "$BUILD_OUT/framework" ]
 then
     cp -rf ../android/Editor/* $BUILD_OUT/framework/smali/android/widget/
-    rm -rf $BUILD_OUT/framework/smali/android/telephony/*
-    cp -rf overlay/framework/* $BUILD_OUT/framework/
 fi
 
-if [ $2 = "$BUILD_OUT/framework2" ]
-then
-    rm -rf $BUILD_OUT/framework2/smali/com/android/internal/telephony/*
-    cp -rf overlay/framework2/* $BUILD_OUT/framework2/
-fi
+#if [ $2 = "$BUILD_OUT/framework2" ]
+#then
+#fi
 
-if [ $2 = "$BUILD_OUT/telephony-common" ]
-then
-    rm -rf $BUILD_OUT/telephony-common/smali
-    cp -rf overlay/telephony-common/* $BUILD_OUT/telephony-common/
-fi
+#if [ $2 = "$BUILD_OUT/telephony-common" ]
+#then
+#fi
 
 if [ $2 = "$BUILD_OUT/services" ]
 then
     applyPatch "overlay/services"
-    cp -rf overlay/services/* $BUILD_OUT/services/
 fi
 
 if [ $2 = "$BUILD_OUT/android.policy" ]
