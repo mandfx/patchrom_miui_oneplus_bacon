@@ -82,8 +82,6 @@
 
 .field private mPrefNwMode:[I
 
-.field private mPrefNwModeBackup:[I
-
 .field private mPreferredStackId:[I
 
 .field private mStoredResponse:Ljava/util/HashMap;
@@ -111,7 +109,7 @@
 
     const/4 v3, 0x0
 
-    .line 197
+    .line 196
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
 
     .line 163
@@ -153,55 +151,48 @@
     iput-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwMode:[I
 
     .line 170
-    iget v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mNumPhones:I
-
-    new-array v1, v1, [I
-
-    iput-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwModeBackup:[I
-
-    .line 171
     new-instance v1, Ljava/util/HashMap;
 
     invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
 
     iput-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mStoredResponse:Ljava/util/HashMap;
 
-    .line 174
+    .line 173
     iput-object v3, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemCapInfo:[Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;
 
-    .line 198
+    .line 197
     const-string v1, "Constructor - Enter"
 
     invoke-direct {p0, v1}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->logd(Ljava/lang/String;)V
 
-    .line 200
+    .line 199
     iput-object p3, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mCi:[Lcom/android/internal/telephony/CommandsInterface;
 
-    .line 201
+    .line 200
     iput-object p1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mContext:Landroid/content/Context;
 
-    .line 202
+    .line 201
     invoke-static {}, Lcom/codeaurora/telephony/msim/ModemStackController;->getInstance()Lcom/codeaurora/telephony/msim/ModemStackController;
 
     move-result-object v1
 
     sput-object v1, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemStackController:Lcom/codeaurora/telephony/msim/ModemStackController;
 
-    .line 203
+    .line 202
     iget v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mNumPhones:I
 
     new-array v1, v1, [Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;
 
     iput-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemCapInfo:[Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;
 
-    .line 205
+    .line 204
     sget-object v1, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemStackController:Lcom/codeaurora/telephony/msim/ModemStackController;
 
     const/4 v2, 0x1
 
     invoke-virtual {v1, p0, v2, v3}, Lcom/codeaurora/telephony/msim/ModemStackController;->registerForModemRatCapsAvailable(Landroid/os/Handler;ILjava/lang/Object;)V
 
-    .line 208
+    .line 207
     const/4 v0, 0x0
 
     .local v0, "i":I
@@ -210,17 +201,17 @@
 
     if-ge v0, v1, :cond_0
 
-    .line 209
+    .line 208
     iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPreferredStackId:[I
 
     aput v0, v1, v0
 
-    .line 210
+    .line 209
     iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mCurrentStackId:[I
 
     aput v0, v1, v0
 
-    .line 211
+    .line 210
     iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mStoredResponse:Ljava/util/HashMap;
 
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -229,18 +220,18 @@
 
     invoke-virtual {v1, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 208
+    .line 207
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 214
+    .line 213
     :cond_0
     const-string v1, "Constructor - Exit"
 
     invoke-direct {p0, v1}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->logd(Ljava/lang/String;)V
 
-    .line 215
+    .line 214
     return-void
 .end method
 
@@ -248,12 +239,12 @@
     .locals 2
 
     .prologue
-    .line 189
+    .line 188
     sget-object v0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->sModemBindingPolicyHandler:Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;
 
     if-nez v0, :cond_0
 
-    .line 190
+    .line 189
     new-instance v0, Ljava/lang/RuntimeException;
 
     const-string v1, "ModemBindingPolicyHdlr.getInstance called before make()"
@@ -262,7 +253,7 @@
 
     throw v0
 
-    .line 192
+    .line 191
     :cond_0
     sget-object v0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->sModemBindingPolicyHandler:Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;
 
@@ -277,10 +268,10 @@
     .prologue
     const v3, 0x18e0e
 
-    .line 440
+    .line 428
     const/4 v0, 0x0
 
-    .line 442
+    .line 430
     .local v0, "supportedRatMaskForNwMode":I
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -312,10 +303,10 @@
 
     invoke-direct {p0, v1}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->logd(Ljava/lang/String;)V
 
-    .line 445
+    .line 433
     packed-switch p1, :pswitch_data_0
 
-    .line 565
+    .line 553
     :goto_0
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -337,14 +328,14 @@
 
     invoke-direct {p0, v1}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->logd(Ljava/lang/String;)V
 
-    .line 568
+    .line 556
     invoke-direct {p0, v0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->getNumRatSupportedInMask(I)I
 
     move-result v1
 
     return v1
 
-    .line 447
+    .line 435
     :pswitch_0
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -352,10 +343,10 @@
 
     and-int v0, v1, v3
 
-    .line 449
+    .line 437
     goto :goto_0
 
-    .line 452
+    .line 440
     :pswitch_1
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -365,10 +356,10 @@
 
     and-int v0, v1, v2
 
-    .line 454
+    .line 442
     goto :goto_0
 
-    .line 457
+    .line 445
     :pswitch_2
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -378,10 +369,10 @@
 
     and-int v0, v1, v2
 
-    .line 459
+    .line 447
     goto :goto_0
 
-    .line 462
+    .line 450
     :pswitch_3
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -389,10 +380,10 @@
 
     and-int v0, v1, v3
 
-    .line 464
+    .line 452
     goto :goto_0
 
-    .line 467
+    .line 455
     :pswitch_4
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -400,10 +391,10 @@
 
     and-int/lit16 v0, v1, 0x31f0
 
-    .line 469
+    .line 457
     goto :goto_0
 
-    .line 472
+    .line 460
     :pswitch_5
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -411,10 +402,10 @@
 
     and-int/lit8 v0, v1, 0x70
 
-    .line 474
+    .line 462
     goto :goto_0
 
-    .line 477
+    .line 465
     :pswitch_6
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -422,10 +413,10 @@
 
     and-int/lit16 v0, v1, 0x3180
 
-    .line 479
+    .line 467
     goto :goto_0
 
-    .line 482
+    .line 470
     :pswitch_7
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -435,10 +426,10 @@
 
     and-int v0, v1, v2
 
-    .line 484
+    .line 472
     goto :goto_0
 
-    .line 487
+    .line 475
     :pswitch_8
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -446,10 +437,10 @@
 
     and-int/lit16 v0, v1, 0x71f0
 
-    .line 489
+    .line 477
     goto :goto_0
 
-    .line 492
+    .line 480
     :pswitch_9
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -459,10 +450,10 @@
 
     and-int v0, v1, v2
 
-    .line 494
+    .line 482
     goto :goto_0
 
-    .line 497
+    .line 485
     :pswitch_a
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -472,10 +463,10 @@
 
     and-int v0, v1, v2
 
-    .line 499
+    .line 487
     goto :goto_0
 
-    .line 502
+    .line 490
     :pswitch_b
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -483,10 +474,10 @@
 
     and-int/lit16 v0, v1, 0x4000
 
-    .line 504
+    .line 492
     goto :goto_0
 
-    .line 507
+    .line 495
     :pswitch_c
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -496,10 +487,10 @@
 
     and-int v0, v1, v2
 
-    .line 509
+    .line 497
     goto/16 :goto_0
 
-    .line 512
+    .line 500
     :pswitch_d
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -509,10 +500,10 @@
 
     and-int v0, v1, v2
 
-    .line 514
+    .line 502
     goto/16 :goto_0
 
-    .line 517
+    .line 505
     :pswitch_e
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -522,10 +513,10 @@
 
     and-int v0, v1, v2
 
-    .line 519
+    .line 507
     goto/16 :goto_0
 
-    .line 522
+    .line 510
     :pswitch_f
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -535,10 +526,10 @@
 
     and-int v0, v1, v2
 
-    .line 524
+    .line 512
     goto/16 :goto_0
 
-    .line 527
+    .line 515
     :pswitch_10
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -548,10 +539,10 @@
 
     and-int v0, v1, v2
 
-    .line 529
+    .line 517
     goto/16 :goto_0
 
-    .line 532
+    .line 520
     :pswitch_11
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -561,10 +552,10 @@
 
     and-int v0, v1, v2
 
-    .line 534
+    .line 522
     goto/16 :goto_0
 
-    .line 537
+    .line 525
     :pswitch_12
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -574,10 +565,10 @@
 
     and-int v0, v1, v2
 
-    .line 539
+    .line 527
     goto/16 :goto_0
 
-    .line 542
+    .line 530
     :pswitch_13
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -587,10 +578,10 @@
 
     and-int v0, v1, v2
 
-    .line 544
+    .line 532
     goto/16 :goto_0
 
-    .line 547
+    .line 535
     :pswitch_14
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -600,10 +591,10 @@
 
     and-int v0, v1, v2
 
-    .line 549
+    .line 537
     goto/16 :goto_0
 
-    .line 552
+    .line 540
     :pswitch_15
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -613,10 +604,10 @@
 
     and-int v0, v1, v2
 
-    .line 554
+    .line 542
     goto/16 :goto_0
 
-    .line 557
+    .line 545
     :pswitch_16
     invoke-virtual {p2}, Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;->getSupportedRatBitMask()I
 
@@ -626,10 +617,10 @@
 
     and-int v0, v1, v2
 
-    .line 559
+    .line 547
     goto/16 :goto_0
 
-    .line 445
+    .line 433
     nop
 
     :pswitch_data_0
@@ -665,25 +656,25 @@
     .param p1, "mask"    # I
 
     .prologue
-    .line 573
+    .line 561
     const/4 v0, 0x0
 
-    .line 580
+    .line 568
     .local v0, "noOfOnes":I
     :goto_0
     if-eqz p1, :cond_0
 
-    .line 581
+    .line 569
     add-int/lit8 v1, p1, -0x1
 
     and-int/2addr p1, v1
 
-    .line 582
+    .line 570
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 584
+    .line 572
     :cond_0
     return v0
 .end method
@@ -694,10 +685,10 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 252
+    .line 251
     iput-boolean v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemRatCapabilitiesAvailable:Z
 
-    .line 254
+    .line 253
     invoke-direct {p0, v1}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->updateStackBindingIfRequired(Z)I
 
     move-result v0
@@ -706,7 +697,7 @@
 
     iput-boolean v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mIsSetPrefNwModeInProgress:Z
 
-    .line 255
+    .line 254
     :cond_0
     return-void
 .end method
@@ -716,12 +707,12 @@
     .param p1, "ar"    # Landroid/os/AsyncResult;
 
     .prologue
-    .line 237
+    .line 236
     const/4 v3, 0x0
 
     iput-boolean v3, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mIsSetPrefNwModeInProgress:Z
 
-    .line 239
+    .line 238
     const/4 v1, 0x0
 
     .local v1, "i":I
@@ -730,10 +721,10 @@
 
     if-ge v1, v3, :cond_2
 
-    .line 240
+    .line 239
     const/4 v0, 0x0
 
-    .line 241
+    .line 240
     .local v0, "errorCode":I
     iget-object v3, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mStoredResponse:Ljava/util/HashMap;
 
@@ -747,23 +738,23 @@
 
     check-cast v2, Landroid/os/Message;
 
-    .line 242
+    .line 241
     .local v2, "resp":Landroid/os/Message;
     if-eqz v2, :cond_1
 
-    .line 243
+    .line 242
     iget-object v3, p1, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
     if-eqz v3, :cond_0
 
-    .line 244
+    .line 243
     const/4 v0, 0x2
 
-    .line 246
+    .line 245
     :cond_0
     invoke-direct {p0, v2, v0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->sendResponseToTarget(Landroid/os/Message;I)V
 
-    .line 247
+    .line 246
     iget-object v3, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mStoredResponse:Ljava/util/HashMap;
 
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -774,13 +765,13 @@
 
     invoke-virtual {v3, v4, v5}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 239
+    .line 238
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 250
+    .line 249
     .end local v0    # "errorCode":I
     .end local v2    # "resp":Landroid/os/Message;
     :cond_2
@@ -793,20 +784,20 @@
     .param p2, "stackId"    # I
 
     .prologue
-    .line 359
+    .line 358
     iget v4, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mNumPhones:I
 
     new-array v3, v4, [I
 
-    .line 360
+    .line 359
     .local v3, "numRatSupported":[I
     const/4 v2, 0x0
 
-    .line 361
+    .line 360
     .local v2, "maxNumRatSupported":I
     const/4 v1, 0x0
 
-    .line 364
+    .line 363
     .local v1, "isSupported":Z
     const/4 v0, 0x0
 
@@ -816,7 +807,7 @@
 
     if-ge v0, v4, :cond_1
 
-    .line 365
+    .line 364
     iget-object v4, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemCapInfo:[Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;
 
     aget-object v4, v4, v0
@@ -827,20 +818,20 @@
 
     aput v4, v3, v0
 
-    .line 366
+    .line 365
     aget v4, v3, v0
 
     if-ge v2, v4, :cond_0
 
     aget v2, v3, v0
 
-    .line 364
+    .line 363
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 370
+    .line 369
     :cond_1
     aget v4, v3, p2
 
@@ -848,7 +839,7 @@
 
     const/4 v1, 0x1
 
-    .line 372
+    .line 371
     :cond_2
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -895,10 +886,10 @@
 
     invoke-direct {p0, v4}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->logd(Ljava/lang/String;)V
 
-    .line 375
+    .line 374
     return v1
 
-    .line 372
+    .line 371
     :cond_3
     const-string v4, "Not Supported"
 
@@ -910,12 +901,12 @@
     .param p1, "string"    # Ljava/lang/String;
 
     .prologue
-    .line 587
+    .line 575
     const-string v0, "ModemBindingPolicyHandler"
 
     invoke-static {v0, p1}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 588
+    .line 576
     return-void
 .end method
 
@@ -924,12 +915,12 @@
     .param p1, "string"    # Ljava/lang/String;
 
     .prologue
-    .line 591
+    .line 579
     const-string v0, "ModemBindingPolicyHandler"
 
     invoke-static {v0, p1}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 592
+    .line 580
     return-void
 .end method
 
@@ -940,31 +931,31 @@
     .param p2, "ci"    # [Lcom/android/internal/telephony/CommandsInterface;
 
     .prologue
-    .line 179
+    .line 178
     const-string v0, "ModemBindingPolicyHandler"
 
     const-string v1, "getInstance"
 
     invoke-static {v0, v1}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 180
+    .line 179
     sget-object v0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->sModemBindingPolicyHandler:Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;
 
     if-nez v0, :cond_0
 
-    .line 181
+    .line 180
     new-instance v0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;
 
     invoke-direct {v0, p0, p1, p2}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;-><init>(Landroid/content/Context;Lcom/codeaurora/telephony/msim/MSimUiccController;[Lcom/android/internal/telephony/CommandsInterface;)V
 
     sput-object v0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->sModemBindingPolicyHandler:Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;
 
-    .line 185
+    .line 184
     sget-object v0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->sModemBindingPolicyHandler:Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;
 
     return-object v0
 
-    .line 183
+    .line 182
     :cond_0
     new-instance v0, Ljava/lang/RuntimeException;
 
@@ -981,24 +972,24 @@
     .param p2, "responseCode"    # I
 
     .prologue
-    .line 431
+    .line 419
     if-eqz p1, :cond_0
 
-    .line 432
+    .line 420
     invoke-static {p2}, Lcom/android/internal/telephony/CommandException;->fromRilErrno(I)Lcom/android/internal/telephony/CommandException;
 
     move-result-object v0
 
-    .line 433
+    .line 421
     .local v0, "e":Ljava/lang/Exception;
     const/4 v1, 0x0
 
     invoke-static {p1, v1, v0}, Landroid/os/AsyncResult;->forMessage(Landroid/os/Message;Ljava/lang/Object;Ljava/lang/Throwable;)Landroid/os/AsyncResult;
 
-    .line 434
+    .line 422
     invoke-virtual {p1}, Landroid/os/Message;->sendToTarget()V
 
-    .line 436
+    .line 424
     .end local v0    # "e":Ljava/lang/Exception;
     :cond_0
     return-void
@@ -1008,7 +999,7 @@
     .locals 4
 
     .prologue
-    .line 259
+    .line 258
     const/4 v0, 0x0
 
     .local v0, "i":I
@@ -1017,7 +1008,7 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 260
+    .line 259
     iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mCurrentStackId:[I
 
     sget-object v2, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemStackController:Lcom/codeaurora/telephony/msim/ModemStackController;
@@ -1028,7 +1019,7 @@
 
     aput v2, v1, v0
 
-    .line 261
+    .line 260
     iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemCapInfo:[Lcom/codeaurora/telephony/msim/ModemStackController$ModemCapabilityInfo;
 
     iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mCurrentStackId:[I
@@ -1043,7 +1034,7 @@
 
     aput-object v3, v1, v2
 
-    .line 263
+    .line 262
     iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPreferredStackId:[I
 
     iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mCurrentStackId:[I
@@ -1059,7 +1050,7 @@
     :goto_1
     aput v1, v2, v0
 
-    .line 259
+    .line 258
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
@@ -1067,10 +1058,10 @@
     :cond_0
     move v1, v0
 
-    .line 263
+    .line 262
     goto :goto_1
 
-    .line 265
+    .line 264
     :cond_1
     return-void
 .end method
@@ -1079,7 +1070,7 @@
     .locals 5
 
     .prologue
-    .line 379
+    .line 378
     const/4 v0, 0x0
 
     .local v0, "i":I
@@ -1088,7 +1079,7 @@
 
     if-ge v0, v2, :cond_0
 
-    .line 381
+    .line 380
     :try_start_0
     iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwMode:[I
 
@@ -1108,23 +1099,23 @@
     :try_end_0
     .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 379
+    .line 378
     :goto_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 383
+    .line 382
     :catch_0
     move-exception v1
 
-    .line 384
+    .line 383
     .local v1, "snfe":Landroid/provider/Settings$SettingNotFoundException;
     const-string v2, "getPreferredNetworkMode: Could not find PREFERRED_NETWORK_MODE!!!"
 
     invoke-direct {p0, v2}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->loge(Ljava/lang/String;)V
 
-    .line 385
+    .line 384
     iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwMode:[I
 
     const/4 v3, 0x0
@@ -1133,7 +1124,7 @@
 
     goto :goto_1
 
-    .line 388
+    .line 387
     .end local v1    # "snfe":Landroid/provider/Settings$SettingNotFoundException;
     :cond_0
     return-void
@@ -1143,28 +1134,28 @@
     .locals 4
 
     .prologue
-    .line 319
+    .line 318
     iget-boolean v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemRatCapabilitiesAvailable:Z
 
     if-nez v2, :cond_1
 
-    .line 320
+    .line 319
     const-string v2, "updatePreferredStackIds: Modem Capabilites are not Available. Return!!"
 
     invoke-direct {p0, v2}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->loge(Ljava/lang/String;)V
 
-    .line 356
+    .line 355
     :cond_0
     return-void
 
-    .line 325
+    .line 324
     :cond_1
     invoke-direct {p0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->syncPreferredNwModeFromDB()V
 
-    .line 326
+    .line 325
     invoke-direct {p0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->syncCurrentStackInfo()V
 
-    .line 328
+    .line 327
     const/4 v0, 0x0
 
     .local v0, "curSub":I
@@ -1173,7 +1164,7 @@
 
     if-ge v0, v2, :cond_0
 
-    .line 330
+    .line 329
     iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwMode:[I
 
     aget v2, v2, v0
@@ -1188,7 +1179,7 @@
 
     if-eqz v2, :cond_3
 
-    .line 331
+    .line 330
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -1243,13 +1234,13 @@
 
     invoke-direct {p0, v2}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->logd(Ljava/lang/String;)V
 
-    .line 328
+    .line 327
     :cond_2
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 338
+    .line 337
     :cond_3
     const/4 v1, 0x0
 
@@ -1259,17 +1250,17 @@
 
     if-ge v1, v2, :cond_2
 
-    .line 340
+    .line 339
     if-ne v1, v0, :cond_5
 
-    .line 338
+    .line 337
     :cond_4
     :goto_2
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_1
 
-    .line 342
+    .line 341
     :cond_5
     iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwMode:[I
 
@@ -1285,7 +1276,7 @@
 
     if-eqz v2, :cond_4
 
-    .line 345
+    .line 344
     iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwMode:[I
 
     aget v2, v2, v1
@@ -1300,7 +1291,7 @@
 
     if-eqz v2, :cond_4
 
-    .line 346
+    .line 345
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
@@ -1337,7 +1328,7 @@
 
     invoke-direct {p0, v2}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->logd(Ljava/lang/String;)V
 
-    .line 350
+    .line 349
     iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPreferredStackId:[I
 
     iget-object v3, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mCurrentStackId:[I
@@ -1346,7 +1337,7 @@
 
     aput v3, v2, v0
 
-    .line 351
+    .line 350
     iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPreferredStackId:[I
 
     iget-object v3, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mCurrentStackId:[I
@@ -1363,18 +1354,18 @@
     .param p1, "isBootUp"    # Z
 
     .prologue
-    .line 276
+    .line 275
     const/4 v1, 0x0
 
-    .line 277
+    .line 276
     .local v1, "isUpdateStackBindingRequired":Z
     const/4 v3, 0x0
 
-    .line 279
+    .line 278
     .local v3, "response":I
     invoke-direct {p0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->updatePreferredStackIds()V
 
-    .line 281
+    .line 280
     const/4 v0, 0x0
 
     .local v0, "i":I
@@ -1383,7 +1374,7 @@
 
     if-ge v0, v4, :cond_0
 
-    .line 282
+    .line 281
     iget-object v4, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPreferredStackId:[I
 
     aget v4, v4, v0
@@ -1394,16 +1385,16 @@
 
     if-eq v4, v5, :cond_3
 
-    .line 284
+    .line 283
     const/4 v1, 0x1
 
-    .line 288
+    .line 287
     :cond_0
     if-nez p1, :cond_1
 
     if-eqz v1, :cond_2
 
-    .line 289
+    .line 288
     :cond_1
     const/4 v4, 0x2
 
@@ -1413,7 +1404,7 @@
 
     move-result-object v2
 
-    .line 290
+    .line 289
     .local v2, "msg":Landroid/os/Message;
     sget-object v4, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mModemStackController:Lcom/codeaurora/telephony/msim/ModemStackController;
 
@@ -1423,12 +1414,12 @@
 
     move-result v3
 
-    .line 293
+    .line 292
     .end local v2    # "msg":Landroid/os/Message;
     :cond_2
     return v3
 
-    .line 281
+    .line 280
     :cond_3
     add-int/lit8 v0, v0, 0x1
 
@@ -1437,53 +1428,40 @@
 
 
 # virtual methods
-.method public getBackupPreferredNetworkType(I)I
-    .locals 1
-    .param p1, "subscription"    # I
-
-    .prologue
-    .line 391
-    iget-object v0, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwModeBackup:[I
-
-    aget v0, v0, p1
-
-    return v0
-.end method
-
 .method public handleMessage(Landroid/os/Message;)V
     .locals 2
     .param p1, "msg"    # Landroid/os/Message;
 
     .prologue
-    .line 221
+    .line 220
     iget v1, p1, Landroid/os/Message;->what:I
 
     packed-switch v1, :pswitch_data_0
 
-    .line 234
+    .line 233
     :goto_0
     return-void
 
-    .line 223
+    .line 222
     :pswitch_0
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Landroid/os/AsyncResult;
 
-    .line 224
+    .line 223
     .local v0, "ar":Landroid/os/AsyncResult;
     invoke-direct {p0, v0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->handleUpdateBindingDone(Landroid/os/AsyncResult;)V
 
     goto :goto_0
 
-    .line 228
+    .line 227
     .end local v0    # "ar":Landroid/os/AsyncResult;
     :pswitch_1
     invoke-direct {p0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->handleModemRatCapsAvailable()V
 
     goto :goto_0
 
-    .line 221
+    .line 220
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_1
@@ -1492,166 +1470,127 @@
 .end method
 
 .method public setPreferredNetworkType(IILandroid/os/Message;)V
-    .locals 6
+    .locals 5
     .param p1, "networkType"    # I
     .param p2, "subscription"    # I
     .param p3, "response"    # Landroid/os/Message;
 
     .prologue
-    const/4 v5, 0x1
+    const/4 v4, 0x1
 
-    const/4 v4, 0x0
+    const/4 v3, 0x0
 
-    .line 397
-    iget-boolean v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mIsSetPrefNwModeInProgress:Z
+    .line 392
+    iget-boolean v0, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mIsSetPrefNwModeInProgress:Z
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
 
-    .line 398
-    const-string v1, "setPreferredNetworkType: In Progress:"
+    .line 393
+    const-string v0, "setPreferredNetworkType: In Progress:"
 
-    invoke-direct {p0, v1}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->loge(Ljava/lang/String;)V
+    invoke-direct {p0, v0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->loge(Ljava/lang/String;)V
 
-    .line 399
-    const/4 v1, 0x2
+    .line 394
+    const/4 v0, 0x2
 
-    invoke-direct {p0, p3, v1}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->sendResponseToTarget(Landroid/os/Message;I)V
+    invoke-direct {p0, p3, v0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->sendResponseToTarget(Landroid/os/Message;I)V
 
-    .line 428
+    .line 416
     :goto_0
     return-void
 
-    .line 403
+    .line 398
     :cond_0
-    const-string v1, "0"
+    const-string v0, "0"
 
-    const-string v2, "persist.radio.disable_flexmap"
+    const-string v1, "persist.radio.disable_flexmap"
 
-    const-string v3, "1"
+    const-string v2, "1"
 
-    invoke-static {v2, v3}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    .line 405
-    :try_start_0
-    iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwModeBackup:[I
-
-    iget-object v2, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v2
-
-    const-string v3, "preferred_network_mode"
-
-    invoke-static {v2, v3, p2}, Lcom/codeaurora/telephony/msim/MSimUtils;->getIntAtIndex(Landroid/content/ContentResolver;Ljava/lang/String;I)I
-
-    move-result v2
-
-    aput v2, v1, p2
-    :try_end_0
-    .catch Landroid/provider/Settings$SettingNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 412
-    :goto_1
-    iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    invoke-static {v1, v2}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    const-string v2, "preferred_network_mode"
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    invoke-static {v1, v2, p2, p1}, Lcom/codeaurora/telephony/msim/MSimUtils;->putIntAtIndex(Landroid/content/ContentResolver;Ljava/lang/String;II)Z
+    move-result v0
 
-    .line 416
+    if-eqz v0, :cond_1
+
+    .line 400
+    iget-object v0, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    const-string v1, "preferred_network_mode"
+
+    invoke-static {v0, v1, p2, p1}, Lcom/codeaurora/telephony/msim/MSimUtils;->putIntAtIndex(Landroid/content/ContentResolver;Ljava/lang/String;II)Z
+
+    .line 404
     :cond_1
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "setPreferredNetworkType: nwMode:"
+    const-string v1, "setPreferredNetworkType: nwMode:"
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v0
 
-    const-string v2, ", on subId:"
+    const-string v1, ", on subId:"
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-direct {p0, v1}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->logd(Ljava/lang/String;)V
+    invoke-direct {p0, v0}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->logd(Ljava/lang/String;)V
 
-    .line 418
-    iput-boolean v5, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mIsSetPrefNwModeInProgress:Z
+    .line 406
+    iput-boolean v4, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mIsSetPrefNwModeInProgress:Z
 
-    .line 422
-    invoke-direct {p0, v4}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->updateStackBindingIfRequired(Z)I
+    .line 410
+    invoke-direct {p0, v3}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->updateStackBindingIfRequired(Z)I
 
-    move-result v1
+    move-result v0
 
-    if-ne v1, v5, :cond_2
+    if-ne v0, v4, :cond_2
 
-    .line 423
-    iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mStoredResponse:Ljava/util/HashMap;
+    .line 411
+    iget-object v0, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mStoredResponse:Ljava/util/HashMap;
 
     invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v2
+    move-result-object v1
 
-    invoke-virtual {v1, v2, p3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v0, v1, p3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     goto :goto_0
 
-    .line 407
-    :catch_0
-    move-exception v0
-
-    .line 408
-    .local v0, "snfe":Landroid/provider/Settings$SettingNotFoundException;
-    const-string v1, "getPreferredNetworkMode: Could not find PREFERRED_NETWORK_MODE!!!"
-
-    invoke-direct {p0, v1}, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->loge(Ljava/lang/String;)V
-
-    .line 409
-    iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mPrefNwModeBackup:[I
-
-    aput v4, v1, p2
-
-    goto :goto_1
-
-    .line 425
-    .end local v0    # "snfe":Landroid/provider/Settings$SettingNotFoundException;
+    .line 413
     :cond_2
-    iget-object v1, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mCi:[Lcom/android/internal/telephony/CommandsInterface;
+    iget-object v0, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mCi:[Lcom/android/internal/telephony/CommandsInterface;
 
-    aget-object v1, v1, p2
+    aget-object v0, v0, p2
 
-    invoke-interface {v1, p1, p3}, Lcom/android/internal/telephony/CommandsInterface;->setPreferredNetworkType(ILandroid/os/Message;)V
+    invoke-interface {v0, p1, p3}, Lcom/android/internal/telephony/CommandsInterface;->setPreferredNetworkType(ILandroid/os/Message;)V
 
-    .line 426
-    iput-boolean v4, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mIsSetPrefNwModeInProgress:Z
+    .line 414
+    iput-boolean v3, p0, Lcom/codeaurora/telephony/msim/ModemBindingPolicyHandler;->mIsSetPrefNwModeInProgress:Z
 
     goto :goto_0
 .end method

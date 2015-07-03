@@ -5429,7 +5429,7 @@
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    and-int/lit8 v3, v3, 0x1
+    and-int/lit8 v3, v3, 0x20
 
     if-eqz v3, :cond_3
 

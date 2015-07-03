@@ -427,7 +427,7 @@
     if-eqz v5, :cond_1
 
     .line 272
-    const v6, 0x11070091
+    const v6, 0x1107008f
 
     .line 273
     new-instance v4, Lcom/android/internal/telephony/uicc/UiccCard$1;
@@ -605,7 +605,7 @@
     :cond_6
     if-eqz p1, :cond_7
 
-    const v10, 0x11070090
+    const v10, 0x1107008e
 
     invoke-virtual {v7, v10}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

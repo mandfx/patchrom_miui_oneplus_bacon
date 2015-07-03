@@ -1947,25 +1947,6 @@
     goto :goto_0
 .end method
 
-.method protected resetNumberInSimInfo()V
-    .locals 2
-
-    .prologue
-    .line 646
-    iget-object v0, p0, Lcom/android/internal/telephony/uicc/IccRecords;->mContext:Landroid/content/Context;
-
-    iget-object v1, p0, Lcom/android/internal/telephony/uicc/IccRecords;->mCi:Lcom/android/internal/telephony/CommandsInterface;
-
-    invoke-interface {v1}, Lcom/android/internal/telephony/CommandsInterface;->getInstanceId()I
-
-    move-result v1
-
-    invoke-static {v0, v1}, Lmiui/telephony/SimInfoAdapter;->resetNumber(Landroid/content/Context;I)V
-
-    .line 647
-    return-void
-.end method
-
 .method public setMsisdnNumber(Ljava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
     .locals 7
     .param p1, "alphaTag"    # Ljava/lang/String;
