@@ -1115,7 +1115,7 @@
 .end method
 
 .method public sendMultipartTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;IZI)V
-    .locals 10
+    .locals 0
     .param p1, "destinationAddress"    # Ljava/lang/String;
     .param p2, "scAddress"    # Ljava/lang/String;
     .param p6, "priority"    # I
@@ -1142,187 +1142,12 @@
     .end annotation
 
     .prologue
-    .line 315
     .local p3, "parts":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
     .local p4, "sentIntents":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/app/PendingIntent;>;"
     .local p5, "deliveryIntents":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/app/PendingIntent;>;"
-    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    invoke-virtual/range {p0 .. p5}, Landroid/telephony/SmsManager;->sendMultipartTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
 
-    move-result v1
-
-    if-eqz v1, :cond_0
-
-    .line 316
-    new-instance v1, Ljava/lang/IllegalArgumentException;
-
-    const-string v2, "Invalid destinationAddress"
-
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 318
-    :cond_0
-    if-eqz p3, :cond_1
-
-    invoke-virtual {p3}, Ljava/util/ArrayList;->size()I
-
-    move-result v1
-
-    const/4 v2, 0x1
-
-    if-ge v1, v2, :cond_2
-
-    .line 319
-    :cond_1
-    new-instance v1, Ljava/lang/IllegalArgumentException;
-
-    const-string v2, "Invalid message body"
-
-    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 322
-    :cond_2
-    invoke-virtual {p3}, Ljava/util/ArrayList;->size()I
-
-    move-result v1
-
-    const/4 v2, 0x1
-
-    if-le v1, v2, :cond_4
-
-    .line 324
-    :try_start_0
-    const-string v1, "isms"
-
-    invoke-static {v1}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
-
-    move-result-object v1
-
-    invoke-static {v1}, Lcom/android/internal/telephony/ISms$Stub;->asInterface(Landroid/os/IBinder;)Lcom/android/internal/telephony/ISms;
-
-    move-result-object v0
-
-    .line 325
-    .local v0, "iccISms":Lcom/android/internal/telephony/ISms;
-    if-eqz v0, :cond_3
-
-    .line 326
-    invoke-static {}, Landroid/app/ActivityThread;->currentPackageName()Ljava/lang/String;
-
-    move-result-object v1
-
-    move-object v2, p1
-
-    move-object v3, p2
-
-    move-object v4, p3
-
-    move-object v5, p4
-
-    move-object v6, p5
-
-    move/from16 v7, p6
-
-    move/from16 v8, p7
-
-    move/from16 v9, p8
-
-    invoke-interface/range {v0 .. v9}, Lcom/android/internal/telephony/ISms;->sendMultipartTextWithOptions(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/util/List;IZI)V
-    :try_end_0
-    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 346
-    .end local v0    # "iccISms":Lcom/android/internal/telephony/ISms;
-    :cond_3
-    :goto_0
     return-void
-
-    .line 335
-    :cond_4
-    const/4 v5, 0x0
-
-    .line 336
-    .local v5, "sentIntent":Landroid/app/PendingIntent;
-    const/4 v6, 0x0
-
-    .line 337
-    .local v6, "deliveryIntent":Landroid/app/PendingIntent;
-    if-eqz p4, :cond_5
-
-    invoke-virtual {p4}, Ljava/util/ArrayList;->size()I
-
-    move-result v1
-
-    if-lez v1, :cond_5
-
-    .line 338
-    const/4 v1, 0x0
-
-    invoke-virtual {p4, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v5
-
-    .end local v5    # "sentIntent":Landroid/app/PendingIntent;
-    check-cast v5, Landroid/app/PendingIntent;
-
-    .line 340
-    .restart local v5    # "sentIntent":Landroid/app/PendingIntent;
-    :cond_5
-    if-eqz p5, :cond_6
-
-    invoke-virtual {p5}, Ljava/util/ArrayList;->size()I
-
-    move-result v1
-
-    if-lez v1, :cond_6
-
-    .line 341
-    const/4 v1, 0x0
-
-    invoke-virtual {p5, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v6
-
-    .end local v6    # "deliveryIntent":Landroid/app/PendingIntent;
-    check-cast v6, Landroid/app/PendingIntent;
-
-    .line 343
-    .restart local v6    # "deliveryIntent":Landroid/app/PendingIntent;
-    :cond_6
-    const/4 v1, 0x0
-
-    invoke-virtual {p3, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v4
-
-    check-cast v4, Ljava/lang/String;
-
-    move-object v1, p0
-
-    move-object v2, p1
-
-    move-object v3, p2
-
-    move/from16 v7, p6
-
-    move/from16 v8, p7
-
-    move/from16 v9, p8
-
-    invoke-virtual/range {v1 .. v9}, Landroid/telephony/SmsManager;->sendTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/app/PendingIntent;Landroid/app/PendingIntent;IZI)V
-
-    goto :goto_0
-
-    .line 331
-    .end local v5    # "sentIntent":Landroid/app/PendingIntent;
-    .end local v6    # "deliveryIntent":Landroid/app/PendingIntent;
-    :catch_0
-    move-exception v1
-
-    goto :goto_0
 .end method
 
 .method public sendTextMessage(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/app/PendingIntent;Landroid/app/PendingIntent;)V
