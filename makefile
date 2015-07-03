@@ -60,7 +60,7 @@ local-pre-zip-misc:
 		#change log
 		echo "mijl.changelog.ftpPath=http://www.heavenke.com/miui/xs/bacon/" >> $(ZIP_DIR)/system/build.prop
 		#use auto brightadj
-		echo "persist.power.useautobrightadj=true"
+		echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop
 		#fix QuickSearchBox
 		mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 		#fix selinux
