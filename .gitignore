@@ -1,4 +1,4 @@
 *.zip
 .delete-zip-file-when-clean
-/out
+/out*
 releasetools.pyc
