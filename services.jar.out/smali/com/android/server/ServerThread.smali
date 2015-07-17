@@ -2544,23 +2544,9 @@
     .restart local v169    # "usb":Lcom/android/server/usb/UsbService;
     :goto_31
 
-    const-string v7, "security"
-
-    new-instance v9, Lcom/miui/server/SecurityManagerService;
-
     move/from16 v0, v24
 
-    invoke-direct {v9, v5, v0}, Lcom/miui/server/SecurityManagerService;-><init>(Landroid/content/Context;Z)V
-
-    invoke-static {v7, v9}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
-
-    const-string v7, "MiuiInit"
-
-    new-instance v9, Lcom/miui/server/MiuiInitServer;
-
-    invoke-direct {v9, v5}, Lcom/miui/server/MiuiInitServer;-><init>(Landroid/content/Context;)V
-
-    invoke-static {v7, v9}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+    invoke-static {v5, v0}, Lcom/android/server/SystemServerInjector;->addExtraServices(Landroid/content/Context;Z)V
 
     :try_start_48
     const-string v7, "SystemServer"

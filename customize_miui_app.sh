@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# $1: dir for original miui app 
+# $1: dir for original miui app
 # $2: dir for target miui app
 #
 
@@ -55,5 +55,9 @@ if [ $1 = "Music" ];then
 fi
 
 if [ $1 = "Updater" ];then
+	applyPatch $1 $2
+fi
+
+if [ $1 = "Backup" ];then
 	applyPatch $1 $2
 fi
