@@ -15,7 +15,13 @@
 
 
 # static fields
+.field public static final ACCESS_BLE_SETTINGS:Ljava/lang/String; = "miui.permission.ACCESS_BLE_SETTINGS"
+
 .field public static final ACCESS_BLUETOOTH_SHARE:Ljava/lang/String; = "android.permission.ACCESS_BLUETOOTH_SHARE"
+
+.field public static final ADMIN_BLE_SETTINGS:Ljava/lang/String; = "miui.permission.ADMIN_BLE_SETTINGS"
+
+.field public static final BLE_IMMEDIATE_ALERT:Ljava/lang/String; = "miui.permission.BLE_IMMEDIATE_ALERT"
 
 .field public static final HANDOVER_STATUS:Ljava/lang/String; = "com.android.permission.HANDOVER_STATUS"
 
