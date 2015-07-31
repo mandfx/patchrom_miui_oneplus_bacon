@@ -19,7 +19,7 @@ local-modified-jars :=
 # All apks from MIUI
 local-miui-removed-apps :=
 
-local-miui-modified-apps := miuisystem MiuiHome TeleService Settings SecurityCenter MiuiSystemUI DeskClock Music Updater Backup DownloadProvider
+local-miui-modified-apps := miuisystem MiuiHome TeleService Settings SecurityCenter MiuiSystemUI DeskClock Music Updater DownloadProvider
 
 local-phone-apps :=
 
@@ -61,9 +61,6 @@ local-pre-zip-misc:
 		echo "mijl.changelog.ftpPath=http://www.heavenke.com/miui/xs/bacon/" >> $(ZIP_DIR)/system/build.prop
 		#use auto brightadj
 		echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop
-		#MIUI
-		echo "persist.sys.mcd_config_file=/system/etc/mcd_default.conf" >> $(ZIP_DIR)/system/build.prop
-		echo "persist.sys.klo=on" >> $(ZIP_DIR)/system/build.prop
 		#DATA APPLIST
 		echo "ota-miui-XiaomiBaiduInput.apk" >> $(ZIP_DIR)/data/miui/cust/cn/customized_applist
 		echo "ota-miui-XiaomiBaiduInput.apk" >> $(ZIP_DIR)/data/miui/cust/cn/ota_customized_applist
