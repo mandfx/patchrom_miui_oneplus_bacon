@@ -4736,6 +4736,8 @@
     invoke-static {v4, v5, v7}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
 
     move-result v5
+    
+    const v5, 0x0
 
     if-ne v5, v6, :cond_a
 
