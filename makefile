@@ -55,6 +55,9 @@ local-pre-zip-misc:
 		#density
 		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
 		echo "persist.xsdensity=480" >> $(ZIP_DIR)/system/build.prop
+		#sounds
+		echo "persist.xs.power.sound=1" >> $(ZIP_DIR)/system/build.prop
+		echo "persist.xs.screenshot.sound=1" >> $(ZIP_DIR)/system/build.prop
 		#call audio
 		echo "persist.audio.fluence.voicerec=false" >> $(ZIP_DIR)/system/build.prop
 		echo "persist.audio.fluence.speaker=false" >> $(ZIP_DIR)/system/build.prop
