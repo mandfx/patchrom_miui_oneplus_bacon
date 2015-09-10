@@ -36,6 +36,7 @@ if [ $1 = "Settings" ];then
 	applyPatch $1 $2
 	$XMLMERGYTOOL $1/res/values $2/res/values
 	$XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
+	sed -i s/screen_buttons_timeout/button_backlight_timeout/g `grep screen_buttons_timeout -rl --include="*.smali" $2/smali/*`
 fi
 
 if [ $1 = "SecurityCenter" ];then
