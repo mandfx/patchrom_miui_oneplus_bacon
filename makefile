@@ -51,7 +51,6 @@ local-pre-zip-misc:
 		#edit build.prop
 		sed -i 's/ro.product.manufacturer=OnePlus/ro.product.manufacturer=ONEPLUS/g' $(ZIP_DIR)/system/build.prop
 		echo "#XS ADD" >> $(ZIP_DIR)/system/build.prop
-		echo "ro.miui.has_real_blur=0" >> $(ZIP_DIR)/system/build.prop
 		#density
 		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
 		echo "persist.xsdensity=480" >> $(ZIP_DIR)/system/build.prop
