@@ -40,9 +40,7 @@ if [ $1 = "Settings" ];then
 fi
 
 if [ $1 = "SecurityCenter" ];then
-	#Root 5s > 2s
-	sed -i 0,/0x5/s//0x2/ $2/smali/com/miui/permcenter/root/RootApplyActivity.smali
-	sed -i 0,/0x5/s//0x1/ $2/smali/com/miui/permcenter/root/RootApplyActivity.smali
+	applyPatch $1 $2
 fi
 
 if [ $1 = "MiuiSystemUI" ];then
