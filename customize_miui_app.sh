@@ -53,9 +53,7 @@ fi
 if [ $1 = "MiuiSystemUI" ];then
 	applyPatch $1 $2
 	$XMLMERGYTOOL $1/res/values $2/res/values
-	#not changeID for MiuiSystemUI
-	#because the screenshot has some bugs
-	#changeID $1
+	changeID $1
 fi
 
 if [ $1 = "DeskClock" ];then
