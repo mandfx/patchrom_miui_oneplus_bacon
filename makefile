@@ -67,8 +67,8 @@ local-pre-zip-misc:
 		#use auto brightadj
 		echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop
 		#DATA APPLIST
-		echo "ota-miui-XiaomiBaiduInput.apk" >> $(ZIP_DIR)/data/miui/cust/cn/customized_applist
-		echo "ota-miui-XiaomiBaiduInput.apk" >> $(ZIP_DIR)/data/miui/cust/cn/ota_customized_applist
+		cat applist >> $(ZIP_DIR)/data/miui/cust/cn/customized_applist
+		cat applist >> $(ZIP_DIR)/data/miui/cust/cn/ota_customized_applist
 		#fix QuickSearchBox
 		mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
 		#fix selinux
