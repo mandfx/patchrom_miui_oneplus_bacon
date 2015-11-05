@@ -68,6 +68,9 @@ local-pre-zip-misc:
 		echo "mijl.changelog.ftpPath=http://www.heavenke.com/miui/xs/bacon/" >> $(ZIP_DIR)/system/build.prop
 		#use auto brightadj
 		echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop
+		#security patch
+		echo "ro.build.version.security_patch=2015-11-01" >> $(ZIP_DIR)/system/build.prop
+		echo "ro.build.version.base_os=" >> $(ZIP_DIR)/system/build.prop
 		#DATA APPLIST
 		cat applist >> $(ZIP_DIR)/data/miui/cust/cn/customized_applist
 		cat applist >> $(ZIP_DIR)/data/miui/cust/cn/ota_customized_applist
