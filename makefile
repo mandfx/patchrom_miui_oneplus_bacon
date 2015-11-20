@@ -53,7 +53,6 @@ local-pre-zip-misc:
 		cp -a -rf other/system/* $(ZIP_DIR)/system/
 		cp -a -rf other/data/* $(ZIP_DIR)/data/
 		#edit build.prop
-		sed -i 's/ro.product.manufacturer=OnePlus/ro.product.manufacturer=ONEPLUS/g' $(ZIP_DIR)/system/build.prop
 		echo "#XS ADD" >> $(ZIP_DIR)/system/build.prop
 		#density
 		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
