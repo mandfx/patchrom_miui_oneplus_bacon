@@ -1833,7 +1833,7 @@
 
     #invoke-static {v5, p3}, Lcom/android/server/power/PowerManagerServiceInjector;->checkWhenSleepRequested(Ljava/util/ArrayList;I)V
     invoke-static {p3}, Lcom/android/server/power/PowerManagerServiceInjector;->checkWhenSleepRequestedLocked(I)V
-    
+
     const/16 v5, 0xaa4
 
     invoke-static {v5, v2}, Landroid/util/EventLog;->writeEvent(II)I
@@ -2291,7 +2291,7 @@
     or-int/lit8 v0, v0, 0x4
 
     iput v0, p0, Lcom/android/server/power/PowerManagerService;->mDirty:I
-    
+
     invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
     move-result-wide v2
@@ -4767,7 +4767,7 @@
     invoke-static {v4, v5, v7}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
 
     move-result v5
-    
+
     const v5, 0x0
 
     if-ne v5, v6, :cond_a
@@ -5650,6 +5650,18 @@
 
     .line 930
     .local v0, "index":I
+
+    invoke-static {}, Lcom/android/server/power/PowerManagerServiceInjector;->checkWakelockBlockedEnabled()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_miui_0
+
+    monitor-exit v5
+
+    return-void
+
+    :cond_miui_0
     const-string v4, "persist.cne.feature"
 
     const/4 v6, 0x0
@@ -8345,7 +8357,7 @@
     iget-object v3, p0, Lcom/android/server/power/PowerManagerService;->mLock:Ljava/lang/Object;
 
     invoke-static {p0, v0, v1, v2, v3}, Lcom/android/server/power/PowerManagerServiceInjector;->init(Lcom/android/server/power/PowerManagerService;Lcom/android/server/BatteryService;Lcom/android/server/power/DisplayPowerRequest;Ljava/util/ArrayList;Ljava/lang/Object;)V
-    
+
     iget-object v0, p0, Lcom/android/server/power/PowerManagerService;->mDisplayBlanker:Lcom/android/server/power/PowerManagerService$DisplayBlankerImpl;
 
     invoke-virtual {v0}, Lcom/android/server/power/PowerManagerService$DisplayBlankerImpl;->unblankAllDisplays()V
