@@ -76,7 +76,14 @@ function MakeOTA() {
     	    ls -h -l ROM/*target*
     	    read last_target_zip
             echo -e "\e[1;32mOTA, Version is $last_target_zip-$BUILD_NUMBER\e[0m"
-    	    ../tools/releasetools/ota_from_target_files -k ../build/security/testkey -i ROM/$last_target_zip-target.zip ROM/$BUILD_NUMBER-target.zip ROM/OTA-$last_target_zip-$BUILD_NUMBER.zip;;
+            # private certificate
+            if [ -f "security/passwd" ];then
+                export ANDROID_PW_FILE=security/passwd
+                CERTIFICATE_DIR=security
+            else
+                CERTIFICATE_DIR=../build/security
+            fi
+    	    ../tools/releasetools/ota_from_target_files -k $CERTIFICATE_DIR/testkey -i ROM/$last_target_zip-target.zip ROM/$BUILD_NUMBER-target.zip ROM/OTA-$last_target_zip-$BUILD_NUMBER.zip;;
         N|n|NO|no)
             echo -e "\e[1;31mWarning:Not Make OTA!!!\e[0m";;
     esac

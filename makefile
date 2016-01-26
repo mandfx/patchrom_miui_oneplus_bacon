@@ -29,6 +29,9 @@ local-phone-priv-apps :=
 
 local-density := XXHDPI
 
+# The certificate for release version
+local-certificate-dir := security
+
 include phoneapps.mk
 
 PORT_PRODUCT := bacon_xs
