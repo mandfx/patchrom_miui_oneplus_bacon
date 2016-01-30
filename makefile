@@ -67,7 +67,7 @@ local-pre-zip-misc:
 		echo "persist.audio.fluence.voicerec=false" >> $(ZIP_DIR)/system/build.prop
 		echo "persist.audio.fluence.speaker=false" >> $(ZIP_DIR)/system/build.prop
 		#change log
-		echo "mijl.changelog.ftpPath=http://www.heavenke.com/miui/xs/bacon/" >> $(ZIP_DIR)/system/build.prop
+		echo "mijl.changelog.ftpPath=http://notes.imxs.me/miui_changelog/bacon/" >> $(ZIP_DIR)/system/build.prop
 		#use auto brightadj
 		echo "persist.power.useautobrightadj=true" >> $(ZIP_DIR)/system/build.prop
 		#PowerKeeper and Whetstone
