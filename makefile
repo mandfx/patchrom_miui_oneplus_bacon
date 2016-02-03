@@ -86,4 +86,5 @@ local-pre-zip-misc:
 		rm -rf $(ZIP_DIR)/system/bin/dexopt_vendor
 		cp -rf stockrom/system/bin/dexopt $(ZIP_DIR)/system/bin/dexopt
 		#fix mdnsd
-		mv $(ZIP_DIR)/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
+		cp -rf stockrom/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
+		rm -rf $(ZIP_DIR)/system/bin/mdnsd
