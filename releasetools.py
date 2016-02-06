@@ -37,12 +37,6 @@ def WritePolicyConfig(info):
     except KeyError:
         print "warning: file_context missing from target;"
     
-def CreateSymlinks(info):
-    links_list = """ui_print("Creating miui core links...");
-symlink("/data/miui/miuisdk.apk", "/system/framework/miuisdk.jar");
-symlink("/data/miui/miuisystem.apk", "/system/framework/miuisystem.jar");"""
-    info.script.AppendExtra(links_list)
-    
 def SetPermissions(info):
     permissions = """ui_print("Set permissions...");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/xbin");"""
@@ -76,7 +70,6 @@ def FullOTA_InstallEnd(info):
     MountSystem(info)
     DeleteSystem(info)
     WritePolicyConfig(info)
-    CreateSymlinks(info)
     SetPermissions(info)
     InstallBased(info)
 
