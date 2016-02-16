@@ -59,10 +59,6 @@
 
     iput v0, p0, Lcom/android/internal/telephony/Connection;->mCnapNamePresentation:I
 
-    const/4 v0, 0x0
-
-    iput v0, p0, Lcom/android/internal/telephony/Connection;->mFirewallCode:I
-
     .line 32
     new-instance v0, Lcom/android/internal/telephony/CallDetails;
 
@@ -71,6 +67,10 @@
     iput-object v0, p0, Lcom/android/internal/telephony/Connection;->callDetails:Lcom/android/internal/telephony/CallDetails;
 
     .line 33
+    const/4 v0, 0x0
+
+    iput v0, p0, Lcom/android/internal/telephony/Connection;->mFirewallCode:I
+    
     const/4 v0, 0x0
 
     iput-object v0, p0, Lcom/android/internal/telephony/Connection;->callModifyRequest:Lcom/android/internal/telephony/CallModify;
