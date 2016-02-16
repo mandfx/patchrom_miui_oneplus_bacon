@@ -44,24 +44,25 @@ function CopyFullota() {
     fi
     if [ -f out/fullota.zip ]; then
         echo -e "\e[1;32mCopy Fullota\e[0m"
-        mv out/fullota.zip ROM/$BUILD_NUMBER-fullota.zip
+        mv -f out/fullota.zip ROM/$BUILD_NUMBER-fullota.zip
     else
         echo -e "\e[1;31mWarning:Not Found Fullota!!!\e[0m"
     fi
     if [ -f out/target_files.zip ]; then
         echo -e "\e[1;32mCopy Target\e[0m"
-        mv out/target_files.zip ROM/$BUILD_NUMBER-target.zip
+        mv -f out/target_files.zip ROM/$BUILD_NUMBER-target.zip
     else
         echo -e "\e[1;31mWarning:Not Found Target!!!\e[0m"
     fi
-    if [ -f ROM/$BUILD_NUMBER-fullota.zip ]; then
+    if [ -d out/ZIP ]; then
         echo -e "\e[1;32mCopy out\e[0m"
+        rm -rf ROM/$BUILD_NUMBER-out
         rm -rf out/*-tozip
         rm -rf out/*.apk
         rm -rf out/*.zip
         rm -rf out/*.jar
         rm -rf out/target_files
-        mv out ROM/$BUILD_NUMBER-out
+        mv -f out ROM/$BUILD_NUMBER-out
     else
         echo -e "\e[1;31mWarning:Not Found out!!!\e[0m"
     fi
