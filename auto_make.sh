@@ -30,7 +30,7 @@ function MakeFullota() {
     case $arg in
     	Y|y|YES|yes)
     	    echo -e "\e[1;32mClean\e[0m"
-    	    make clean
+    	    rm -rf .delete-zip-file-when-clean zi* stockrom.zip out releasetools.pyc
             echo -e "\e[1;32mFullota, Version is $BUILD_NUMBER\e[0m"
             make fullota BUILD_NUMBER=$BUILD_NUMBER;;
         N|n|NO|no)
