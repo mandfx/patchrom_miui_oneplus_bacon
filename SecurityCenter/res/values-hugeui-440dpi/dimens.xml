@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="list_preferred_item_height">@miui:dimen/list_preferred_item_height_small</item>
+</resources>

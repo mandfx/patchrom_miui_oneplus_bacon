@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="config_icon_width">61.099976dip</dimen>
+    <dimen name="config_icon_height">61.099976dip</dimen>
+    <dimen name="workspace_cell_padding_bottom">109.0dip</dimen>
+    <dimen name="thumbnail_icon_width">52.0dip</dimen>
+    <dimen name="thumbnail_icon_height">52.0dip</dimen>
+    <dimen name="hotseats_padding_side">1.0dip</dimen>
+    <dimen name="hotseats_padding_bottom">0.0dip</dimen>
+    <dimen name="hotseats_height">84.0dip</dimen>
+    <dimen name="folder_preview_top_margin">7.6299744dip</dimen>
+    <dimen name="icon_title_padding_bottom">4.0dip</dimen>
+    <dimen name="workspace_cell_width">82.0dip</dimen>
+    <dimen name="workspace_cell_height">84.0dip</dimen>
+    <dimen name="workspace_cell_padding_top">3.0dip</dimen>
+    <dimen name="folder_content_width">292.0dip</dimen>
+    <dimen name="folder_content_padding_left">5.0dip</dimen>
+    <dimen name="folder_content_padding_top">5.0dip</dimen>
+    <dimen name="folder_content_padding_right">0.0dip</dimen>
+    <dimen name="folder_content_padding_bottom">5.0dip</dimen>
+    <dimen name="folder_item_vertical_spacing">6.0dip</dimen>
+    <dimen name="folder_item_horizontal_spacing">24.0dip</dimen>
+    <dimen name="hotseats_padding_top">0.0dip</dimen>
+    <dimen name="workspace_icon_text_size">11.0sp</dimen>
+    <dimen name="editing_panel_height">136.0dip</dimen>
+    <dimen name="recommend_loading_item_padding">22.0dip</dimen>
+    <dimen name="status_bar_height">20.0dip</dimen>
+    <dimen name="workspace_cell_padding_side">13.0dip</dimen>
+    <dimen name="workspace_indicator_margin_bottom">87.0dip</dimen>
+    <dimen name="folder_top_padding">91.0dip</dimen>
+    <dimen name="folder_bottom_padding">100.0dip</dimen>
+    <dimen name="folder_preview_item_padding">1.0dip</dimen>
+    <dimen name="folder_content_edit_mode_height">285.0dip</dimen>
+    <dimen name="workspace_icon_text_notification_size">10.0sp</dimen>
+    <dimen name="folder_preview_width">45.69998dip</dimen>
+    <dimen name="folder_preview_height">45.69998dip</dimen>
+</resources>

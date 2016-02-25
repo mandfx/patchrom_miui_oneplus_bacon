@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="StylePowerCenterMainItem">
+        <item name="android:background">@miui:drawable/preference_item_bg</item>
+        <item name="android:paddingTop">@miui:dimen/preference_item_padding_inner</item>
+        <item name="android:paddingBottom">@miui:dimen/preference_item_padding_inner</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@miui:dimen/list_preferred_item_height_small</item>
+    </style>
+</resources>
