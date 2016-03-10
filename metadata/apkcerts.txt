@@ -12,6 +12,7 @@ name="ota-miui-oppo-SlowShutterCamera.apk" certificate="build/target/product/sec
 name="ota-miui-oppo-SuperZoomCamera.apk" certificate="build/target/product/security/shared.x509.pem" private_key="build/target/product/security/shared.pk8"
 name="ota-miui-oppo-UbifocusCamera.apk" certificate="build/target/product/security/shared.x509.pem" private_key="build/target/product/security/shared.pk8"
 name="ota-miui-XiaomiBaiduInput.apk" certificate="PRESIGNED" private_key=""
+name="2.2.34-boeffla-config-v2.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
 name="CyanogenModCamera.apk" certificate="build/target/product/security/platform.x509.pem" private_key="build/target/product/security/platform.pk8"
 name="OppoCamera.apk" certificate="build/target/product/security/shared.x509.pem" private_key="build/target/product/security/shared.pk8"
 name="Camera.apk" certificate="build/target/product/security/shared.x509.pem" private_key="build/target/product/security/shared.pk8"
