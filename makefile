@@ -57,6 +57,8 @@ local-pre-zip-misc:
 		cp -a -rf other/data/* $(ZIP_DIR)/data/
 		#edit build.prop
 		echo "#XS ADD" >> $(ZIP_DIR)/system/build.prop
+		#settings google version display
+		sed -i 's/bacon-userdebug 4.4.4 KTU84Q 975abf16f0 test-keys/KTU84Q/g' $(ZIP_DIR)/system/build.prop
 		#density
 		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
 		echo "persist.xsdensity=480" >> $(ZIP_DIR)/system/build.prop
