@@ -39,6 +39,8 @@ fi
 if [ $2 = "$BUILD_OUT/services" ]
 then
 	applyPatch "overlay/services"
+    #fix button light timeout
+    sed -i 's/screen_buttons_timeout/button_backlight_timeout/g' $2/smali/com/android/server/power/ButtonLightController.smali
 fi
 
 if [ $2 = "$BUILD_OUT/android.policy" ]

@@ -61,6 +61,8 @@ fi
 if [ $1 = "MiuiSystemUI" ];then
     applyPatch $1 $2
     $XMLMERGYTOOL $1/res/values $2/res/values
+    #fix torch light
+    sed -i 's/\/sys\/class\/leds\/flashlight\/brightness/\/sys\/class\/leds\/torch-light\/brightness/g' $2/smali/com/android/systemui/TorchServiceView.smali
     changeID $1
 fi
 
