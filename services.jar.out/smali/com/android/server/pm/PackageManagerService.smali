@@ -19973,6 +19973,14 @@
 
     if-nez v0, :cond_0
 
+    const-string v0, "com.miui.player"
+
+    invoke-virtual {v0, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
     invoke-static {v1, v4}, Lcom/android/server/pm/PackageManagerService;->compareSignatures([Landroid/content/pm/Signature;[Landroid/content/pm/Signature;)I
 
     move-result v1
@@ -33303,6 +33311,14 @@
     move-result v1
 
     if-nez v1, :cond_1
+
+    const-string v1, "com.miui.player"
+
+    iget-object v3, p2, Landroid/content/pm/PackageParser$Package;->packageName:Ljava/lang/String;
+
+    invoke-virtual {v1, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
 
     .line 4053
     iget-object v1, p1, Lcom/android/server/pm/PackageSetting;->signatures:Lcom/android/server/pm/PackageSignatures;
