@@ -25,6 +25,8 @@ if [ $2 = "$BUILD_OUT/framework" ]
 then
 	cp -rf ../android/Editor/* $BUILD_OUT/framework/smali/android/widget/
 	cp -rf overlay/framework/* $BUILD_OUT/framework
+	sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $2/smali/android/util/DisplayMetrics.smali
+	sed -i 's/persist.miui.density_v2/persist.sys.density/g' $2/smali/android/util/MiuiDisplayMetrics.smali
 fi
 
 #if [ $2 = "$BUILD_OUT/framework2" ]

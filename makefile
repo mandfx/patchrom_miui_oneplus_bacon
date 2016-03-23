@@ -60,8 +60,8 @@ local-pre-zip-misc:
 		#settings google version display
 		sed -i 's/bacon-userdebug 4.4.4 KTU84Q 975abf16f0 test-keys/KTU84Q/g' $(ZIP_DIR)/system/build.prop
 		#density
-		sed -i 's/ro.sf.lcd_density/persist.xsdensity/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
-		echo "persist.xsdensity=480" >> $(ZIP_DIR)/system/build.prop
+		sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
+		echo "persist.sys.density=480" >> $(ZIP_DIR)/system/build.prop
 		#sounds
 		echo "persist.xs.power.sound=1" >> $(ZIP_DIR)/system/build.prop
 		echo "persist.xs.screenshot.sound=1" >> $(ZIP_DIR)/system/build.prop
