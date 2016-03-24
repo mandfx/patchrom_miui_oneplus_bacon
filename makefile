@@ -89,20 +89,4 @@ local-pre-zip-misc:
 		rm -rf $(ZIP_DIR)/system/bin/dexopt_vendor
 		cp -rf stockrom/system/bin/dexopt $(ZIP_DIR)/system/bin/dexopt
 		#fix mdnsd
-		cp -rf stockrom/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_original
-		rm -rf $(ZIP_DIR)/system/bin/mdnsd
-
-.PHONY : %.sign-plat-app %.sign-plat-priv-app
-%.sign-plat-app : out/%
-	java -jar $(TOOL_DIR)/signapk.jar security/platform.x509.pem security/platform.pk8  $< $<.signed
-	mv $<.signed $<
-	@echo push -- to --- phone
-	adb remount
-	adb push $< /system/app/
-
-%.sign-plat-priv-app : out/%
-	java -jar $(TOOL_DIR)/signapk.jar security/platform.x509.pem security/platform.pk8  $< $<.signed
-	mv $<.signed $<
-	@echo push -- to --- phone
-	adb remount
-	adb push $< /system/priv-app/
+		-mv -f $(ZIP_DIR)/system/bin/mdnsd $(ZIP_DIR)/system/bin/mdnsd_vendor
