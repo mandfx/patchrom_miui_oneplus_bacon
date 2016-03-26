@@ -52,6 +52,8 @@ if [ $1 = "Settings" ];then
     $XMLMERGYTOOL $1/res/values-zh-rCN $2/res/values-zh-rCN
     #fix button light timeout
     sed -i 's/screen_buttons_timeout/button_backlight_timeout/g' $2/smali/com/android/settings/KeySettings.smali
+    #remove mi sound
+    sed -i 's/<bool name="support_dirac">true<\/bool>/<bool name="support_dirac">false<\/bool>/' $2/res/values/bools.xml
 fi
 
 if [ $1 = "SecurityCenter" ];then
