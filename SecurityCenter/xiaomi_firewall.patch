@@ -1,15 +1,16 @@
-From a4ad031b9f75966aaac25c6b0ffb1e8b3a933ede Mon Sep 17 00:00:00 2001
-From: jchjian <671346@qq.com>
-Date: Sat, 27 Feb 2016 19:55:14 +0800
+From 58b696a9b7d6a5b5fae37919c8ae38e3e7eeeadc Mon Sep 17 00:00:00 2001
+From: X-s <imxs1107@gmail.com>
+Date: Tue, 29 Mar 2016 11:55:52 +0800
 Subject: [PATCH] fix network control
 
+Signed-off-by: X-s <imxs1107@gmail.com>
 ---
  .../com/miui/networkassistant/firewall/impl/XiaomiFirewall.smali      | 2 ++
  .../com/miui/networkassistant/service/tm/SocketTaggerManager.smali    | 4 ++++
  2 files changed, 6 insertions(+)
- 
---- a/NetworkAssistant2/smali/com/miui/networkassistant/firewall/impl/XiaomiFirewall.smali
-+++ b/NetworkAssistant2/smali/com/miui/networkassistant/firewall/impl/XiaomiFirewall.smali
+
+--- a/SecurityCenter/smali/com/miui/networkassistant/firewall/impl/XiaomiFirewall.smali
++++ b/SecurityCenter/smali/com/miui/networkassistant/firewall/impl/XiaomiFirewall.smali
 @@ -122,6 +122,8 @@
  
      move-result-object v0
@@ -19,8 +20,8 @@ Subject: [PATCH] fix network control
      sput-object v0, Lcom/miui/networkassistant/firewall/impl/XiaomiFirewall;->SERVER_SOCKET_FD_NAME:Ljava/lang/String;
  
      return-void
---- a/NetworkAssistant2/smali/com/miui/networkassistant/service/tm/SocketTaggerManager.smali
-+++ b/NetworkAssistant2/smali/com/miui/networkassistant/service/tm/SocketTaggerManager.smali
+--- a/SecurityCenter/smali/com/miui/networkassistant/service/tm/SocketTaggerManager.smali
++++ b/SecurityCenter/smali/com/miui/networkassistant/service/tm/SocketTaggerManager.smali
 @@ -69,6 +69,8 @@
  
      move-result-object v0
@@ -40,5 +41,5 @@ Subject: [PATCH] fix network control
  
      return-void
 -- 
-1.9.1
+2.5.0
 
