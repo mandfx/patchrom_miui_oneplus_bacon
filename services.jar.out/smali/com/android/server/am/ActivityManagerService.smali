@@ -50464,12 +50464,24 @@
 
     move-result v4
 
+    invoke-static {v4}, Landroid/os/UserHandle;->isApp(I)Z
+
+    move-result v5
+
+    if-nez v5, :cond_miui_00
+
     invoke-static {v4, p2}, Landroid/os/UserHandle;->isSameUser(II)Z
 
     move-result v4
 
-    if-eqz v4, :cond_1
+    if-nez v4, :cond_1
 
+    :cond_miui_00
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_1
+
+    :cond_1
     invoke-virtual {v3, v1}, Landroid/util/SparseArray;->valueAt(I)Ljava/lang/Object;
 
     move-result-object v4
@@ -50477,11 +50489,6 @@
     check-cast v4, Lcom/android/server/am/ProcessRecord;
 
     goto :goto_0
-
-    :cond_1
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_1
 
     .end local v0    # "N":I
     .end local v1    # "i":I
