@@ -33681,6 +33681,20 @@
     goto :goto_3
 .end method
 
+.method public clearDeadAppFromNative()V
+    .locals 3
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mLruProcesses:Ljava/util/ArrayList;
+
+    iget-object v1, p0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuThread:Ljava/lang/Thread;
+
+    iget-object v2, p0, Lcom/android/server/am/ActivityManagerService;->mProcessCpuTracker:Lcom/android/internal/os/ProcessCpuTracker;
+
+    invoke-static {p0, v0, v1, v2}, Lcom/android/server/am/ActivityManagerServiceInjector;->clearDeadAppFromNative(Lcom/android/server/am/ActivityManagerService;Ljava/util/ArrayList;Ljava/lang/Thread;Lcom/android/internal/os/ProcessCpuTracker;)V
+
+    return-void
+.end method
 .method public clearPendingBackup()V
     .locals 2
 
