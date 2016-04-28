@@ -1139,7 +1139,84 @@
     .locals 4
 
     .prologue
-    .line 2244
+    const/4 v2, 0x1
+
+    const-string v0, "bacon_xs"
+
+    const-string v1, "ro.product.mod_device"
+
+    invoke-static {v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_lp_0
+
+    const-string v0, "normal"
+
+    invoke-static {v2, v0}, Lcom/android/server/power/ShutdownThread;->rebootOrShutdown(ZLjava/lang/String;)V
+
+    :cond_lp_0
+    const-string v0, "bacon"
+
+    const-string v1, "ro.product.name"
+
+    invoke-static {v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_lp_1
+
+    const-string v0, "normal"
+
+    invoke-static {v2, v0}, Lcom/android/server/power/ShutdownThread;->rebootOrShutdown(ZLjava/lang/String;)V
+
+    :cond_lp_1
+    const-string v0, "A0001"
+
+    const-string v1, "ro.product.device"
+
+    invoke-static {v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_lp_2
+
+    const-string v0, "normal"
+
+    invoke-static {v2, v0}, Lcom/android/server/power/ShutdownThread;->rebootOrShutdown(ZLjava/lang/String;)V
+
+    :cond_lp_2
+    const-string v0, "A0001"
+
+    const-string v1, "ro.product.model"
+
+    invoke-static {v1}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_lp_3
+
+    const-string v0, "normal"
+
+    invoke-static {v2, v0}, Lcom/android/server/power/ShutdownThread;->rebootOrShutdown(ZLjava/lang/String;)V
+
+    :cond_lp_3
     const-string v0, "bootanim"
 
     invoke-static {v0}, Landroid/os/SystemService;->isRunning(Ljava/lang/String;)Z
@@ -1172,13 +1249,6 @@
     iget-boolean v0, p0, Lcom/android/server/power/PowerManagerService;->mBootCompleted:Z
 
     if-nez v0, :cond_1
-
-    .line 2252
-    const-string v0, "PowerManagerService"
-
-    const-string v2, "Boot animation finished."
-
-    invoke-static {v0, v2}, Landroid/util/Slog;->i(Ljava/lang/String;Ljava/lang/String;)I
 
     .line 2253
     invoke-direct {p0}, Lcom/android/server/power/PowerManagerService;->handleBootCompletedLocked()V
@@ -2275,9 +2345,9 @@
     or-int/lit8 v0, v0, 0x4
 
     iput v0, p0, Lcom/android/server/power/PowerManagerService;->mDirty:I
-    
+
     invoke-static {}, Lcom/android/server/power/PowerManagerServiceInjector;->updateAllScreenWakeLockDisabledStateLocked()V
-    
+
     invoke-virtual {p0}, Lcom/android/server/power/PowerManagerService;->updatePowerStateLocked()V
 
     .line 1801
@@ -3004,7 +3074,7 @@
     iget-boolean v0, p1, Lcom/android/server/power/PowerManagerService$WakeLock;->mDisabled:Z
 
     if-nez v0, :cond_0
-    
+
     const/4 v0, 0x1
 
     iput-boolean v0, p1, Lcom/android/server/power/PowerManagerService$WakeLock;->mNotifiedAcquired:Z
@@ -5474,7 +5544,7 @@
     iget-boolean v3, v2, Lcom/android/server/power/PowerManagerService$WakeLock;->mDisabled:Z
 
     if-nez v3, :cond_0
-    
+
     iget v3, p0, Lcom/android/server/power/PowerManagerService;->mWakeLockSummary:I
 
     or-int/lit8 v3, v3, 0x1
@@ -5719,7 +5789,7 @@
 
     .line 952
     invoke-virtual {v3, p2}, Lcom/android/server/power/PowerManagerService$WakeLock;->updateWorkSource(Landroid/os/WorkSource;)V
-    
+
     invoke-static {v3}, Lcom/android/server/power/PowerManagerServiceInjector;->updateWakeLockDisabledStateLocked(Lcom/android/server/power/PowerManagerService$WakeLock;)Z
 
     .line 953
