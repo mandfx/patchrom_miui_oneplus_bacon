@@ -10,10 +10,10 @@ Subject: [PATCH] add double tap action, thanks YeGui
 
 --- a/android.policy/smali/com/android/internal/policy/impl/BaseMiuiPhoneWindowManager.smali
 +++ b/android.policy/smali/com/android/internal/policy/impl/BaseMiuiPhoneWindowManager.smali
-@@ -1866,6 +1866,15 @@
+@@ -2260,6 +2260,15 @@
 
-     .end local v7    # "sbm":Landroid/app/StatusBarManager;
-     :cond_e
+     if-nez v11, :cond_f
+
 +    invoke-super {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->MyhomeKeyAction()Z
 +
 +    move-result v11
