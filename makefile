@@ -21,7 +21,7 @@ local-miui-removed-apps :=
 
 local-miui-modified-apps := miuisystem MiuiHome TeleService Settings SecurityCenter \
 			MiuiSystemUI DeskClock Updater DownloadProvider \
-			XiaomiServiceFramework ThemeManager
+			XiaomiServiceFramework
 
 local-phone-apps :=
 
