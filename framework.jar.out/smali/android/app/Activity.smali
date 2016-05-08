@@ -5787,39 +5787,30 @@
 .end method
 
 .method protected onResume()V
-    .locals 2
+    .locals 1
 
     .prologue
     invoke-virtual {p0}, Landroid/app/Activity;->getApplicationContext()Landroid/content/Context;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-static {v1}, Lcom/miui/whetstone/app/WhetstoneAppManager;->getInstance(Landroid/content/Context;)Lcom/miui/whetstone/app/WhetstoneAppManager;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p0}, Lcom/miui/whetstone/app/WhetstoneAppManager;->onResume(Landroid/app/Activity;)V
-    
-    invoke-virtual {p0}, Landroid/app/Activity;->getApplication()Landroid/app/Application;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p0}, Landroid/app/Application;->dispatchActivityResumed(Landroid/app/Activity;)V
-
-    const/4 v1, 0x1
-
-    iput-boolean v1, p0, Landroid/app/Activity;->mCalled:Z
-
-    const-string v1, "security"
-
-    invoke-virtual {p0, v1}, Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/miui/whetstone/app/WhetstoneAppManager;->getInstance(Landroid/content/Context;)Lcom/miui/whetstone/app/WhetstoneAppManager;
 
     move-result-object v0
 
-    check-cast v0, Lmiui/security/SecurityManager;
+    invoke-virtual {v0, p0}, Lcom/miui/whetstone/app/WhetstoneAppManager;->onResume(Landroid/app/Activity;)V
 
-    .local v0, "securityManager":Lmiui/security/SecurityManager;
-    invoke-virtual {v0, p0}, Lmiui/security/SecurityManager;->checkAccessControl(Landroid/app/Activity;)V
+    invoke-virtual {p0}, Landroid/app/Activity;->getApplication()Landroid/app/Application;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p0}, Landroid/app/Application;->dispatchActivityResumed(Landroid/app/Activity;)V
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/app/Activity;->mCalled:Z
+
+    invoke-static {p0}, Landroid/app/ActivityInjector;->checkAccessControl(Landroid/app/Activity;)V
 
     return-void
 .end method

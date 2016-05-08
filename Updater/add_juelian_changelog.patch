@@ -13,7 +13,7 @@ Subject: [PATCH] add juelian changelog
 --- a/Updater/res/layout/activity_main2.xml
 +++ b/Updater/res/layout/activity_main2.xml
 @@ -17,7 +17,8 @@
-                 <TextView android:textSize="14.699982sp" android:textColor="#99000000" android:id="@id/version_summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" />
+                 <TextView android:textSize="14.699982sp" android:textColor="#99000000" android:id="@id/version_summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6.0dip" />
              </LinearLayout>
              <View android:id="@id/split_line" android:background="#ffbfbfbf" android:layout_width="fill_parent" android:layout_height="1.0px" />
 -            <ListView android:id="@id/update_log_list" android:layout_width="fill_parent" android:layout_height="fill_parent" />
