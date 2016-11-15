@@ -1,0 +1,8 @@
+*.zip
+.delete-zip-file-when-clean
+out
+history_package
+releasetools.pyc
+security
+Settings_ex/dist
+Settings_ex/build
