@@ -398,6 +398,8 @@
     .line 569
     invoke-static {}, Lcom/android/internal/os/SamplingProfilerIntegration;->start()V
 
+    invoke-static {}, Lmiui/patchrom/ClassHook;->initCoreHook()V
+
     .line 571
     const/4 v5, 0x0
 
