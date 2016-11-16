@@ -47,3 +47,9 @@ local-after-zip:= local-put-to-phone
 include $(PORT_BUILD)/porting.mk
 
 local-pre-zip-misc:
+		#bye bye miui bin , use stockrom
+		rm -rf $(ZIP_DIR)/system/bin/app_process32_vendor
+		cp -rf stockrom/system/bin/app_process32 $(ZIP_DIR)/system/bin/app_process32
+		#edit build.prop
+		echo "#XS ADD" >> $(ZIP_DIR)/system/build.prop
+		echo "persist.sys.recovery_update=true" >> $(ZIP_DIR)/system/build.prop
