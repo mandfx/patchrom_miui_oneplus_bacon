@@ -47,6 +47,9 @@ local-after-zip:= local-put-to-phone
 include $(PORT_BUILD)/porting.mk
 
 local-pre-zip-misc:
+		#remove stockrom files
+		rm -rf $(ZIP_DIR)/system/lib64
+		rm -rf $(ZIP_DIR)/system/recovery-from-boot.bak
 		#bye bye miui bin , use stockrom
 		rm -rf $(ZIP_DIR)/system/bin/app_process32_vendor
 		cp -rf stockrom/system/bin/app_process32 $(ZIP_DIR)/system/bin/app_process32
