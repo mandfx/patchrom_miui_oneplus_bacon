@@ -17,7 +17,7 @@ local-modified-apps :=
 local-modified-jars := org.cyanogenmod.platform
 
 # All apks from MIUI
-local-miui-removed-apps :=
+local-miui-removed-apps := WebViewGoogle FM
 
 local-miui-modified-apps :=
 
@@ -56,3 +56,4 @@ local-pre-zip-misc:
 		#edit build.prop
 		echo "#XS ADD" >> $(ZIP_DIR)/system/build.prop
 		echo "persist.sys.recovery_update=true" >> $(ZIP_DIR)/system/build.prop
+		sed -i 's/ro.product.locale=en-US/ro.product.locale=zh-CN/g' $(ZIP_DIR)/system/build.prop
