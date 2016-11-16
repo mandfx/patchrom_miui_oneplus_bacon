@@ -351,6 +351,8 @@
     .line 1716
     iput v5, p0, Lcom/android/server/TelephonyRegistry;->next:I
 
+    iput-object v7, p0, Lcom/android/server/TelephonyRegistry;->mMiuiTelephony:Lmiui/telephony/IMiuiTelephony;
+
     .line 291
     invoke-static {}, Landroid/telephony/CellLocation;->getEmpty()Landroid/telephony/CellLocation;
 
@@ -4241,23 +4243,24 @@
     const/4 v1, 0x0
 
     .line 1756
-    if-gez p2, :cond_1
+    if-gez p2, :cond_2
 
     .line 1758
     iget v2, p0, Lcom/android/server/TelephonyRegistry;->mDefaultPhoneId:I
 
-    if-ne v2, p3, :cond_0
+    if-ne v2, p3, :cond_1
 
+    :cond_0
     :goto_0
     return v0
 
-    :cond_0
+    :cond_1
     move v0, v1
 
     goto :goto_0
 
     .line 1760
-    :cond_1
+    :cond_2
     const v2, 0x7fffffff
 
     if-ne p1, v2, :cond_3
@@ -4265,27 +4268,29 @@
     .line 1761
     iget v2, p0, Lcom/android/server/TelephonyRegistry;->mDefaultSubId:I
 
-    if-ne p2, v2, :cond_2
+    if-eq p2, v2, :cond_0
 
-    :goto_1
-    return v0
-
-    :cond_2
     move v0, v1
 
-    goto :goto_1
+    goto :goto_0
 
     .line 1763
     :cond_3
-    if-ne p1, p2, :cond_4
+    if-eq p1, p2, :cond_4
 
-    :goto_2
-    return v0
+    invoke-static {p1}, Landroid/telephony/SubscriptionManager;->getPhoneId(I)I
+
+    move-result v2
+
+    if-ne v2, p3, :cond_5
 
     :cond_4
+    move v1, v0
+
+    :cond_5
     move v0, v1
 
-    goto :goto_2
+    goto :goto_0
 .end method
 
 .method public listen(Ljava/lang/String;Lcom/android/internal/telephony/IPhoneStateListener;IZ)V
