@@ -5,6 +5,7 @@ OUT_FRAMEWORK_DIR=$2
 
 if [ "$OUT_FRAMEWORK_DIR" == "out/framework" ];then
     cp $OUT_MIUI_FRAMEWORK_DIR/smali/android/widget/Editor*.smali $OUT_FRAMEWORK_DIR/smali/android/widget/
+    rm -rf $OUT_FRAMEWORK_DIR/smali/com/android/internal/app/ResolverProxy*.smali
 fi
 
 if [ "$OUT_FRAMEWORK_DIR" == "out/services" ];then
