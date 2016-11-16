@@ -504,7 +504,9 @@
     .locals 6
 
     .prologue
-    const/4 v2, 0x0
+    const/4 v2, 0x1
+
+    return v2
 
     .line 345
     invoke-static {}, Lcom/android/server/pm/InstructionSets;->getAllDexCodeInstructionSets()[Ljava/lang/String;
