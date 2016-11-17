@@ -613,9 +613,15 @@
 .end method
 
 .method public onCreate()V
-    .locals 0
+    .locals 1
 
     .prologue
+    invoke-static {}, Lcom/miui/whetstone/app/WhetstoneAppManager;->getInstance()Lcom/miui/whetstone/app/WhetstoneAppManager;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p0}, Lcom/miui/whetstone/app/WhetstoneAppManager;->attach(Landroid/content/Context;)V
+
     .line 94
     return-void
 .end method
