@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features>
+    <!--the vendor feature, it's value may be qcom,mediatek,leadcore or nvidia-->
+    <string name="vendor">qcom</string>
+    <!--whether the device is port by patchrom-->
+    <bool name="is_patchrom">true</bool>
+    <!--whether the device is pad-->
+    <bool name="is_pad">false</bool>
+</features>
