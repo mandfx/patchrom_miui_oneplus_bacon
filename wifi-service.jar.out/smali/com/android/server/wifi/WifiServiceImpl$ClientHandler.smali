@@ -115,6 +115,8 @@
 
     .line 174
     :goto_0
+    invoke-static {p1}, Lcom/android/server/wifi/WifiServiceInjector;->handleClientMessage(Landroid/os/Message;)V
+
     return-void
 
     .line 177
