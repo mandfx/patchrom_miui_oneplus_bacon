@@ -15,6 +15,7 @@ def InstallBased(info):
             data=open(os.path.join(os.getcwd(),"other/firmware-update",filename)).read()
             common.ZipWriteStr(info.output_zip, "firmware-update/" + filename, data)
     extra_img_flash = """ui_print("Wiping DDR");
+ui_print("Please waiting, this will take some time");
 ifelse((sha1_check(read_file("EMMC:/dev/block/platform/msm_sdcc.1/by-name/rpm:190816:e9b687388fce68c0c6b7dc7e15845c15599f5b26")) != ""),ifelse((sha1_check(read_file("EMMC:/dev/block/platform/msm_sdcc.1/by-name/sbl1:280544:7ffe2dd004f1875ca04b2c4d2bb8f0d9952e55c2")) != ""),(ui_print("RPM+SBL Already up to date, not wiping DDR")),(wipe_block_device("/dev/block/platform/msm_sdcc.1/by-name/DDR", 32768))),(wipe_block_device("/dev/block/platform/msm_sdcc.1/by-name/DDR", 32768)));
 ifelse(sha1_check(read_file("EMMC:/dev/block/platform/msm_sdcc.1/by-name/DDR:32768:5188431849b4613152fd7bdba6a3ff0a4fd6424b")) != "",ui_print("Verified DDR wipe"),ui_print("DDR wipe failed or not performed"));
 ui_print("Writing radio image...");
@@ -40,6 +41,7 @@ package_extract_file("recovery.img", "/dev/block/platform/msm_sdcc.1/by-name/rec
 def FullOTA_InstallEnd(info):
     RemoveDeviceAssert(info)
     InstallBased(info)
+    InstallRecovery(info)
 
 def IncrementalOTA_InstallEnd(info):
     RemoveDeviceAssert(info)
