@@ -12228,8 +12228,6 @@
     .line 695
     new-instance v12, Landroid/content/Intent;
 
-    const-string/jumbo v1, "android.provider.Telephony.SPN_STRINGS_UPDATED"
-
     invoke-static/range {p0 .. p0}, Lcom/android/internal/telephony/ServiceStateTrackerInjector;->getSpnUpdateActionName(Lcom/android/internal/telephony/ServiceStateTracker;)Ljava/lang/String;
 
     move-result-object v1
