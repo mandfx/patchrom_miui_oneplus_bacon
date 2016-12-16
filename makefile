@@ -52,6 +52,9 @@ local-pre-zip-misc:
 		rm -rf $(ZIP_DIR)/system/recovery-from-boot.bak
 		#copy files
 		cp -a -rf other/system/* $(ZIP_DIR)/system/
+		#fix mms notification
+		cp -f $(ZIP_DIR)/system/media/audio/ui/MessageComplete.ogg $(ZIP_DIR)/system/media/audio/notifications/
+		cp -f $(ZIP_DIR)/system/media/audio/ui/MessageIncoming.ogg $(ZIP_DIR)/system/media/audio/notifications/
 		#bye bye miui bin , use stockrom
 		rm -rf $(ZIP_DIR)/system/bin/app_process32_vendor
 		cp -rf stockrom/system/bin/app_process32 $(ZIP_DIR)/system/bin/app_process32
