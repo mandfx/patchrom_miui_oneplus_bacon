@@ -67,3 +67,5 @@ local-pre-zip-misc:
 		echo "persist.sys.density=480" >> $(ZIP_DIR)/system/build.prop
 		#add device_features to miuisystem
 		./customize_miuisystem.sh
+		#change patchrom jars
+		./customize_patchrom_jars.sh

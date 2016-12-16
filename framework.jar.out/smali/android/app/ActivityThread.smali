@@ -5968,6 +5968,8 @@
 
     .line 4500
     :cond_1
+    invoke-static {}, Lcom/miui/whetstone/app/WhetstoneAppManager;->setHardwareRendererIfNeeded()V
+
     move-object/from16 v0, p0
 
     iget-object v2, v0, Landroid/app/ActivityThread;->mProfiler:Landroid/app/ActivityThread$Profiler;
@@ -18591,6 +18593,15 @@
 
     .prologue
     .line 4431
+    invoke-static {p1}, Lcom/miui/whetstone/app/WhetstoneAppManager;->handleTrimMemory(I)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_xs
+
+    return-void
+
+    :cond_xs
     const/4 v3, 0x1
 
     const/4 v4, 0x0
