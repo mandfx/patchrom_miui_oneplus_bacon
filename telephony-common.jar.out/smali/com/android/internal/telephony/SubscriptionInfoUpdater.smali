@@ -2832,7 +2832,7 @@
 
     move-result v21
 
-    if-eqz v21, :cond_1
+    if-nez v21, :cond_1
 
     const/16 v19, 0x0
 
