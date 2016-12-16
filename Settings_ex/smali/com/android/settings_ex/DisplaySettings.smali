@@ -1216,9 +1216,9 @@
     const/4 v4, 0x0
 
     .line 564
-    iget-object v2, p0, Lcom/android/settings_ex/DisplaySettings;->mFontSizePref:Lcom/android/settings_ex/FontDialogPreference;
+    #iget-object v2, p0, Lcom/android/settings_ex/DisplaySettings;->mFontSizePref:Lcom/android/settings_ex/FontDialogPreference;
 
-    invoke-virtual {p0, v2}, Lcom/android/settings_ex/DisplaySettings;->readFontSizePreference(Landroid/preference/Preference;)V
+    #invoke-virtual {p0, v2}, Lcom/android/settings_ex/DisplaySettings;->readFontSizePreference(Landroid/preference/Preference;)V
 
     .line 565
     invoke-direct {p0}, Lcom/android/settings_ex/DisplaySettings;->updateScreenSaverSummary()V
@@ -1879,30 +1879,30 @@
 
     .line 200
     .local v8, "currentTimeout":J
-    move-object/from16 v0, p0
+    #move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/settings_ex/DisplaySettings;->mScreenTimeoutPreference:Landroid/preference/ListPreference;
+    #iget-object v0, v0, Lcom/android/settings_ex/DisplaySettings;->mScreenTimeoutPreference:Landroid/preference/ListPreference;
 
-    move-object/from16 v24, v0
+    #move-object/from16 v24, v0
 
-    invoke-static {v8, v9}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+    #invoke-static {v8, v9}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
-    move-result-object v25
+    #move-result-object v25
 
-    invoke-virtual/range {v24 .. v25}, Landroid/preference/ListPreference;->setValue(Ljava/lang/String;)V
+    #invoke-virtual/range {v24 .. v25}, Landroid/preference/ListPreference;->setValue(Ljava/lang/String;)V
 
     .line 201
-    move-object/from16 v0, p0
+    #move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/settings_ex/DisplaySettings;->mScreenTimeoutPreference:Landroid/preference/ListPreference;
+    #iget-object v0, v0, Lcom/android/settings_ex/DisplaySettings;->mScreenTimeoutPreference:Landroid/preference/ListPreference;
 
-    move-object/from16 v24, v0
+    #move-object/from16 v24, v0
 
-    move-object/from16 v0, v24
+    #move-object/from16 v0, v24
 
-    move-object/from16 v1, p0
+    #move-object/from16 v1, p0
 
-    invoke-virtual {v0, v1}, Landroid/preference/ListPreference;->setOnPreferenceChangeListener(Landroid/preference/Preference$OnPreferenceChangeListener;)V
+    #invoke-virtual {v0, v1}, Landroid/preference/ListPreference;->setOnPreferenceChangeListener(Landroid/preference/Preference$OnPreferenceChangeListener;)V
 
     .line 202
     move-object/from16 v0, p0
@@ -1918,9 +1918,9 @@
     invoke-direct {v0, v1}, Lcom/android/settings_ex/DisplaySettings;->disableUnusableTimeouts(Landroid/preference/ListPreference;)V
 
     .line 203
-    move-object/from16 v0, p0
+    #move-object/from16 v0, p0
 
-    invoke-direct {v0, v8, v9}, Lcom/android/settings_ex/DisplaySettings;->updateTimeoutPreferenceDescription(J)V
+    #invoke-direct {v0, v8, v9}, Lcom/android/settings_ex/DisplaySettings;->updateTimeoutPreferenceDescription(J)V
 
     .line 204
     invoke-direct/range {p0 .. p0}, Lcom/android/settings_ex/DisplaySettings;->updateDisplayRotationPreferenceDescription()V
@@ -1995,30 +1995,30 @@
     iput-object v0, v1, Lcom/android/settings_ex/DisplaySettings;->mFontSizePref:Lcom/android/settings_ex/FontDialogPreference;
 
     .line 246
-    move-object/from16 v0, p0
+    #move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/settings_ex/DisplaySettings;->mFontSizePref:Lcom/android/settings_ex/FontDialogPreference;
+    #iget-object v0, v0, Lcom/android/settings_ex/DisplaySettings;->mFontSizePref:Lcom/android/settings_ex/FontDialogPreference;
 
-    move-object/from16 v24, v0
+    #move-object/from16 v24, v0
 
-    move-object/from16 v0, v24
+    #move-object/from16 v0, v24
 
-    move-object/from16 v1, p0
+    #move-object/from16 v1, p0
 
-    invoke-virtual {v0, v1}, Lcom/android/settings_ex/FontDialogPreference;->setOnPreferenceChangeListener(Landroid/preference/Preference$OnPreferenceChangeListener;)V
+    #invoke-virtual {v0, v1}, Lcom/android/settings_ex/FontDialogPreference;->setOnPreferenceChangeListener(Landroid/preference/Preference$OnPreferenceChangeListener;)V
 
     .line 247
-    move-object/from16 v0, p0
+    #move-object/from16 v0, p0
 
-    iget-object v0, v0, Lcom/android/settings_ex/DisplaySettings;->mFontSizePref:Lcom/android/settings_ex/FontDialogPreference;
+    #iget-object v0, v0, Lcom/android/settings_ex/DisplaySettings;->mFontSizePref:Lcom/android/settings_ex/FontDialogPreference;
 
-    move-object/from16 v24, v0
+    #move-object/from16 v24, v0
 
-    move-object/from16 v0, v24
+    #move-object/from16 v0, v24
 
-    move-object/from16 v1, p0
+    #move-object/from16 v1, p0
 
-    invoke-virtual {v0, v1}, Lcom/android/settings_ex/FontDialogPreference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
+    #invoke-virtual {v0, v1}, Lcom/android/settings_ex/FontDialogPreference;->setOnPreferenceClickListener(Landroid/preference/Preference$OnPreferenceClickListener;)V
 
     .line 249
     const-string/jumbo v24, "auto_brightness"
@@ -3004,7 +3004,7 @@
 
     move/from16 v1, v24
 
-    invoke-virtual {v0, v1}, Landroid/preference/SwitchPreference;->setChecked(Z)V
+    #invoke-virtual {v0, v1}, Landroid/preference/SwitchPreference;->setChecked(Z)V
 
     goto/16 :goto_7
 
