@@ -59,5 +59,8 @@ local-pre-zip-misc:
 		echo "#XS ADD" >> $(ZIP_DIR)/system/build.prop
 		echo "persist.sys.recovery_update=true" >> $(ZIP_DIR)/system/build.prop
 		sed -i 's/ro.product.locale=en-US/ro.product.locale=zh-CN/g' $(ZIP_DIR)/system/build.prop
+		#density
+		sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
+		echo "persist.sys.density=480" >> $(ZIP_DIR)/system/build.prop
 		#add device_features to miuisystem
 		./customize_miuisystem.sh
