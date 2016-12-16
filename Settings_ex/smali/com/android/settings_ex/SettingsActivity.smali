@@ -5376,7 +5376,7 @@
     .line 517
     iget-boolean v2, p0, Lcom/android/settings_ex/SettingsActivity;->mDisplaySearch:Z
 
-    if-nez v2, :cond_0
+    if-eqz v2, :cond_0
 
     .line 518
     return v3

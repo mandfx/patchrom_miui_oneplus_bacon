@@ -2,6 +2,10 @@
 <dashboard-categories
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
+    <dashboard-category android:title="@string/header_category_device">
+        <dashboard-tile android:icon="@drawable/ic_settings_display" android:id="@id/display_and_lights_settings" android:title="@string/display_and_lights" android:fragment="com.android.settings_ex.DisplaySettings" />
+    </dashboard-category>
+    <!--
     <dashboard-category android:id="@id/wireless_section" android:title="@string/header_category_wireless_networks" android:key="@string/category_key_wireless">
         <dashboard-tile android:icon="@drawable/ic_settings_wireless" android:id="@id/wifi_settings" android:title="@string/wifi_settings_title" android:fragment="com.android.settings_ex.wifi.WifiSettings" settings:switchClass="com.android.settings_ex.wifi.WifiEnabler" />
         <dashboard-tile android:icon="@drawable/ic_settings_bluetooth" android:id="@id/bluetooth_settings" android:title="@string/bluetooth_settings_title" android:fragment="com.android.settings_ex.bluetooth.BluetoothSettings" settings:switchClass="com.android.settings_ex.bluetooth.BluetoothEnabler" />
@@ -19,7 +23,6 @@
         </dashboard-tile>
     </dashboard-category>
     <dashboard-category android:id="@id/device_section" android:title="@string/header_category_device" android:key="@string/category_key_device">
-        <dashboard-tile android:icon="@drawable/ic_settings_display" android:id="@id/display_and_lights_settings" android:title="@string/display_and_lights" android:fragment="com.android.settings_ex.DisplaySettings" />
         <dashboard-tile android:icon="@drawable/ic_settings_sounds" android:id="@id/sound_settings" android:title="@string/category_sounds" android:fragment="com.android.settings_ex.notification.SoundSettings" />
         <dashboard-tile android:icon="@drawable/ic_settings_themes" android:id="@id/theme_settings" android:title="@string/themes_settings_title">
             <intent android:action="android.intent.action.MAIN">
@@ -58,4 +61,5 @@
         <dashboard-tile android:icon="@drawable/ic_settings_development" android:id="@id/development_settings" android:title="@string/development_settings_title" android:fragment="com.android.settings_ex.DevelopmentSettings" />
         <dashboard-tile android:icon="@drawable/ic_settings_about" android:id="@id/about_settings" android:title="@string/about_settings" android:fragment="com.android.settings_ex.DeviceInfoSettings" />
     </dashboard-category>
+-->
 </dashboard-categories>
