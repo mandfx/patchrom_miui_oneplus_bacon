@@ -22756,87 +22756,128 @@
 .end method
 
 .method public setPreferredNetworkType(ILandroid/os/Message;)V
-    .locals 3
+    .locals 4
     .param p1, "networkType"    # I
     .param p2, "response"    # Landroid/os/Message;
 
     .prologue
+    const/16 v3, 0x9
+
     .line 2306
-    const/16 v1, 0x49
+    const/16 v2, 0x49
 
     .line 2305
-    invoke-static {v1, p2}, Lcom/android/internal/telephony/RILRequest;->obtain(ILandroid/os/Message;)Lcom/android/internal/telephony/RILRequest;
-
-    move-result-object v0
-
-    .line 2308
-    .local v0, "rr":Lcom/android/internal/telephony/RILRequest;
-    iget-object v1, v0, Lcom/android/internal/telephony/RILRequest;->mParcel:Landroid/os/Parcel;
-
-    const/4 v2, 0x1
-
-    invoke-virtual {v1, v2}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 2309
-    iget-object v1, v0, Lcom/android/internal/telephony/RILRequest;->mParcel:Landroid/os/Parcel;
-
-    invoke-virtual {v1, p1}, Landroid/os/Parcel;->writeInt(I)V
-
-    .line 2311
-    iput p1, p0, Lcom/android/internal/telephony/RIL;->mPreferredNetworkType:I
-
-    .line 2313
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {v0}, Lcom/android/internal/telephony/RILRequest;->serialString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v2, p2}, Lcom/android/internal/telephony/RILRequest;->obtain(ILandroid/os/Message;)Lcom/android/internal/telephony/RILRequest;
 
     move-result-object v1
 
-    const-string/jumbo v2, "> "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget v2, v0, Lcom/android/internal/telephony/RILRequest;->mRequest:I
-
-    invoke-static {v2}, Lcom/android/internal/telephony/RIL;->requestToString(I)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
+    .line 2312
+    .local v1, "rr":Lcom/android/internal/telephony/RILRequest;
+    const/16 p1, 0x9
 
     .line 2314
-    const-string/jumbo v2, " : "
+    const-string/jumbo v2, "persist.sys.network"
 
-    .line 2313
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v2, v3}, Landroid/os/SystemProperties;->getInt(Ljava/lang/String;I)I
 
-    move-result-object v1
+    move-result v0
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/RIL;->riljLog(Ljava/lang/String;)V
+    .line 2315
+    .local v0, "nw":I
+    if-nez v0, :cond_1
 
     .line 2316
-    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/RIL;->send(Lcom/android/internal/telephony/RILRequest;)V
+    const/4 p1, 0x0
+
+    .line 2323
+    :cond_0
+    :goto_0
+    iget-object v2, v1, Lcom/android/internal/telephony/RILRequest;->mParcel:Landroid/os/Parcel;
+
+    const/4 v3, 0x1
+
+    invoke-virtual {v2, v3}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 2324
+    iget-object v2, v1, Lcom/android/internal/telephony/RILRequest;->mParcel:Landroid/os/Parcel;
+
+    invoke-virtual {v2, p1}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 2326
+    iput p1, p0, Lcom/android/internal/telephony/RIL;->mPreferredNetworkType:I
+
+    .line 2328
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/RILRequest;->serialString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string/jumbo v3, "> "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    iget v3, v1, Lcom/android/internal/telephony/RILRequest;->mRequest:I
+
+    invoke-static {v3}, Lcom/android/internal/telephony/RIL;->requestToString(I)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    .line 2329
+    const-string/jumbo v3, " : "
+
+    .line 2328
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {p0, v2}, Lcom/android/internal/telephony/RIL;->riljLog(Ljava/lang/String;)V
+
+    .line 2331
+    invoke-virtual {p0, v1}, Lcom/android/internal/telephony/RIL;->send(Lcom/android/internal/telephony/RILRequest;)V
 
     .line 2304
     return-void
+
+    .line 2317
+    :cond_1
+    if-ne v0, v3, :cond_2
+
+    .line 2318
+    const/16 p1, 0x9
+
+    goto :goto_0
+
+    .line 2319
+    :cond_2
+    const/16 v2, 0xb
+
+    if-ne v0, v2, :cond_0
+
+    .line 2320
+    const/16 p1, 0xb
+
+    goto :goto_0
 .end method
 
 .method public setPreferredVoicePrivacy(ZLandroid/os/Message;)V
