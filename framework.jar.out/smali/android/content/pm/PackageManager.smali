@@ -1431,7 +1431,7 @@
     invoke-virtual {v0, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[Ljava/lang/String;)Landroid/content/Intent;
 
     .line 2691
-    invoke-virtual {p0}, Landroid/content/pm/PackageManager;->getPermissionControllerPackageName()Ljava/lang/String;
+    invoke-static {}, Landroid/content/pm/PackageManagerInjector;->getPermissionControllerPackageName()Ljava/lang/String;
 
     move-result-object v1
 

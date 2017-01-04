@@ -3392,24 +3392,30 @@
 .end method
 
 .method public static opAllowsReset(I)Z
-    .locals 1
+    .locals 2
     .param p0, "op"    # I
 
     .prologue
-    .line 1303
-    sget-object v0, Landroid/app/AppOpsManager;->sOpDisableReset:[Z
+    const/4 v0, 0x1
 
-    aget-boolean v0, v0, p0
+    .line 1123
+    const/16 v1, 0x2710
 
-    if-eqz v0, :cond_0
+    if-le p0, v1, :cond_1
 
-    const/4 v0, 0x0
-
+    .line 1126
+    :cond_0
     :goto_0
     return v0
 
-    :cond_0
-    const/4 v0, 0x1
+    :cond_1
+    sget-object v1, Landroid/app/AppOpsManager;->sOpDisableReset:[Z
+
+    aget-boolean v1, v1, p0
+
+    if-eqz v1, :cond_0
+
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method
@@ -3476,12 +3482,24 @@
     .param p0, "op"    # I
 
     .prologue
-    .line 1259
+    .line 1065
+    const/16 v0, 0x2710
+
+    if-le p0, v0, :cond_0
+
+    .line 1066
+    const/4 v0, 0x0
+
+    .line 1068
+    :goto_0
+    return-object v0
+
+    :cond_0
     sget-object v0, Landroid/app/AppOpsManager;->sOpPerms:[Ljava/lang/String;
 
     aget-object v0, v0, p0
 
-    return-object v0
+    goto :goto_0
 .end method
 
 .method public static opToRestriction(I)Ljava/lang/String;
@@ -3489,12 +3507,24 @@
     .param p0, "op"    # I
 
     .prologue
-    .line 1267
+    .line 1076
+    const/16 v0, 0x2710
+
+    if-le p0, v0, :cond_0
+
+    .line 1077
+    const/4 v0, 0x0
+
+    .line 1079
+    :goto_0
+    return-object v0
+
+    :cond_0
     sget-object v0, Landroid/app/AppOpsManager;->sOpRestrictions:[Ljava/lang/String;
 
     aget-object v0, v0, p0
 
-    return-object v0
+    goto :goto_0
 .end method
 
 .method public static opToSwitch(I)I
@@ -3502,12 +3532,23 @@
     .param p0, "op"    # I
 
     .prologue
-    .line 1221
+    .line 1033
+    const/16 v0, 0x2710
+
+    if-le p0, v0, :cond_0
+
+    .line 1036
+    .end local p0    # "op":I
+    :goto_0
+    return p0
+
+    .restart local p0    # "op":I
+    :cond_0
     sget-object v0, Landroid/app/AppOpsManager;->sOpToSwitch:[I
 
-    aget v0, v0, p0
+    aget p0, v0, p0
 
-    return v0
+    goto :goto_0
 .end method
 
 .method public static permissionToOp(Ljava/lang/String;)Ljava/lang/String;
@@ -5107,9 +5148,22 @@
     .param p0, "op"    # I
 
     .prologue
+    .line 1105
+    const/16 v0, 0x2710
+
+    if-le p0, v0, :cond_0
+
+    .line 1106
+    const/4 v0, 0x0
+
+    .line 1108
+    :goto_0
+    return v0
+
+    :cond_0
     sget-object v0, Landroid/app/AppOpsManager;->sOpDefaultMode:[I
 
     aget v0, v0, p0
 
-    return v0
+    goto :goto_0
 .end method

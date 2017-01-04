@@ -131,21 +131,23 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/view/ScaleGestureDetector$OnScaleGestureListener;Landroid/os/Handler;)V
-    .locals 5
+    .locals 6
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "listener"    # Landroid/view/ScaleGestureDetector$OnScaleGestureListener;
     .param p3, "handler"    # Landroid/os/Handler;
 
     .prologue
-    const/4 v4, 0x1
+    const/4 v5, 0x1
 
-    const/4 v3, 0x0
+    const/4 v4, 0x0
+
+    const/high16 v3, 0x7fc00000    # NaNf
 
     .line 203
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 159
-    iput v3, p0, Landroid/view/ScaleGestureDetector;->mAnchoredScaleMode:I
+    iput v4, p0, Landroid/view/ScaleGestureDetector;->mAnchoredScaleMode:I
 
     .line 172
     invoke-static {}, Landroid/view/InputEventConsistencyVerifier;->isInstrumentationEnabled()Z
@@ -157,7 +159,7 @@
     .line 173
     new-instance v2, Landroid/view/InputEventConsistencyVerifier;
 
-    invoke-direct {v2, p0, v3}, Landroid/view/InputEventConsistencyVerifier;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v2, p0, v4}, Landroid/view/InputEventConsistencyVerifier;-><init>(Ljava/lang/Object;I)V
 
     .line 171
     :goto_0
@@ -224,7 +226,7 @@
     if-le v1, v2, :cond_0
 
     .line 217
-    invoke-virtual {p0, v4}, Landroid/view/ScaleGestureDetector;->setQuickScaleEnabled(Z)V
+    invoke-virtual {p0, v5}, Landroid/view/ScaleGestureDetector;->setQuickScaleEnabled(Z)V
 
     .line 220
     :cond_0
@@ -233,10 +235,16 @@
     if-le v1, v2, :cond_1
 
     .line 221
-    invoke-virtual {p0, v4}, Landroid/view/ScaleGestureDetector;->setStylusScaleEnabled(Z)V
+    invoke-virtual {p0, v5}, Landroid/view/ScaleGestureDetector;->setStylusScaleEnabled(Z)V
 
     .line 204
     :cond_1
+    iput v3, p0, Landroid/view/ScaleGestureDetector;->mTouchUpper:F
+
+    iput v3, p0, Landroid/view/ScaleGestureDetector;->mTouchLower:F
+
+    iput v3, p0, Landroid/view/ScaleGestureDetector;->mTouchHistoryLastAccepted:F
+
     return-void
 
     .line 173

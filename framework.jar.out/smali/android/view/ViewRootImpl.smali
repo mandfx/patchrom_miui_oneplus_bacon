@@ -17460,13 +17460,7 @@
 
     if-eq v0, p1, :cond_0
 
-    .line 1003
-    iput-boolean p1, p0, Landroid/view/ViewRootImpl;->mStopped:Z
-
-    .line 1004
-    iget-boolean v0, p0, Landroid/view/ViewRootImpl;->mStopped:Z
-
-    if-nez v0, :cond_0
+    if-nez p1, :cond_0
 
     .line 1005
     invoke-virtual {p0}, Landroid/view/ViewRootImpl;->scheduleTraversals()V

@@ -1782,11 +1782,13 @@
 .end method
 
 .method public setFlags(II)V
-    .locals 3
+    .locals 4
     .param p1, "flags"    # I
     .param p2, "mask"    # I
 
     .prologue
+    const/high16 v3, 0x4000000
+
     .line 865
     invoke-virtual {p0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
 
@@ -1796,7 +1798,7 @@
     .local v0, "attrs":Landroid/view/WindowManager$LayoutParams;
     iget v1, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
 
-    not-int v2, p2
+    xor-int/lit8 v2, p2, -0x1
 
     and-int/2addr v1, v2
 
@@ -1806,7 +1808,25 @@
 
     iput v1, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
 
-    .line 867
+    and-int v1, p2, v3
+
+    if-eqz v1, :cond_0
+
+    and-int v1, p1, v3
+
+    if-nez v1, :cond_0
+
+    iget v1, v0, Landroid/view/WindowManager$LayoutParams;->extraFlags:I
+
+    and-int/lit8 v1, v1, 0x1
+
+    if-eqz v1, :cond_0
+
+    const/4 v1, 0x1
+
+    invoke-virtual {p0, v1}, Landroid/view/Window;->clearExtraFlags(I)V
+
+    :cond_0
     iget v1, p0, Landroid/view/Window;->mForcedWindowFlags:I
 
     or-int/2addr v1, p2

@@ -959,6 +959,10 @@
 
     .line 4552
     :cond_4
+    iget-object v0, p1, Landroid/content/Intent;->mSenderPackageName:Ljava/lang/String;
+
+    iput-object v0, p0, Landroid/content/Intent;->mSenderPackageName:Ljava/lang/String;
+
     return-void
 .end method
 
@@ -1017,6 +1021,10 @@
 
     .line 4582
     :cond_0
+    iget-object v0, p1, Landroid/content/Intent;->mSenderPackageName:Ljava/lang/String;
+
+    iput-object v0, p0, Landroid/content/Intent;->mSenderPackageName:Ljava/lang/String;
+
     return-void
 .end method
 
@@ -8930,6 +8938,12 @@
     iput-object v2, p0, Landroid/content/Intent;->mExtras:Landroid/os/Bundle;
 
     .line 8015
+    invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v2
+
+    iput-object v2, p0, Landroid/content/Intent;->mSenderPackageName:Ljava/lang/String;
+
     return-void
 .end method
 
@@ -11074,6 +11088,10 @@
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeBundle(Landroid/os/Bundle;)V
 
     .line 7958
+    iget-object v2, p0, Landroid/content/Intent;->mSenderPackageName:Ljava/lang/String;
+
+    invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
     return-void
 
     .line 7987

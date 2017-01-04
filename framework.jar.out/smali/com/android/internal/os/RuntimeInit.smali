@@ -244,7 +244,7 @@
     invoke-direct {v2}, Lcom/android/internal/logging/AndroidConfig;-><init>()V
 
     .line 141
-    invoke-static {}, Lcom/android/internal/os/RuntimeInit;->getDefaultUserAgent()Ljava/lang/String;
+    invoke-static {}, Lcom/android/internal/os/RuntimeInitInjector;->getDefaultUserAgent()Ljava/lang/String;
 
     move-result-object v1
 
