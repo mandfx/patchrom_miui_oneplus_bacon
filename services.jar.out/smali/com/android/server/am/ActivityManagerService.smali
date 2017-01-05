@@ -19,6 +19,7 @@
         Lcom/android/server/am/ActivityManagerService$ProcessChangeItem;,
         Lcom/android/server/am/ActivityManagerService$AppDeathRecipient;,
         Lcom/android/server/am/ActivityManagerService$UiHandler;,
+        Lcom/android/server/am/ActivityManagerService$KillHandler;,
         Lcom/android/server/am/ActivityManagerService$MainHandler;,
         Lcom/android/server/am/ActivityManagerService$MemBinder;,
         Lcom/android/server/am/ActivityManagerService$GraphicsBinder;,
@@ -1420,19 +1421,33 @@
 
     sput-object v0, Lcom/android/server/am/ActivityManagerService;->sCallerIdentity:Ljava/lang/ThreadLocal;
 
+    const/4 v0, 0x0
+
+    sput-object v0, Lcom/android/server/am/ActivityManagerService;->sKillThread:Lcom/android/server/ServiceThread;
+
+    const/4 v0, 0x0
+
+    sput-object v0, Lcom/android/server/am/ActivityManagerService;->sKillHandler:Lcom/android/server/am/ActivityManagerService$KillHandler;
+
+    new-array v0, v7, [I
+
+    fill-array-data v0, :array_0
+
+    sput-object v0, Lcom/android/server/am/ActivityManagerService;->PROCESS_STATE_STATS_FORMAT:[I
+
     .line 14989
     const/16 v0, 0x17
 
     new-array v0, v0, [J
 
-    fill-array-data v0, :array_0
+    fill-array-data v0, :array_1
 
     sput-object v0, Lcom/android/server/am/ActivityManagerService;->DUMP_MEM_BUCKETS:[J
 
     .line 15016
     new-array v0, v4, [I
 
-    fill-array-data v0, :array_1
+    fill-array-data v0, :array_2
 
     sput-object v0, Lcom/android/server/am/ActivityManagerService;->DUMP_MEM_OOM_ADJ:[I
 
@@ -1619,6 +1634,13 @@
     nop
 
     :array_0
+    .array-data 4
+        0x20
+        0x220
+        0x2820
+    .end array-data
+
+    :array_1
     .array-data 8
         0x1400
         0x1c00
@@ -1646,7 +1668,7 @@
     .end array-data
 
     .line 15016
-    :array_1
+    :array_2
     .array-data 4
         -0x11
         -0x10
@@ -2458,6 +2480,12 @@
 
     iput-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mBgHandler:Landroid/os/Handler;
 
+    const/4 v0, 0x1
+
+    new-array v0, v0, [J
+
+    iput-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mProcessStateStatsLongs:[J
+
     .line 2527
     iput-object p1, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
@@ -2542,6 +2570,39 @@
 
     iput-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mUiHandler:Lcom/android/server/am/ActivityManagerService$UiHandler;
 
+    sget-object v0, Lcom/android/server/am/ActivityManagerService;->sKillHandler:Lcom/android/server/am/ActivityManagerService$KillHandler;
+
+    if-nez v0, :cond_xs
+
+    new-instance v0, Lcom/android/server/ServiceThread;
+
+    const-string v1, "ActivityManager:kill"
+
+    const/16 v2, 0xa
+
+    const/4 v3, 0x1
+
+    invoke-direct {v0, v1, v2, v3}, Lcom/android/server/ServiceThread;-><init>(Ljava/lang/String;IZ)V
+
+    sput-object v0, Lcom/android/server/am/ActivityManagerService;->sKillThread:Lcom/android/server/ServiceThread;
+
+    sget-object v0, Lcom/android/server/am/ActivityManagerService;->sKillThread:Lcom/android/server/ServiceThread;
+
+    invoke-virtual {v0}, Lcom/android/server/ServiceThread;->start()V
+
+    new-instance v0, Lcom/android/server/am/ActivityManagerService$KillHandler;
+
+    sget-object v1, Lcom/android/server/am/ActivityManagerService;->sKillThread:Lcom/android/server/ServiceThread;
+
+    invoke-virtual {v1}, Lcom/android/server/ServiceThread;->getLooper()Landroid/os/Looper;
+
+    move-result-object v1
+
+    invoke-direct {v0, p0, v1}, Lcom/android/server/am/ActivityManagerService$KillHandler;-><init>(Lcom/android/server/am/ActivityManagerService;Landroid/os/Looper;)V
+
+    sput-object v0, Lcom/android/server/am/ActivityManagerService;->sKillHandler:Lcom/android/server/am/ActivityManagerService$KillHandler;
+
+    :cond_xs
     .line 2539
     new-instance v0, Lcom/android/server/am/BroadcastQueue;
 
@@ -2628,6 +2689,10 @@
     .line 2552
     .local v8, "systemDir":Ljava/io/File;
     invoke-virtual {v8}, Ljava/io/File;->mkdirs()Z
+
+    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
+
+    invoke-static {v0}, Lcom/android/server/am/ActivityManagerServiceInjector;->init(Landroid/content/Context;)V
 
     .line 2553
     new-instance v0, Lcom/android/server/am/BatteryStatsService;
@@ -3946,6 +4011,12 @@
 
     iput v4, v0, Lcom/android/server/am/ProcessRecord;->setAdj:I
 
+    const/16 v4, -0x64
+
+    move-object/from16 v0, p1
+
+    iput v4, v0, Lcom/android/server/am/ProcessRecord;->verifiedAdj:I
+
     .line 19164
     :cond_1
     move-object/from16 v0, p1
@@ -5220,6 +5291,10 @@
 
     .line 6343
     const/16 v6, -0x64
+
+    move-object/from16 v0, v24
+
+    iput v6, v0, Lcom/android/server/am/ProcessRecord;->verifiedAdj:I
 
     move-object/from16 v0, v24
 
@@ -22480,6 +22555,8 @@
     invoke-direct/range {v1 .. v17}, Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Landroid/content/IIntentReceiver;ILjava/lang/String;Landroid/os/Bundle;[Ljava/lang/String;ILandroid/os/Bundle;ZZIII)I
 
     .line 5799
+    invoke-static/range {p1 .. p2}, Lcom/android/server/am/ActivityManagerServiceInjector;->forceStopUserLocked(ILjava/lang/String;)V
+
     return-void
 .end method
 
@@ -26745,27 +26822,46 @@
     goto :goto_6
 .end method
 
-.method private static killProcessGroup(II)V
-    .locals 4
+.method static killProcessGroup(II)V
+    .locals 3
     .param p0, "uid"    # I
     .param p1, "pid"    # I
 
     .prologue
-    const-wide/16 v2, 0x40
+    .line 2823
+    sget-object v0, Lcom/android/server/am/ActivityManagerService;->sKillHandler:Lcom/android/server/am/ActivityManagerService$KillHandler;
 
-    .line 3012
-    const-string/jumbo v0, "killProcessGroup"
+    if-eqz v0, :cond_0
 
-    invoke-static {v2, v3, v0}, Landroid/os/Trace;->traceBegin(JLjava/lang/String;)V
+    .line 2824
+    sget-object v0, Lcom/android/server/am/ActivityManagerService;->sKillHandler:Lcom/android/server/am/ActivityManagerService$KillHandler;
 
-    .line 3013
+    sget-object v1, Lcom/android/server/am/ActivityManagerService;->sKillHandler:Lcom/android/server/am/ActivityManagerService$KillHandler;
+
+    const/16 v2, 0xfa0
+
+    invoke-virtual {v1, v2, p0, p1}, Lcom/android/server/am/ActivityManagerService$KillHandler;->obtainMessage(III)Landroid/os/Message;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lcom/android/server/am/ActivityManagerService$KillHandler;->sendMessage(Landroid/os/Message;)Z
+
+    .line 2830
+    :goto_0
+    return-void
+
+    .line 2827
+    :cond_0
+    const-string v0, "ActivityManager"
+
+    const-string v1, "Asked to kill process group before system bringup!"
+
+    invoke-static {v0, v1}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 2828
     invoke-static {p0, p1}, Landroid/os/Process;->killProcessGroup(II)I
 
-    .line 3014
-    invoke-static {v2, v3}, Landroid/os/Trace;->traceEnd(J)V
-
-    .line 3011
-    return-void
+    goto :goto_0
 .end method
 
 .method private killProcessesBelowAdj(ILjava/lang/String;)Z
@@ -35712,7 +35808,7 @@
 
 # virtual methods
 .method public final activityDestroyed(Landroid/os/IBinder;)V
-    .locals 2
+    .locals 3
     .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
@@ -35733,6 +35829,17 @@
     const-string/jumbo v1, "activityDestroyed"
 
     invoke-virtual {v0, p1, v1}, Lcom/android/server/am/ActivityStack;->activityDestroyedLocked(Landroid/os/IBinder;Ljava/lang/String;)V
+
+    invoke-static {}, Lcom/android/server/am/ActivityManagerServiceInjector;->getMiuiActivityController()Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;
+
+    move-result-object v1
+
+    invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;->activityDestroyed(Lcom/android/server/am/ActivityRecord;)V
+
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -35789,6 +35896,12 @@
 
     .line 6532
     .local v1, "r":Lcom/android/server/am/ActivityRecord;
+    invoke-static {}, Lcom/android/server/am/ActivityManagerServiceInjector;->getMiuiActivityController()Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;
+
+    move-result-object v5
+
+    invoke-virtual {v5, v1}, Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;->activityIdle(Lcom/android/server/am/ActivityRecord;)V
+
     if-eqz p3, :cond_0
 
     .line 6533
@@ -35850,7 +35963,7 @@
 .end method
 
 .method public final activityPaused(Landroid/os/IBinder;)V
-    .locals 4
+    .locals 5
     .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
@@ -35877,6 +35990,17 @@
     const/4 v3, 0x0
 
     invoke-virtual {v2, p1, v3}, Lcom/android/server/am/ActivityStack;->activityPausedLocked(Landroid/os/IBinder;Z)V
+
+    invoke-static {}, Lcom/android/server/am/ActivityManagerServiceInjector;->getMiuiActivityController()Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;
+
+    move-result-object v3
+
+    invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;->activityPaused(Lcom/android/server/am/ActivityRecord;)V
+
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -35900,7 +36024,7 @@
 .end method
 
 .method public final activityResumed(Landroid/os/IBinder;)V
-    .locals 4
+    .locals 5
     .param p1, "token"    # Landroid/os/IBinder;
 
     .prologue
@@ -35925,6 +36049,17 @@
 
     .line 6771
     invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->activityResumedLocked(Landroid/os/IBinder;)V
+
+    invoke-static {}, Lcom/android/server/am/ActivityManagerServiceInjector;->getMiuiActivityController()Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;
+
+    move-result-object v3
+
+    invoke-static {p1}, Lcom/android/server/am/ActivityRecord;->forTokenLocked(Landroid/os/IBinder;)Lcom/android/server/am/ActivityRecord;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;->activityResumed(Lcom/android/server/am/ActivityRecord;)V
+
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -36049,6 +36184,13 @@
     iget-object v3, v3, Lcom/android/server/am/TaskRecord;->stack:Lcom/android/server/am/ActivityStack;
 
     invoke-virtual {v3, v2, p2, p3, p4}, Lcom/android/server/am/ActivityStack;->activityStoppedLocked(Lcom/android/server/am/ActivityRecord;Landroid/os/Bundle;Landroid/os/PersistableBundle;Ljava/lang/CharSequence;)V
+
+    invoke-static {}, Lcom/android/server/am/ActivityManagerServiceInjector;->getMiuiActivityController()Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;
+
+    move-result-object v3
+
+    invoke-virtual {v3, v2}, Lcom/android/server/am/ActivityManagerServiceInjector$MiuiActivityController;->activityStopped(Lcom/android/server/am/ActivityRecord;)V
+
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -59650,6 +59792,10 @@
     .param p4, "finishTask"    # Z
 
     .prologue
+    invoke-static/range {p0 .. p3}, Lcom/android/server/am/ActivityManagerServiceInjector;->finishActivity(Lcom/android/server/am/ActivityManagerService;Landroid/os/IBinder;ILandroid/content/Intent;)Landroid/os/IBinder;
+
+    move-result-object p1
+
     .line 4531
     if-eqz p3, :cond_0
 
@@ -63210,6 +63356,10 @@
     .local v0, "r":Lcom/android/server/am/ActivityRecord;
     if-eqz v0, :cond_0
 
+    iget-object v1, v0, Lcom/android/server/am/ActivityRecord;->app:Lcom/android/server/am/ProcessRecord;
+
+    if-eqz v1, :cond_0
+
     iget-object v1, v0, Lcom/android/server/am/ActivityRecord;->info:Landroid/content/pm/ActivityInfo;
 
     iget-object v1, v1, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
@@ -63217,6 +63367,10 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     :cond_0
+    invoke-static {p0, p1}, Lcom/android/server/am/ActivityManagerServiceInjector;->getCallingUidPackage(Lcom/android/server/am/ActivityManagerService;Landroid/os/IBinder;)Ljava/lang/String;
+
+    move-result-object v1
+
     monitor-exit p0
 
     return-object v1

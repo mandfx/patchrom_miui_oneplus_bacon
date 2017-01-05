@@ -450,6 +450,8 @@
 
     iput v5, p0, Lcom/android/server/am/ProcessRecord;->curRawAdj:I
 
+    iput v5, p0, Lcom/android/server/am/ProcessRecord;->verifiedAdj:I
+
     .line 428
     iput v5, p0, Lcom/android/server/am/ProcessRecord;->setAdj:I
 
@@ -2578,7 +2580,7 @@
 
     iget v1, p0, Lcom/android/server/am/ProcessRecord;->pid:I
 
-    invoke-static {v0, v1}, Landroid/os/Process;->killProcessGroup(II)I
+    invoke-static {v0, v1}, Lcom/android/server/am/ActivityManagerService;->killProcessGroup(II)V
 
     .line 582
     iget-boolean v0, p0, Lcom/android/server/am/ProcessRecord;->persistent:Z
@@ -3934,6 +3936,8 @@
 
     .line 435
     iput p1, p0, Lcom/android/server/am/ProcessRecord;->pid:I
+
+    iput-object v0, p0, Lcom/android/server/am/ProcessRecord;->procStatFile:Ljava/lang/String;
 
     .line 436
     iput-object v0, p0, Lcom/android/server/am/ProcessRecord;->shortStringName:Ljava/lang/String;
