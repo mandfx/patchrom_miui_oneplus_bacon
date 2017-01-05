@@ -50,6 +50,9 @@ local-pre-zip-misc:
 		#remove stockrom files
 		rm -rf $(ZIP_DIR)/system/lib64
 		rm -rf $(ZIP_DIR)/system/recovery-from-boot.bak
+		rm -rf $(ZIP_DIR)/system/bin/install-recovery.sh
+		rm -rf $(ZIP_DIR)/system/etc/init.miui.rc
+		rm -rf $(ZIP_DIR)/system/xbin/su
 		#copy files
 		cp -a -rf other/system/* $(ZIP_DIR)/system/
 		#fix mms notification
