@@ -3,6 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:settings="http://schemas.android.com/apk/res/com.android.settings_ex">
     <PreferenceCategory android:title="@string/display_label" android:key="display">
+        <com.android.settings_ex.cyanogenmod.ButtonBacklightBrightness android:persistent="false" android:title="@string/button_backlight_title" android:key="button_backlight" android:dialogTitle="@string/button_backlight_title" />
     <!--
         <PreferenceScreen android:title="@string/brightness" android:key="brightness" settings:keywords="@string/keywords_display_brightness_level">
             <intent android:action="android.intent.action.SHOW_BRIGHTNESS_DIALOG" />
