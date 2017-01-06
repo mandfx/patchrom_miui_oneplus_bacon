@@ -22,6 +22,10 @@ function applyPatch () {
 if [ "$OUT_FRAMEWORK_DIR" == "out/framework" ];then
     cp $OUT_MIUI_FRAMEWORK_DIR/smali/android/widget/Editor*.smali $OUT_FRAMEWORK_DIR/smali/android/widget/
     rm -rf $OUT_FRAMEWORK_DIR/smali/com/android/internal/app/ResolverProxy*.smali
+
+    cp $OUT_MIUI_FRAMEWORK_DIR/smali/android/widget/Toast*.smali $OUT_FRAMEWORK_DIR/smali/android/widget/
+    sed -i 's/10e0088/10e0095/g' $2/smali/android/widget/Toast.smali
+    sed -i 's/1090102/10900f6/g' $2/smali/android/widget/Toast.smali
     
     #density
     sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $2/smali/android/util/DisplayMetrics.smali
