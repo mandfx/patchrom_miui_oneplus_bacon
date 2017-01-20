@@ -6487,6 +6487,9 @@
     .line 16918
     .end local p3    # "intent":Landroid/content/Intent;
     .local v14, "intent":Landroid/content/Intent;
+    move-object/from16 v0, p2
+
+    invoke-virtual {v14, v0}, Landroid/content/Intent;->setSender(Ljava/lang/String;)V
     const/16 v4, 0x10
 
     invoke-virtual {v14, v4}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
@@ -60800,6 +60803,8 @@
     monitor-exit p0
 
     .line 6612
+    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityManagerServiceInjector;->finishBooting(Lcom/android/server/am/ActivityManagerService;)V
+
     return-void
 
     .line 6677
