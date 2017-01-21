@@ -1010,6 +1010,22 @@
     .end local v19    # "ps":Landroid/preference/Preference;
     .end local v20    # "root":Landroid/preference/PreferenceScreen;
     :cond_f
+    const-string/jumbo v22, "toggle_airplane"
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v22
+
+    invoke-virtual {v0, v1}, Lcom/android/settings_ex/WirelessSettings;->removePreference(Ljava/lang/String;)V
+
+    const-string/jumbo v22, "vpn_settings"
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v22
+
+    invoke-virtual {v0, v1}, Lcom/android/settings_ex/WirelessSettings;->removePreference(Ljava/lang/String;)V
+
     return-void
 
     .line 232
@@ -1697,9 +1713,9 @@
     if-eqz v0, :cond_0
 
     .line 408
-    iget-object v0, p0, Lcom/android/settings_ex/WirelessSettings;->mNfcEnabler:Lcom/android/settings_ex/nfc/NfcEnabler;
+    #iget-object v0, p0, Lcom/android/settings_ex/WirelessSettings;->mNfcEnabler:Lcom/android/settings_ex/nfc/NfcEnabler;
 
-    invoke-virtual {v0}, Lcom/android/settings_ex/nfc/NfcEnabler;->pause()V
+    #invoke-virtual {v0}, Lcom/android/settings_ex/nfc/NfcEnabler;->pause()V
 
     .line 410
     :cond_0
@@ -1820,9 +1836,9 @@
     if-eqz v1, :cond_0
 
     .line 375
-    iget-object v1, p0, Lcom/android/settings_ex/WirelessSettings;->mNfcEnabler:Lcom/android/settings_ex/nfc/NfcEnabler;
+    #iget-object v1, p0, Lcom/android/settings_ex/WirelessSettings;->mNfcEnabler:Lcom/android/settings_ex/nfc/NfcEnabler;
 
-    invoke-virtual {v1}, Lcom/android/settings_ex/nfc/NfcEnabler;->resume()V
+    #invoke-virtual {v1}, Lcom/android/settings_ex/nfc/NfcEnabler;->resume()V
 
     .line 377
     :cond_0

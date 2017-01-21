@@ -1184,7 +1184,7 @@
     <string name="settings_label_launcher">原厂设置</string>
     <string name="settings_shortcut">设置快捷方式</string>
     <string name="airplane_mode">飞行模式</string>
-    <string name="radio_controls_title">更多</string>
+    <string name="radio_controls_title">便携式热点</string>
     <string name="wireless_networks_settings_title">无线和网络</string>
     <string name="radio_controls_summary">管理WLAN、蓝牙、飞行模式、移动网络和VPN</string>
     <string name="cellular_data_title">移动数据网络</string>
