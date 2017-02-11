@@ -354,6 +354,27 @@
     sput-boolean v1, Landroid/os/Build;->IS_DEBUGGABLE:Z
 
     .line 31
+    const/4 v1, 0x1
+
+    const/4 v2, 0x0
+
+    const-string/jumbo v3, "persist.sys.wzry_enabled"
+
+    invoke-static {v3, v2}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z
+
+    move-result v3
+
+    if-ne v3, v1, :cond_xs
+
+    const-string/jumbo v3, "MI 5"
+
+    sput-object v3, Landroid/os/Build;->MODEL:Ljava/lang/String;
+
+    const-string/jumbo v3, "Xiaomi"
+
+    sput-object v3, Landroid/os/Build;->MANUFACTURER:Ljava/lang/String;
+
+    :cond_xs
     return-void
 
     .line 134
