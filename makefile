@@ -68,6 +68,9 @@ local-pre-zip-misc:
 		#density
 		sed -i 's/qemu.sf.lcd_density/persist.sys.density/g' $(ZIP_DIR)/system/lib/libsurfaceflinger.so
 		echo "persist.sys.density=480" >> $(ZIP_DIR)/system/build.prop
+		#fix dual app
+		echo "debug.adb.default_USER_ALL=false" >> $(ZIP_DIR)/system/build.prop
+		echo "debug.pm.default_USER_ALL=false" >> $(ZIP_DIR)/system/build.prop
 		#add device_features to miuisystem
 		./customize_miuisystem.sh
 		#change patchrom jars
